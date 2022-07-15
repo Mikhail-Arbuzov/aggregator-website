@@ -1,0 +1,108 @@
+@font-face{
+    font-family: 'PT Sans';
+    src:url("../fonts/PTSans-BoldItalic.ttf");
+}
+
+@font-face{
+    font-family: 'Mark Script';
+    src:url("../fonts/MarckScript-Regular.ttf");
+}
+
+@font-face{
+    font-family: 'Philosopher';
+    src:url("../fonts/Philosopher-Regular.ttf");
+}
+
+/*ОБНУЛЕНИЕ*/
+
+*,*:before,*:after{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing: border-box;
+}
+
+a:focus,a:active{
+    outline: none;
+}
+
+a,a:visited{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+nav,footer,header,aside{
+    display:block;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust:100%; /* при уменьшении экрана,чтобы шрифт текста не уменьшался*/
+    -moz-text-size-adjust:100%;
+    -webkit-text-size-adjust:100%;
+}
+
+input,button,textarea{
+    font-family: inherit;
+}
+
+input::-ms-clear{ /*чтобы в поле не появлялись лишние значки от браузера*/
+    display: none;
+}
+
+button{
+    cursor: pointer; /*Вид курсора рука*/
+}
+
+button::-moz-focus-inner{
+    padding: 0;
+    border: 0;
+}
+
+ul li{
+    list-style: none;
+}
+
+img{
+    vertical-align: top;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/*Основные стили*/
+body{
+    background:#212936;/*#74848c;*/
+}
+.wrapper{
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.corobka{
+    max-width: 1400px;
+    margin: 0px auto;
+    padding: 0px 10px;
+}
+
+.content{
+    flex: 1 1 auto;
+}
+
+.footer{
+    background:#161b24;
+}
