@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Профиль</title>
@@ -21,7 +23,30 @@
 		<section class="profile">
 			<div class="corobka">
 				<div class="option">
-					<div th:replace="~{fragments/option::option}"></div>
+					<div class="option__item1">
+						<div class="item1">
+							<div class="item1__avatarka">
+								<img th:src="@{(${currentUser.getDetail().getAvatarka()})}" alt="avatarka">
+							</div>
+							<div class="item1__body">
+								<div class="item1__text">
+									<h3>Добро пожаловать</h3>
+									<p th:text="${currentUser.getDetail().getFirstName() + ' ' + currentUser.getDetail().getSecondName()}">Имя Фамилия</p>
+								</div>
+							</div>
+						</div>
+						<div class="item2">
+							<h3>Управление профилем</h3>
+						</div>
+						<div class="item3">
+							<div class="item3__btn1">
+								<a href="#" class="btn btn-dark">Настройки</a>
+							</div>
+							<div class="item3__btn2">
+								<a href="#" class="btn btn-dark">Смена пароля</a>
+							</div>
+						</div>
+					</div>
 					<div class="option__item2">
 						<div class="container-fluid">
 							<div class="row">
@@ -30,25 +55,27 @@
 										<div class="wallpaper">
 											<img  src="img/fon-matritsa.jpg" alt="обои">
 										</div>
-										<div class="card__data">
+
+										<div class="card__data" th:object="${currentUser}">
 											<div class="ava">
 												<div class="data__avatarka">
-													<img src="img/ty.jpg" alt="avatar">
+
+													<img th:src="@{(${currentUser.getDetail().getAvatarka()})}" alt="avatar">
 												</div>
 											</div>
 											<div class="data__body">
 												<div class="data__title">
-													<h3>Имя Фамилия</h3>
-													<p>login</p>
+													<h3 th:text="*{getDetail().getFirstName() + ' ' + getDetail().getSecondName()}">Имя Фамилия</h3>
+													<p th:text="*{getUsername()}">login</p>
 												</div>
 												<div class="data__text">
-													<p>Укажите краткую информацию о себе и своих интересах</p>
+													<p th:text="*{getDetail().getDescription()}">Укажите краткую информацию о себе и своих интересах</p>
 												</div>
 											</div>
 											<div class="data__footer">
-												<a href="#"  target="_blank"><span class="netw"><i class="fa-brands fa-vk"></i></span></a>
-												<a href="#" target="_blank"><span class="netw"><i class="fa-brands fa-odnoklassniki-square"></i></span></a>
-												<a href="#"  target="_blank"><span class="netw"><i class="fa-brands fa-telegram"></i></span></a>
+												<a th:href="@{(${currentUser.getDetail().getVkNetwork()})}"  target="_blank"><span class="netw"><i class="fa-brands fa-vk"></i></span></a>
+												<a th:href="@{(${currentUser.getDetail().getClassmatesNetwork()})}" target="_blank"><span class="netw"><i class="fa-brands fa-odnoklassniki-square"></i></span></a>
+												<a th:href="@{(${currentUser.getDetail().getTelegramNetwork()})}"  target="_blank"><span class="netw"><i class="fa-brands fa-telegram"></i></span></a>
 											</div>
 										</div>
 									</div>

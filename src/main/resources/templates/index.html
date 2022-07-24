@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Всё для ПК</title>
@@ -189,5 +191,12 @@
 <script th:src="@{/js/carousel1.js}" type="text/javascript"></script>
 <script th:src="@{/js/menu.js}" type="text/javascript"></script>
 <script th:src="@{/js/main.js}" type="text/javascript"></script>
+<!--<script>-->
+<!--    $('#Modal').on('show.bs.modal', function () {-->
+<!--        $.get("/modal", function (data) {-->
+<!--            $('#Modal').find('.modal-body').html(data);-->
+<!--        })-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>

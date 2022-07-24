@@ -614,67 +614,67 @@
 
 /*для диалогового окна, чтобы не было дергания экрана*/
 
-.modal-open{
-    overflow:hidden;
-    overflow-y:scroll;
-    padding-right:0 !important;
-}
+/*.modal-open{*/
+/*    overflow:hidden;*/
+/*    overflow-y:scroll;*/
+/*    padding-right:0 !important;*/
+/*}*/
 
-
+/*пометка*/
 /*.modal{
 	z-index: 1050;  стоит по умолчанию 1050
 }*/
 
 /*для диалогового окна, чтобы не перекрывалась */
 
-.modal-backdrop{
-    z-index: 100;
-}
+/*.modal-backdrop{*/
+/*    z-index: 100;*/
+/*}*/
 
 /*исправление размеров иконок для полей */
-.sizespan{
-    font-size: 1.5rem;
-}
+/*.sizespan{*/
+/*    font-size: 1.5rem;*/
+/*}*/
 
 /*оформление шапки диологового окна */
-.nav-tabs .nav-item.show .nav-link .colorLink, .nav-tabs .nav-link.active.colorLink {
-    color: #fff;
-    background-color: #4f6b9c;
-}
+/*.nav-tabs .nav-item.show .nav-link .colorLink, .nav-tabs .nav-link.active.colorLink {*/
+/*    color: #fff;*/
+/*    background-color: #4f6b9c;*/
+/*}*/
 
-.colorA a{
-    color: #000;
-}
+/*.colorA a{*/
+/*    color: #000;*/
+/*}*/
 
 
-.modal-header.bgkHeader{
-    background: rgb(109,136,183); /* Old browsers */
-    background: -moz-linear-gradient(-45deg,  rgba(109,136,183,1) 9%, rgba(184,198,223,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg,  rgba(109,136,183,1) 9%,rgba(184,198,223,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg,  rgba(109,136,183,1) 9%,rgba(184,198,223,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d88b7', endColorstr='#b8c6df',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
+/*.modal-header.bgkHeader{*/
+/*    background: rgb(109,136,183); !* Old browsers *!*/
+/*    background: -moz-linear-gradient(-45deg,  rgba(109,136,183,1) 9%, rgba(184,198,223,1) 100%); !* FF3.6-15 *!*/
+/*    background: -webkit-linear-gradient(-45deg,  rgba(109,136,183,1) 9%,rgba(184,198,223,1) 100%); !* Chrome10-25,Safari5.1-6 *!*/
+/*    background: linear-gradient(135deg,  rgba(109,136,183,1) 9%,rgba(184,198,223,1) 100%); !* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ *!*/
+/*    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d88b7', endColorstr='#b8c6df',GradientType=1 ); !* IE6-9 fallback on horizontal gradient *!*/
+/*}*/
 
 
 /*оформление фона тела диологового окна */
 
-.madal-body.bgkBody{
-    background: rgb(242,245,246); /* Old browsers */
-    background: -moz-linear-gradient(-45deg,  rgba(242,245,246,1) 0%, rgba(227,234,237,1) 94%, rgba(200,215,220,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg,  rgba(242,245,246,1) 0%,rgba(227,234,237,1) 94%,rgba(200,215,220,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg,  rgba(242,245,246,1) 0%,rgba(227,234,237,1) 94%,rgba(200,215,220,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+/*.madal-body.bgkBody{*/
+/*    background: rgb(242,245,246); !* Old browsers *!*/
+/*    background: -moz-linear-gradient(-45deg,  rgba(242,245,246,1) 0%, rgba(227,234,237,1) 94%, rgba(200,215,220,1) 100%); !* FF3.6-15 *!*/
+/*    background: -webkit-linear-gradient(-45deg,  rgba(242,245,246,1) 0%,rgba(227,234,237,1) 94%,rgba(200,215,220,1) 100%); !* Chrome10-25,Safari5.1-6 *!*/
+/*    background: linear-gradient(135deg,  rgba(242,245,246,1) 0%,rgba(227,234,237,1) 94%,rgba(200,215,220,1) 100%); !* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ *!*/
+/*    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=1 ); !* IE6-9 fallback on horizontal gradient *!*/
 
-}
+/*}*/
 
 /*оформление третьего таба диологового окна */
 
-.textstyle{
-    margin:8px 0px 0px 0px;
-    text-align: center;
-    font-family: 'Philosopher';
-    font-size: 20px;
-}
-.textstyle h3{
-    color:#000;
-}
+/*.textstyle{*/
+/*    margin:8px 0px 0px 0px;*/
+/*    text-align: center;*/
+/*    font-family: 'Philosopher';*/
+/*    font-size: 20px;*/
+/*}*/
+/*.textstyle h3{*/
+/*    color:#000;*/
+/*}*/

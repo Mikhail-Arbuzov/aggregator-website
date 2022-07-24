@@ -1,4 +1,8 @@
-<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="menu">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:fragment="menu">
+
 	<header class="header">
 		<div class="corobka">
 			<div class="header__body">
@@ -12,17 +16,22 @@
 					<ul class="header__list">
 						<li><a href="#" class="header__link">Cовместимость</a></li>
 						<li><a href="#" class="header__link">Конфигурация</a></li>
-						<li class="dropdown">
-							<a href="#" class="header__link dropdown-toggle" id="dropdownMenulink" data-toggle ="dropdown">Сборка</a>
-							<div class="dropdown-menu"  aria-labelledby ="dropdownMenulink">
-								<div class="background__item">
-									<a href="#" class="dropdown-item  link">Всё о сборке ПК</a>
+						<div sec:authorize="isAuthenticated()">
+							<li class="dropdown">
+								<a href="#" class="header__link dropdown-toggle" id="dropdownMenulink" data-toggle ="dropdown">Сборка</a>
+								<div class="dropdown-menu"  aria-labelledby ="dropdownMenulink">
+									<div class="background__item">
+										<a href="#" class="dropdown-item  link">Всё о сборке ПК</a>
+									</div>
+									<div class="background__item">
+										<a href="#" class="dropdown-item link">Самостоятельная подборка</a>
+									</div>
 								</div>
-								<div class="background__item">
-									<a href="#" class="dropdown-item link">Самостоятельная подборка</a>
-								</div>
-							</div>
-						</li>
+							</li>
+						</div>
+						<div sec:authorize="isAnonymous()">
+							<li><a href="#" class="header__link">Сборка</a></li>
+						</div>
 						<li><a href="#" class="header__link">Статьи</a></li>
 					</ul>
 				</nav>
@@ -33,9 +42,16 @@
 						</a>
 					</div>
 					<div class="option2">
-						<a href="" class="profile" data-toggle="modal" data-target="#Modal">
-							<img src="icons/profile_icon.png"alt="profile">
-						</a>
+						<div sec:authorize="isAuthenticated()">
+							<a th:href="@{/profile}" class="profile">
+								<img src="icons/profile_icon-icons..png"alt="profile">
+							</a>
+						</div>
+						<div sec:authorize="isAnonymous()">
+							<a th:href="@{/user/login}" class="profile">
+								<img src="icons/profile_icon.png"alt="entrance">
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -58,140 +74,39 @@
 							</form>
 						</div>
 					</div>
-<!--					<div class="row mt-3">-->
-<!--						<div class="col">-->
-<!--							<div class="items">-->
-<!--								<div class="items__img">-->
-<!--									<a href="#"><img src="img/mtp.jpeg" alt="kartinka"></a>-->
-<!--								</div>-->
-<!--								<div class="items__body">-->
-<!--									<div class="items__link">-->
-<!--										<a href="#">Материнская плата</a>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--					<div class="row mt-3">-->
-<!--						<div class="col">-->
-<!--							<div class="items">-->
-<!--								<div class="items__img">-->
-<!--									<img src="img/mtp.jpeg" alt="kartinka">-->
-<!--								</div>-->
-<!--								<div class="items__body">-->
-<!--									<div class="items__link">-->
-<!--										<a href="#">Материнская плата</a>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
+					<!--					<div class="row mt-3">-->
+					<!--						<div class="col">-->
+					<!--							<div class="items">-->
+					<!--								<div class="items__img">-->
+					<!--									<a href="#"><img src="img/mtp.jpeg" alt="kartinka"></a>-->
+					<!--								</div>-->
+					<!--								<div class="items__body">-->
+					<!--									<div class="items__link">-->
+					<!--										<a href="#">Материнская плата</a>-->
+					<!--									</div>-->
+					<!--								</div>-->
+					<!--							</div>-->
+					<!--						</div>-->
+					<!--					</div>-->
+					<!--					<div class="row mt-3">-->
+					<!--						<div class="col">-->
+					<!--							<div class="items">-->
+					<!--								<div class="items__img">-->
+					<!--									<img src="img/mtp.jpeg" alt="kartinka">-->
+					<!--								</div>-->
+					<!--								<div class="items__body">-->
+					<!--									<div class="items__link">-->
+					<!--										<a href="#">Материнская плата</a>-->
+					<!--									</div>-->
+					<!--								</div>-->
+					<!--							</div>-->
+					<!--						</div>-->
+					<!--					</div>-->
 				</div>
 			</div>
 			<div class="block2"></div>
 		</div>
 	</div>
 
-	<div class="corobka">
-		<div class="row">
-			<div class="col">
-				<div class="modal fade" id="Modal">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header bgkHeader">
-								<nav class="nav nav-fill nav-tabs colorA">
-									<a href="#tab1" class="nav-item nav-link active colorLink"id="nav1" data-toggle="tab" aria-controls="tab1">Вход</a>
-									<a href="#tab2" class="nav-item nav-link colorLink"id="nav2" data-toggle="tab" aria-controls="tab2">Регистрация</a>
-									<a href="#tab3" class="nav-item nav-link colorLink"id="nav3" data-toggle="tab" aria-controls="tab3">Забыли пароль?</a>
-								</nav>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
-								</button>
-							</div>
-							<div class="madal-body bgkBody">
-								<div class="tab-content">
-									<div class="tab-pane fade show active" id="tab1" aria-labelledby="nav1">
-										<div class="container">
-											<div class="row">
-												<div class="col">
-													<form>
-														<div class="input-group mt-3">
-															<div class="input-group-prepend mb-3">
-																<span class="input-group-text sizespan" id ="log"><i class="fa-solid fa-id-card"></i></span>
-															</div>
-															<input class="form-control" placeholder="Введите логин" type="text" name="login" aria-describedby="log">
-														</div>
-														<div class="input-group mt-3">
-															<div class="input-group-prepend mb-3">
-																<span class="input-group-text sizespan" id ="pas"><i class="fa-solid fa-unlock-keyhole"></i></span>
-															</div>
-															<input class="form-control" placeholder="Введите пароль" type="password" name="password" aria-describedby="pas">
-														</div>
-														<button type="submit" class="btn btn-outline-secondary btn-block mb-3">ВОЙТИ</button>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="tab-pane fade"id="tab2" aria-labelledby="nav2">
-										<div class="container">
-											<div class="row">
-												<div class="col">
-													<form>
-														<div class="input-group mt-3">
-															<div class="input-group-prepend mb-3">
-																<span class="input-group-text sizespan" id ="login"><i class="fa-solid fa-user"></i></span>
-															</div>
-															<input class="form-control" placeholder="Придумайте логин" type="text" name="login1" aria-describedby="login">
-														</div>
-														<div class="input-group mt-3">
-															<div class="input-group-prepend mb-3">
-																<span class="input-group-text sizespan" id ="email"><i class="fa-solid fa-envelope"></i></span>
-															</div>
-															<input class="form-control" placeholder="Укажите почту" type="email" name="email" aria-describedby="email">
-														</div>
-														<div class="input-group mt-3">
-															<div class="input-group-prepend mb-3">
-																<span class="input-group-text sizespan" id ="passw"><i class="fa-solid fa-unlock"></i></span>
-															</div>
-															<input class="form-control" placeholder="Придумайте пароль" type="password" name="password1" aria-describedby="passw">
-														</div>
-														<div class="input-group mt-3">
-															<div class="input-group-prepend mb-3">
-																<span class="input-group-text sizespan" id ="passw2"><i class="fa-solid fa-lock"></i></span>
-															</div>
-															<input class="form-control" placeholder="Подтвердите пароль" type="password" name="password2" aria-describedby="passw2">
-														</div>
-														<button type="submit" class="btn btn-outline-secondary btn-block mb-3">ЗАРЕГИСТРИРОВАТЬСЯ</button>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="tab-pane fade"id="tab3" aria-labelledby="nav3">
-										<div class="container">
-											<div class="row">
-												<div class="col">
-													<div class="textstyle">
-														<h3>Восстановить пароль</h3>
-													</div>
-													<div class="input-group mt-4">
-														<div class="input-group-prepend mb-4">
-															<span class="input-group-text sizespan" id ="email1"><i class="fa-solid fa-paper-plane"></i></span>
-														</div>
-														<input class="form-control" placeholder="Введите email" type="email" name="email1" aria-describedby="email1">
-													</div>
-													<button type="submit" class="btn btn-outline-secondary btn-block mb-3">ОТПРАВИТЬ</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </th:block>
+</html>>

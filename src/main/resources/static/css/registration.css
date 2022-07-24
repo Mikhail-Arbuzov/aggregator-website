@@ -1,0 +1,100 @@
+/*Стили для контента страницы регистрации*/
+.registration{
+    margin: 120px 0px 40px 0px;
+}
+
+.registration__body{
+    display: flex;
+    width: 100%;
+    height: 480px;
+    padding: 10px;
+    background: #1d2a41;
+    border-radius: 20px;
+    box-shadow: 0px 1px 2px 0px rgba(23,162,184,1),
+    1px 2px 4px 0px rgba(23,162,184,1),
+    2px 4px 8px 0px rgba(23,162,184,1),
+    2px 4px 16px 0px rgba(123,162,184,1);
+    border-color: #17a2b8;
+}
+
+.registration__img{
+    flex: 0 0 50%;
+    position: relative;
+}
+
+.registration__img img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.registration__forma{
+    width: 50%;
+    padding: 20px;
+    overflow: auto;
+}
+
+.registration__title h3{
+    font-family: 'Philosopher';
+    font-size:20px;
+    text-align: center;
+    font-weight: bold;
+    color: #17a2b8;
+}
+
+.sizespan{
+    font-size: 1.5rem;
+}
+
+.input-group input:focus{
+    box-shadow: rgba(23, 162, 184, 1) 0px 3px 8px;
+    border-color: #17a2b8;
+}
+
+.reg{
+    font-family: 'Philosopher';
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+}
+
+@media(max-width: 992px){
+
+    .registration__body{
+        height: 640px;
+        flex-direction: column;
+    }
+
+    .registration__img{
+        flex: 0 0 33.33%;
+    }
+
+    .registration__forma{
+        width: 100%;
+        padding: 10px 0px 0px 0px;
+    }
+
+}
+
+@media(max-width: 790px){
+    .registration{
+        margin-top: 100px;
+    }
+}
+
+@media(max-width: 300px){
+    .registration__title h3{
+        font-size:16px;
+    }
+}
+
+/*Ошибки в полях форм*/
+.invalid-input{
+    font-family: 'Philosopher';
+    font-size: 14px;
+    color: red;
+}

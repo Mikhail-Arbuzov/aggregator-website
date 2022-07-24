@@ -11,6 +11,17 @@
         body.classList.toggle('lock');
     });
 
+    // кнопка поиска
+
+    const searchbtn = document.querySelector(".search");
+
+    searchbtn.addEventListener("click",function(e){
+        if(!e) e = window.event;
+        searchbtn.classList.toggle('open');
+        const searchMenu = document.querySelector(".wd");
+        searchMenu.classList.toggle('open');
+    });
+
     // функции на разные экраны для выпадающего списка
     const dropdown = document.querySelector(".dropdown");
     const mediaQuery = window.matchMedia("(min-width: 790px)");
@@ -55,15 +66,6 @@
         dropdown.removeEventListener("mouseout",handlerMouseover,true);
     }
 
-    // кнопка поиска
 
-    const searchbtn = document.querySelector(".search");
-
-    searchbtn.addEventListener("click",function(e){
-        if(!e) e = window.event;
-        searchbtn.classList.toggle('open');
-        const searchMenu = document.querySelector(".wd");
-        searchMenu.classList.toggle('open');
-    })
 
 })();

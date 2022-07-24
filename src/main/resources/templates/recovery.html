@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Восстановление пароля</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/recovery.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu3.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu3::menu3}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="recovery">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="recovery__body">
+								<div class="recovery__img">
+									<img src="img/passw.jpg" alt="Recovery">
+								</div>
+								<div class="recovery__title">
+									<h3>Восстановить пароль</h3>
+								</div>
+								<div class="recovery__forma">
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col">
+												<form>
+													<div class="input-group mt-4">
+														<div class="input-group-prepend mb-5">
+															<span class="input-group-text sizespan" id ="email1"><i class="fa-solid fa-paper-plane"></i></span>
+														</div>
+														<input class="form-control" placeholder="Введите email" type="email" name="email1" aria-describedby="email1">
+													</div>
+													<button type="submit" class="btn btn-outline-info btn-block mb-3">ОТПРАВИТЬ</button>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu3.js}" type="text/javascript"></script>
+</body>
+</html>

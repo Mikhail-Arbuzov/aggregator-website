@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="menu3">
+	<header class="header3">
+		<div class="corobka">
+			<div class="header3__body">
+				<a href="/" class="header3__logo">
+					<img src="img/pc.png" alt="logo">
+				</a>
+				<div class="header3__burger">
+					<span></span>
+				</div>
+				<nav class="header3__menu">
+					<ul class="header3__list">
+						<li><a th:href="@{/allForPC}" class="header3__link">На главную</a></li>
+						<li><a th:href="@{/user/login}" class="header3__link">Войти</a></li>
+						<li><a th:href="@{/user/registration}" class="header3__link">Зарегистрироваться</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+</th:block>
+</html>

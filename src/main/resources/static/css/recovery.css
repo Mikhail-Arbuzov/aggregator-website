@@ -1,0 +1,106 @@
+/*Стили для контента страницы восстановления пароля*/
+.recovery{
+    margin: 120px 0px 40px 0px;
+    /*border: 1px solid #fff;*/
+}
+
+.recovery__body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0px 15px 0px;
+    background: #1d2a41;
+    /*border: 3px solid #91b3c3;*/
+    border-radius: 20px;
+    /*box-shadow: rgba(23, 162, 184, 1) 0px 3px 8px;*/
+    box-shadow: 0px 1px 2px 0px rgba(23,162,184,1),
+    1px 2px 4px 0px rgba(23,162,184,1),
+    2px 4px 8px 0px rgba(23,162,184,1),
+    2px 4px 16px 0px rgba(123,162,184,1);
+
+    border-color: #17a2b8;
+
+}
+
+.recovery__img{
+    flex: 0 0 50%;
+    position: relative;
+    /*height: 50%;*/
+    /*border:1px solid yellow;*/
+}
+
+.recovery__img img{
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+    /*	width: 100%;
+        height:100%;
+        object-fit: contain;
+        position: absolute;
+        top: 0;
+        left:0;*/
+}
+
+.recovery__title h3{
+    font-family: 'Philosopher';
+    font-size:20px;
+    text-align: center;
+    font-weight: bold;
+    color: #17a2b8;
+    margin: 20px 0px 0px 0px;
+}
+
+.recovery__forma{
+    margin: 0 auto;
+    /*border: 1px solid green;*/
+    width: 30%;
+}
+
+.sizespan{
+    font-size: 1.5rem;
+}
+
+.input-group input:focus{
+    box-shadow: rgba(23, 162, 184, 1) 0px 3px 8px;
+    border-color: #17a2b8;
+}
+
+@media(max-width:1200px){
+    .recovery__img img{
+        width: 50%;
+    }
+
+    .recovery__forma{
+        width: 50%;
+    }
+}
+
+@media(max-width:1000px){
+    .recovery__img img{
+        width: 60%;
+    }
+
+    .recovery__forma{
+        width: 60%;
+    }
+}
+
+@media(max-width: 790px){
+    .recovery__img img{
+        width: 80%;
+    }
+
+    .recovery__forma{
+        width: 80%;
+    }
+    .recovery{
+        margin-top: 100px;
+    }
+}
+
+@media(max-width: 300px){
+    .recovery__title h3{
+        font-size:16px;
+    }
+}
