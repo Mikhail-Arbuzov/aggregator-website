@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Настройки профиля</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/profile-settings.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu2.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu2::menu2}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="editprofile">
+			<div class="corobka">
+				<div class="container">
+					<div class="row mb-2">
+						<div class="col">
+							<div class="title1">
+								<h2>Детали профиля</h2>
+							</div>
+							<div class="editprofile__part1">
+								<div class="part1__avataredit">
+									<div class="avataredit">
+										<div class="avataredit__img">
+											<img th:src="@{(${user.getDetail().getAvatarka()})}" alt="avatarka">
+										</div>
+										<div class="avataredit__forma">
+											<div class="container-fluid">
+												<div class="row">
+													<div class="col">
+														<form th:action="@{/profile/update-avatar}" th:method="PUT" enctype="multipart/form-data">
+															<div class="form-group mt-2">
+																<label for="file1">Сменить аватарку</label>
+																<input type="file" class="form-control-file" id="file1" name="file">
+															</div>
+															<button type="submit" class="btn btn-secondary mt-2 mb-3">Загрузите изображение</button>
+														</form>
+														<p class="message-error" th:text="${message}"></p>
+														<p class="message-error" th:text="${message1}"></p>
+														<p class="message-error" th:text="${message2}"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="fullname-edit">
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col">
+												<div class="title2 mt-2">
+													<h3>Персональные данные</h3>
+												</div>
+												<form>
+													<div class="form-group mt-3">
+														<label for="firstName">Имя</label>
+														<input type="text" class="form-control" id="firstName" placeholder="Введите свое имя">
+													</div>
+													<div class="form-group mt-4">
+														<label for="secondName">Фамилия</label>
+														<input type="text" class="form-control" id="secondName"placeholder="Введите свою фамилию">
+													</div>
+													<button type="submit" class="btn btn-secondary mt-3">Отправить</button>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="editprofile__part2">
+								<div class="part2__item1">
+									<div class="description__user">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col">
+													<form>
+														<div class="form-group shadow-textarea mt-3">
+															<label for="textarea">О себе</label>
+															<textarea class="form-control" id="textarea" rows="3" placeholder="Напишите что-нибудь о себе..."></textarea>
+														</div>
+														<button type="submit" class="btn btn-secondary mt-1">Указать</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="email__user">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col">
+													<form>
+														<div class="form-group mt-2">
+															<label for="eml">Почта</label>
+															<input type="email" class="form-control" id="eml"placeholder="Укажите новую почту">
+														</div>
+														<button type="submit" class="btn btn-secondary mt-1">Обновить</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="part2__item2">
+									<div class="network__user">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col">
+													<div class="title2">
+														<h3>Ссылки на соцсети</h3>
+													</div>
+													<form>
+														<div class="form-group mt-3">
+															<label for="vk">ВК</label>
+															<input type="url" class="form-control" id="vk" placeholder="Введите ссылку на вк">
+														</div>
+														<div class="form-group mt-4">
+															<label for="classmates">Одноклассники</label>
+															<input type="url" class="form-control" id="classmates" placeholder="Введите ссылку на одноклассники">
+														</div>
+														<div class="form-group mt-4">
+															<label for="telegram">Телеграм</label>
+															<input type="text" class="form-control" id="telegram" placeholder="Введите nickname без знака '@'">
+														</div>
+														<button type="submit" class="btn btn-secondary mt-2">Отправить</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="deleteProfile">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="deleteProfile__card">
+								<div class="card">
+									<div class="card-header">
+										<h3 class ="title1">Удаление профиля</h3>
+									</div>
+									<div class="card-body">
+										<div class=" alert alert-warning" role="alert">
+											<span class="text-danger h6 ">Предупреждение</span>
+											<p class="cardtext mt-4">Если вы удалите свой профиль, вы потеряете доступ к своему аккаунту навсегда.</p>
+										</div>
+										<form>
+											<div class="form-group">
+												<input class="btn btn-block btn-outline-danger" type="submit" value="Удалить cвой профиль"/>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu2.js}" type="text/javascript"></script>
+</body>
+</html>

@@ -9,5 +9,4 @@ public class AggregatorWebsiteApplication {
     public static void main(String[] args) {
         SpringApplication.run(AggregatorWebsiteApplication.class, args);
     }
-
 }

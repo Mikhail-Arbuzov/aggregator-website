@@ -11,9 +11,12 @@ import com.aggregator.aggregator_website.services.exceptionregistration.EmailIsA
 import com.aggregator.aggregator_website.services.exceptionregistration.UserNameIsAlreadyThereException;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -24,8 +27,10 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
     private DetailRepository detailRepository;
+    private final DetailService detailService;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
+
 
     @Transactional
     public void addUser(String username, String email, String password) throws UserNameIsAlreadyThereException, EmailIsAlreadyThereException {
@@ -58,4 +63,13 @@ public class UserService {
         user = modelMapper.map(userDto,User.class);
         userRepository.save(user);
     }
+
+    public User getCurrentUser(){
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String username = loggedInUser.getName();
+        User currentUser = userRepository.findByUsername(username).orElse(null);
+        return currentUser;
+    }
+
+
 }

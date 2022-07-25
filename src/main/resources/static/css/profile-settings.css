@@ -1,0 +1,178 @@
+.editprofile{
+    margin: 120px 0px 20px 0px;
+}
+
+.title1{
+    font-family: 'Philosopher';
+    font-size:20px;
+    font-weight: bold;
+    color: #cfd3de;
+}
+
+.editprofile__part1{
+    display:flex;
+    width: 100%;
+    height: 100%;
+    background: #2d3644;
+    padding: 10px;
+}
+
+.part1__avataredit{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+.avataredit{
+    display: flex;
+    flex-direction: column;
+}
+
+.avataredit__img{
+    flex: 0 0 50%;
+    min-height: 200px;
+    position: relative;
+}
+
+.avataredit__img img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left:0;
+    border-radius: 10px;
+}
+
+.avataredit__forma{
+    margin-top: 10px;
+}
+
+.fullname-edit{
+    width: 50%;
+}
+
+.editprofile__part2{
+    display: flex;
+    width: 100%;
+    background: #2d3644;
+    padding: 10px 10px 20px 10px;
+}
+
+.part2__item1{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.description__user{
+    margin: 0px 0px 16px 0px;
+}
+
+.part2__item2{
+    width: 50%;
+}
+
+
+.deleteProfile__card{
+    width: 100%;
+}
+
+.form-group input:focus{
+    box-shadow: rgba(255, 243, 205, 1) 0px 3px 8px;
+    border-color: #fff3cd;
+}
+
+
+.shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+}
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+}
+
+.shadow-textarea textarea:focus{
+    box-shadow: rgba(255, 243, 205, 1) 0px 3px 8px;
+    border-color: #fff3cd;
+}
+
+
+.title2{
+    font-family: 'Philosopher';
+    font-size:16px;
+    text-align: center;
+    color: #fff;
+}
+
+label{
+    font-family: 'Philosopher';
+    color:#fff;
+}
+
+
+.deleteProfile{
+    margin: 0px 0px 40px 0px;
+}
+
+.deleteProfile__card{
+    width: 50%;
+}
+.card{
+    background-color: #3a424e;
+}
+
+.cardtext{
+    font-family: 'Philosopher';
+    font-size:14px;
+    line-height: 1.8em;
+    color: #000;
+}
+
+.message-error{
+    font-family: "Helvetica Neue",Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffeeba;
+}
+
+@media(max-width: 790px){
+    .editprofile{
+        margin-top: 100px;
+    }
+}
+
+@media(max-width: 770px){
+    .editprofile__part1{
+        flex-direction: column;
+    }
+
+    .editprofile__part2{
+        flex-direction: column;
+    }
+
+    .part1__avataredit{
+        width: 100%;
+        margin-bottom: 26px;
+    }
+
+    .fullname-edit{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .part2__item1{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .part2__item2{
+        width: 100%;
+    }
+
+    .title1{
+        text-align: center;
+    }
+
+    .deleteProfile__card{
+        width: 100%;
+    }
+}
