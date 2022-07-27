@@ -215,6 +215,8 @@
 }
 
 
+
+
 .data__text{
 	padding: 5px;
 	width: 100%;
@@ -234,6 +236,13 @@
 
 .data__text p:after{
 	content: '\201D';
+}
+
+.data__email p{
+	font-family: 'Philosopher';
+	font-size: 14px;
+	font-weight: bold;
+	color: #074205;
 }
 
 .data__footer{

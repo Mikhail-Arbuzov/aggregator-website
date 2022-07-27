@@ -53,7 +53,7 @@ public class UserService {
         detailDto.setEmail(email);
         detailDto.setAvatarka("avatars/ty.jpg");
         detailDto.setDescription("Укажите краткую информацию о себе и своих интересах");
-        detailDto.setVkNetwork("https://vk.com/?ysclid=l5qbpfv4oq645547347");
+        detailDto.setVkNetwork("https://vk.com/");
         detailDto.setClassmatesNetwork("https://ok.ru/");
         detailDto.setTelegramNetwork("https://t.me/telegram");
 

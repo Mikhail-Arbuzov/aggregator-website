@@ -59,15 +59,21 @@
 												<div class="title2 mt-2">
 													<h3>Персональные данные</h3>
 												</div>
-												<form>
+												<form th:action="@{/profile/update-FullName}" th:method="PUT" th:object="${fullNameUserRequest}">
 													<div class="form-group mt-3">
 														<label for="firstName">Имя</label>
-														<input type="text" class="form-control" id="firstName" placeholder="Введите свое имя">
+														<input type="text" class="form-control" name="firstName" id="firstName" placeholder="Введите свое имя" th:field="*{firstName}">
 													</div>
+													<th:block th:if="${#fields.hasErrors('firstName')}">
+														<p class="message-error" th:errors="*{firstName}"></p>
+													</th:block>
 													<div class="form-group mt-4">
 														<label for="secondName">Фамилия</label>
-														<input type="text" class="form-control" id="secondName"placeholder="Введите свою фамилию">
+														<input type="text" class="form-control" name="secondName" id="secondName"placeholder="Введите свою фамилию" th:field="*{secondName}">
 													</div>
+													<th:block th:if="${#fields.hasErrors('secondName')}">
+														<p class="message-error" th:errors="*{secondName}"></p>
+													</th:block>
 													<button type="submit" class="btn btn-secondary mt-3">Отправить</button>
 												</form>
 											</div>
@@ -85,11 +91,14 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col">
-													<form>
+													<form th:action="@{/profile/update-description}" th:method="PUT" th:object="${descriptionUser}">
 														<div class="form-group shadow-textarea mt-3">
 															<label for="textarea">О себе</label>
-															<textarea class="form-control" id="textarea" rows="3" placeholder="Напишите что-нибудь о себе..."></textarea>
+															<textarea class="form-control" id="textarea" rows="3" name="description" placeholder="Напишите что-нибудь о себе..." th:field="*{description}"></textarea>
 														</div>
+														<th:block th:if="${#fields.hasErrors('description')}">
+															<p class="message-error" th:errors="*{description}"></p>
+														</th:block>
 														<button type="submit" class="btn btn-secondary mt-1">Указать</button>
 													</form>
 												</div>
@@ -100,11 +109,14 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col">
-													<form>
+													<form th:action="@{/profile/update-email}" th:method="PUT" th:object="${newEmailUser}">
 														<div class="form-group mt-2">
 															<label for="eml">Почта</label>
-															<input type="email" class="form-control" id="eml"placeholder="Укажите новую почту">
+															<input type="email" class="form-control" name="email" id="eml"placeholder="Укажите новую почту" th:field="*{email}">
 														</div>
+														<th:block th:if="${#fields.hasErrors('email')}">
+															<p class="message-error" th:errors="*{email}"></p>
+														</th:block>
 														<button type="submit" class="btn btn-secondary mt-1">Обновить</button>
 													</form>
 												</div>
@@ -120,19 +132,28 @@
 													<div class="title2">
 														<h3>Ссылки на соцсети</h3>
 													</div>
-													<form>
+													<form th:action="@{/profile/update-socNetwork}" th:method="PUT" th:object="${socialNetworkUser}">
 														<div class="form-group mt-3">
 															<label for="vk">ВК</label>
-															<input type="url" class="form-control" id="vk" placeholder="Введите ссылку на вк">
+															<input type="url" class="form-control" id="vk" name="vkNetwork" placeholder="Введите ссылку на вк" th:field="*{vkNetwork}">
 														</div>
+														<th:block th:if="${#fields.hasErrors('vkNetwork')}">
+															<p class="message-error" th:errors="*{vkNetwork}"></p>
+														</th:block>
 														<div class="form-group mt-4">
 															<label for="classmates">Одноклассники</label>
-															<input type="url" class="form-control" id="classmates" placeholder="Введите ссылку на одноклассники">
+															<input type="url" class="form-control" id="classmates" name="classmatesNetwork" placeholder="Введите ссылку на одноклассники" th:field="*{classmatesNetwork}">
 														</div>
+														<th:block th:if="${#fields.hasErrors('classmatesNetwork')}">
+															<p class="message-error" th:errors="*{classmatesNetwork}"></p>
+														</th:block>
 														<div class="form-group mt-4">
 															<label for="telegram">Телеграм</label>
-															<input type="text" class="form-control" id="telegram" placeholder="Введите nickname без знака '@'">
+															<input type="text" class="form-control" id="telegram" name="telegramNetwork" placeholder="Введите nickname без знака '@'" th:field="*{telegramNetwork}">
 														</div>
+														<th:block th:if="${#fields.hasErrors('telegramNetwork')}">
+															<p class="message-error" th:errors="*{telegramNetwork}"></p>
+														</th:block>
 														<button type="submit" class="btn btn-secondary mt-2">Отправить</button>
 													</form>
 												</div>

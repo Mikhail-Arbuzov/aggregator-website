@@ -129,7 +129,8 @@ label{
 
 .message-error{
     font-family: "Helvetica Neue",Helvetica,sans-serif;
-    font-size: 14px;
+    font-size: 12px;
+    line-height: 1.5em;
     font-weight: bold;
     color: #ffeeba;
 }

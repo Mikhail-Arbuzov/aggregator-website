@@ -1,6 +1,7 @@
 package com.aggregator.aggregator_website.controllers;
 
-import com.aggregator.aggregator_website.dto.UserDto;
+import com.aggregator.aggregator_website.dto.*;
+import com.aggregator.aggregator_website.entities.Detail;
 import com.aggregator.aggregator_website.entities.User;
 import com.aggregator.aggregator_website.services.DetailService;
 import com.aggregator.aggregator_website.services.UserService;
@@ -8,12 +9,14 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -36,9 +39,22 @@ public class ProfileController {
     }
 
     @GetMapping("/profile/settings")
-    public String getSettingsProfile(Model model,String message,String message1,String message2){
+    public String getSettingsProfile(Model model, String message, String message1, String message2){
         UserDto user = getCurrentUserDto();
         model.addAttribute("user",user);
+
+        FullNameUserRequest fullNameUserRequest = new FullNameUserRequest();
+        model.addAttribute("fullNameUserRequest",fullNameUserRequest);
+
+        DescriptionUserRequest descriptionUser =  new DescriptionUserRequest();
+        model.addAttribute("descriptionUser",descriptionUser);
+
+        NewEmailUserRequest newEmailUser = new NewEmailUserRequest();
+        model.addAttribute("newEmailUser",newEmailUser);
+
+        SocialNetworkUserRequest socialNetworkUser = new SocialNetworkUserRequest();
+        model.addAttribute("socialNetworkUser",socialNetworkUser);
+
         if(message !=null){
             model.addAttribute("message",message);
         }
@@ -101,6 +117,128 @@ public class ProfileController {
 
 
         return "redirect:/profile/settings";
+    }
+
+    @PutMapping("/profile/update-FullName")
+    public String updateFullNameUser(@Valid @ModelAttribute("fullNameUserRequest") FullNameUserRequest fullNameUserRequest, BindingResult bindingResult,Model model){
+        if(bindingResult.hasErrors()){
+            UserDto user = getCurrentUserDto();
+            model.addAttribute("user",user);
+
+            DescriptionUserRequest descriptionUser =  new DescriptionUserRequest();
+            model.addAttribute("descriptionUser",descriptionUser);
+
+            NewEmailUserRequest newEmailUser = new NewEmailUserRequest();
+            model.addAttribute("newEmailUser",newEmailUser);
+
+            SocialNetworkUserRequest socialNetworkUser = new SocialNetworkUserRequest();
+            model.addAttribute("socialNetworkUser",socialNetworkUser);
+            return "profile-settings";
+        }
+        else {
+            User actualUser = userService.getCurrentUser();
+            UserDto userDto = new UserDto();
+            DetailDto detailDto = new DetailDto();
+            detailDto.setId(actualUser.getDetail().getId());
+            detailDto.setFirstName(fullNameUserRequest.getFirstName());
+            detailDto.setSecondName(fullNameUserRequest.getSecondName());
+            Detail detail = modelMapper.map(detailDto,Detail.class);
+            userDto.setDetail(detail);
+            detailService.updateFullNameUser(userDto.getDetail());
+            return "redirect:/profile";
+        }
+    }
+
+    @PutMapping("/profile/update-description")
+    public String updateDescriptionUser(@Valid @ModelAttribute("descriptionUser") DescriptionUserRequest descriptionUser,BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors()){
+            UserDto user = getCurrentUserDto();
+            model.addAttribute("user",user);
+
+            FullNameUserRequest fullNameUserRequest = new FullNameUserRequest();
+            model.addAttribute("fullNameUserRequest",fullNameUserRequest);
+
+            NewEmailUserRequest newEmailUser = new NewEmailUserRequest();
+            model.addAttribute("newEmailUser",newEmailUser);
+
+            SocialNetworkUserRequest socialNetworkUser = new SocialNetworkUserRequest();
+            model.addAttribute("socialNetworkUser",socialNetworkUser);
+            return "profile-settings";
+        }
+        else {
+            User actualUser1 = userService.getCurrentUser();
+            UserDto userDto1 = new UserDto();
+            DetailDto detailDto1 = new DetailDto();
+            detailDto1.setId(actualUser1.getDetail().getId());
+            detailDto1.setDescription(descriptionUser.getDescription().trim());
+            Detail detail = modelMapper.map(detailDto1,Detail.class);
+            userDto1.setDetail(detail);
+            detailService.updateDescriptionUser(userDto1.getDetail());
+            return "redirect:/profile";
+        }
+
+    }
+
+    @PutMapping("/profile/update-email")
+    public String updateEmailUser(@Valid @ModelAttribute("newEmailUser") NewEmailUserRequest newEmailUser,BindingResult bindingResult,Model model){
+        if(bindingResult.hasErrors()){
+            UserDto user = getCurrentUserDto();
+            model.addAttribute("user",user);
+
+            FullNameUserRequest fullNameUserRequest = new FullNameUserRequest();
+            model.addAttribute("fullNameUserRequest",fullNameUserRequest);
+
+            DescriptionUserRequest descriptionUser =  new DescriptionUserRequest();
+            model.addAttribute("descriptionUser",descriptionUser);
+
+            SocialNetworkUserRequest socialNetworkUser = new SocialNetworkUserRequest();
+            model.addAttribute("socialNetworkUser",socialNetworkUser);
+            return "profile-settings";
+        }
+        else {
+            User actualUser2 = userService.getCurrentUser();
+            UserDto userDto2 = new UserDto();
+            DetailDto detailDto2 = new DetailDto();
+            detailDto2.setId(actualUser2.getDetail().getId());
+            detailDto2.setEmail(newEmailUser.getEmail().trim());
+            Detail detail = modelMapper.map(detailDto2,Detail.class);
+            userDto2.setDetail(detail);
+            detailService.updateEmailUser(userDto2.getDetail());
+            return "redirect:/profile";
+        }
+
+    }
+
+    @PutMapping("/profile/update-socNetwork")
+    public  String updateSocNetworkUser(@Valid @ModelAttribute("socialNetworkUser") SocialNetworkUserRequest socialNetworkUser, BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors()){
+            FullNameUserRequest fullNameUserRequest = new FullNameUserRequest();
+            model.addAttribute("fullNameUserRequest",fullNameUserRequest);
+
+            DescriptionUserRequest descriptionUser =  new DescriptionUserRequest();
+            model.addAttribute("descriptionUser",descriptionUser);
+
+            NewEmailUserRequest newEmailUser = new NewEmailUserRequest();
+            model.addAttribute("newEmailUser",newEmailUser);
+
+            UserDto user = getCurrentUserDto();
+            model.addAttribute("user",user);
+
+            return "profile-settings";
+        }
+        else{
+            User actualUser3 = userService.getCurrentUser();
+            UserDto userDto3 = new UserDto();
+            DetailDto detailDto3 = new DetailDto();
+            detailDto3.setId(actualUser3.getDetail().getId());
+            detailDto3.setVkNetwork(socialNetworkUser.getVkNetwork().trim());
+            detailDto3.setClassmatesNetwork(socialNetworkUser.getClassmatesNetwork().trim());
+            detailDto3.setTelegramNetwork("https://t.me/" + socialNetworkUser.getTelegramNetwork());
+            Detail detail = modelMapper.map(detailDto3,Detail.class);
+            userDto3.setDetail(detail);
+            detailService.updateSocNetworkUser(userDto3.getDetail());
+            return "redirect:/profile";
+        }
     }
 
 //    private void deleteOldAvatar(User actualCurrentUser) {

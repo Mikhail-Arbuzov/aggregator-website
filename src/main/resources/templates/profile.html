@@ -72,6 +72,9 @@
 													<p th:text="*{getDetail().getDescription()}">Укажите краткую информацию о себе и своих интересах</p>
 												</div>
 											</div>
+											<div class="data__email">
+												<p th:text="*{getDetail().getEmail()}">Email</p>
+											</div>
 											<div class="data__footer">
 												<a th:href="@{(${currentUser.getDetail().getVkNetwork()})}"  target="_blank"><span class="netw"><i class="fa-brands fa-vk"></i></span></a>
 												<a th:href="@{(${currentUser.getDetail().getClassmatesNetwork()})}" target="_blank"><span class="netw"><i class="fa-brands fa-odnoklassniki-square"></i></span></a>

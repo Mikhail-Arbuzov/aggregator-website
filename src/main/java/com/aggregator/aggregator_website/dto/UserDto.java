@@ -19,7 +19,7 @@ import java.util.Set;
 public class UserDto {
     private Long id;
     @NotBlank(message = "Не указан логин!")
-    @Pattern(regexp = "^[a-zA-Z0-9]+$",message = "Возможно был поставлен лишний пробел в начале или в конце строки!Нужно указывать только цыфры и латинские символы!")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$",message = "Возможно был поставлен лишний пробел в начале или в конце строки!Нужно указывать только цифры и латинские символы!")
     private String username;
     @NotBlank(message = "Не указан пароль!")
     @Size(min = 5, message = "Пароль должен содержать минимум 5 символов!")
