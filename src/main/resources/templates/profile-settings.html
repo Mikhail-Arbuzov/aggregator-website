@@ -183,7 +183,7 @@
 											<span class="text-danger h6 ">Предупреждение</span>
 											<p class="cardtext mt-4">Если вы удалите свой профиль, вы потеряете доступ к своему аккаунту навсегда.</p>
 										</div>
-										<form>
+										<form id="myform" th:action="@{/profile/deleteUser}" th:method="DELETE">
 											<div class="form-group">
 												<input class="btn btn-block btn-outline-danger" type="submit" value="Удалить cвой профиль"/>
 											</div>
@@ -204,5 +204,14 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/menu2.js}" type="text/javascript"></script>
+<script>
+   $(document).ready(function () {
+       $("#myform").submit(function(e) {
+           if(!confirm("Удалить профиль?")){
+               e.preventDefault();
+           }
+       });
+   })
+</script>
 </body>
 </html>

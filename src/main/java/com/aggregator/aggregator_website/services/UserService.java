@@ -64,6 +64,15 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Transactional
+    public boolean deleteUserProfile(Long id){
+        if(userRepository.findById(id).isPresent()){
+            userRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
     public User getCurrentUser(){
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String username = loggedInUser.getName();

@@ -10,10 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -93,7 +90,7 @@ public class ProfileController {
             return "redirect:/profile/settings";
         }
 
-        String message2 ="Файл должен быть с расширением .jpg или.jpeg";
+        String message2 ="Файл должен быть с расширением .jpg";
         String fileName = file.getOriginalFilename();
         String extension = fileName.substring(fileName.lastIndexOf("."));
         String jpg = ".jpg";
@@ -103,6 +100,7 @@ public class ProfileController {
             model.addAttribute("message2",message2);
             return "redirect:/profile/settings";
         }
+
 
         try {
             byte[] bytes = file.getBytes();
@@ -241,26 +239,35 @@ public class ProfileController {
         }
     }
 
-//    private void deleteOldAvatar(User actualCurrentUser) {
-//        final String PATH_FILE="src\\main\\resources\\static\\";
-//        if(actualCurrentUser != null){
-//            String avatar = actualCurrentUser.getDetail().getAvatarka();
-//            if(!avatar.equals("avatars/M.jpg")){
-//                try {
-//                   Files.delete(Paths.get(PATH_FILE + avatar));
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//            else if(!avatar.equals("avatars/ty.jpg")){
-//                try {
-//                    Files.delete(Paths.get(PATH_FILE + avatar));
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-//    }
+
+    @DeleteMapping("/profile/deleteUser")
+    public String deleteUserProfile(){
+        User userCurrent = userService.getCurrentUser();
+        String avatar = userCurrent.getDetail().getAvatarka();
+
+        if(userService.deleteUserProfile(userCurrent.getId())){
+            deleteOldAvatar(avatar);
+        }
+        return "redirect:/allForPC/logout";
+    }
+
+    private void deleteOldAvatar(String avatar) {
+        final String PATH_FILE="target\\classes\\static\\";
+
+        if(avatar.equals("avatars/M.jpg")){
+            return;
+        }
+        else if(avatar.equals("avatars/ty.jpg")){
+            return;
+        }
+        else {
+            try {
+                Files.delete(Paths.get(PATH_FILE + avatar));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     private UserDto getCurrentUserDto(){
         User actualUser = userService.getCurrentUser();
