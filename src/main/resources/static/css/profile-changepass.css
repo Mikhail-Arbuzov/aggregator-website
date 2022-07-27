@@ -1,0 +1,59 @@
+.сhangePassw{
+    margin: 120px 0px 40px 0px;
+}
+
+.сhangePassw__title1{
+    font-family: 'Philosopher';
+    font-size:20px;
+    font-weight: bold;
+    color: #cfd3de;
+}
+
+.changePassw__form{
+    background: #2d3644;
+    padding: 30px;
+}
+
+.form-group input:focus{
+    box-shadow: rgba(255, 243, 205, 1) 0px 3px 8px;
+    border-color: #fff3cd;
+}
+
+label{
+    font-family: 'Philosopher';
+    color:#fff;
+}
+
+.toolt{
+    color: #fff;
+}
+
+.btn-end{
+    text-align: right;
+}
+
+.errormess{
+    font-family: "Helvetica Neue",Helvetica,sans-serif;
+    font-size: 12px;
+    line-height: 1.5em;
+    font-weight: bold;
+    color: #ffeeba;
+}
+
+.success{
+    font-family: 'Philosopher';
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    margin-top: 84px;
+}
+
+@media(max-width: 790px){
+    .сhangePassw{
+        margin-top: 100px;
+    }
+    .changePassw__form{
+        padding: 0px 0px 10px 0px;
+    }
+}

@@ -81,4 +81,8 @@ public class UserService {
     }
 
 
+    @Transactional
+    public void changePassword(User user) {
+        userRepository.save(user);
+    }
 }

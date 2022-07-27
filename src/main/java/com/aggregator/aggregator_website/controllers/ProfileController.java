@@ -7,9 +7,11 @@ import com.aggregator.aggregator_website.services.DetailService;
 import com.aggregator.aggregator_website.services.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,6 +28,7 @@ public class ProfileController {
 //    private final UserRepository userRepository;
     private final UserService userService;
     private final DetailService detailService;
+    private final PasswordEncoder passwordEncoder;
 
 
     @GetMapping("/profile")
@@ -66,14 +69,16 @@ public class ProfileController {
         return "profile-settings";
     }
 
-
+    @GetMapping("/profile/changePassword")
+    public String getChangePassword(@ModelAttribute("changePasswordRequest") ChangePasswordRequest changePasswordRequest){
+        return "profile-changepass";
+    }
 
     @PutMapping("/profile/update-avatar")
     public String updateAvatar(@RequestParam("file") MultipartFile file, Model model){
         final String UPLOAD_PATH ="target\\classes\\static\\avatars\\";
 
         User actualCurrentUser = userService.getCurrentUser();
-//        deleteOldAvatar(actualCurrentUser);
 
         String message = "Файл не был выбран";
         if(file.isEmpty()){
@@ -249,6 +254,34 @@ public class ProfileController {
             deleteOldAvatar(avatar);
         }
         return "redirect:/allForPC/logout";
+    }
+
+    @PatchMapping("/profile/change-pass")
+    public String changePassword(@Valid @ModelAttribute("changePasswordRequest") ChangePasswordRequest changePasswordRequest,
+                                 BindingResult bindingResult,Model model){
+        if(bindingResult.hasErrors()){
+            return "profile-changepass";
+        }
+        User userCurrent1 = userService.getCurrentUser();
+
+        if(passwordEncoder.matches(changePasswordRequest.getCurrentPass(),userCurrent1.getPassword()) &&
+            changePasswordRequest.getNewPass().equals(changePasswordRequest.getConfirmPass())){
+            userCurrent1.setPassword(passwordEncoder.encode(changePasswordRequest.getNewPass()));
+            userService.changePassword(userCurrent1);
+            String successMessage ="Пароль успешно изменен.";
+            model.addAttribute("successMessage",successMessage);
+        }
+        else if(!passwordEncoder.matches(changePasswordRequest.getCurrentPass(),userCurrent1.getPassword())){
+            String errormessage = "Введен не верный пароль!";
+            FieldError fieldError = new FieldError("changePasswordRequest","currentPass",errormessage);
+            bindingResult.addError(fieldError);
+        }
+        else if(!changePasswordRequest.getNewPass().equals(changePasswordRequest.getConfirmPass())){
+            String errormessage2 = "Подтверждение нового пароля не прошло!";
+            FieldError fieldError = new FieldError("changePasswordRequest","confirmPass",errormessage2);
+            bindingResult.addError(fieldError);
+        }
+        return "profile-changepass";
     }
 
     private void deleteOldAvatar(String avatar) {
