@@ -34,6 +34,12 @@
 									<div class="container-fluid">
 										<div class="row">
 											<div class="col">
+												<div th:if="${param.resetSuccess}">
+													<div class="alert alert-info mt-2" role="alert">
+														<p>Пароль успешно был изменен!</p>
+														<p>Войдите на сайт с использованием нового пароля.</p>
+													</div>
+												</div>
 												<form  th:action="@{/perform_login}" method="post" th:object="${user}" >
 													<div class="input-group mt-3 mb-3">
 														<div class="input-group-prepend ">
@@ -65,7 +71,7 @@
 										</div>
 										<div class="row">
 											<div class="col">
-												<div class="link-log">
+												<div class="link-log mt-2 mb-3">
 													<a th:href="@{/user/recoveryPass}">Забыли пароль?</a>
 												</div>
 											</div>

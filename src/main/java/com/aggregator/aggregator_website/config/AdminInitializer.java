@@ -34,7 +34,7 @@ public class AdminInitializer {
             detail.setSecondName("Arbuzov");
             detail.setAvatarka("avatars/M.jpg");
             detail.setDescription("Начинающий прогер");
-            detail.setEmail("mihan.arbuzov@mail.ru");
+            detail.setEmail("mihan-arbuzov@yandex.ru");
             detail.setVkNetwork("https://vk.com/id328992012");
             detail.setClassmatesNetwork("https://ok.ru/");
             detail.setTelegramNetwork("https://t.me/telegram");

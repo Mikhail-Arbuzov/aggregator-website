@@ -3,9 +3,11 @@ package com.aggregator.aggregator_website.services;
 import com.aggregator.aggregator_website.dto.DetailDto;
 import com.aggregator.aggregator_website.dto.UserDto;
 import com.aggregator.aggregator_website.entities.Detail;
+import com.aggregator.aggregator_website.entities.PasswordResetToken;
 import com.aggregator.aggregator_website.entities.Role;
 import com.aggregator.aggregator_website.entities.User;
 import com.aggregator.aggregator_website.repository.DetailRepository;
+import com.aggregator.aggregator_website.repository.PasswordResetTokenRepository;
 import com.aggregator.aggregator_website.repository.UserRepository;
 import com.aggregator.aggregator_website.services.exceptionregistration.EmailIsAlreadyThereException;
 import com.aggregator.aggregator_website.services.exceptionregistration.UserNameIsAlreadyThereException;
@@ -18,15 +20,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
     private DetailRepository detailRepository;
+    private final PasswordResetTokenRepository tokenRepository;
     private final DetailService detailService;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
@@ -79,6 +84,36 @@ public class UserService {
         User currentUser = userRepository.findByUsername(username).orElse(null);
         return currentUser;
     }
+
+    public User findByUserEmail(String email){
+        Detail detail = detailRepository.findByEmail(email).orElse(null);
+
+        if(detail != null){
+            User user = userRepository.findByDetail(detail).orElse(null);
+            return user;
+        }
+        else {
+            return null;
+        }
+
+    }
+
+    @Transactional
+    public void saveToken(PasswordResetToken passwordResetToken){
+
+        tokenRepository.save(passwordResetToken);
+    }
+
+    public PasswordResetToken getPasswordResetToken(String token){
+        PasswordResetToken resetToken = tokenRepository.findByToken(token);
+        return resetToken;
+    }
+
+    @Transactional
+    public void deletePasswordResetToken(PasswordResetToken token){
+        tokenRepository.delete(token);
+    }
+
 
 
     @Transactional

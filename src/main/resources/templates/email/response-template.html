@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Email</title>
+	<style>
+		body{
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 48px;
+			margin: 0;
+			padding: 0;
+		}
+		.tableR{
+			border-collapse: collapse;
+		}
+	</style>
+</head>
+<body>
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" class="tableR">
+	<tr>
+		<td align="center" bgcolor="#4b0082" style="padding: 40px 0px 30px 0px;">
+			<p style="color: #e2e3e5"> Всё для пк</p>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#e6e1e1" style="padding: 40px 30px 40px 30px;">
+			<p th:text="${'Доброго времени суток, ' + user.getDetail().getFirstName() + ' ' + user.getDetail().getSecondName()}"></p>
+			<p>Поступил запрос на смену вашего пароля. </p>
+			<p> Если вы не забыли свой пароль, вы можете проигнорировать это письмо.</p>
+			<p>В противном случае,пожалуйста,перейдите по этой ссылке,чтобы изменить свой пароль: <a th:href="${resetUrl}">сменить пароль</a></p>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
