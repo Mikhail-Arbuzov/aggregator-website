@@ -11,4 +11,9 @@ public class AdminController {
     public String getAdminPage(){
         return "admin";
     }
+
+    @GetMapping("/admin/section-equipment")
+    public String getEquipmentSectionSite(){
+        return "sitesections/komplect";
+    }
 }

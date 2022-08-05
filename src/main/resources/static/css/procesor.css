@@ -1,0 +1,592 @@
+/*text*/
+.titlePage{
+    margin: 120px 0px 40px 0px;
+}
+
+@media(max-width: 790px){
+    .titlePage{
+        margin-top: 100px;
+    }
+}
+
+.titlePage__header h1{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: #9bc6c4;
+}
+
+.titlePage__text p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    color: #cfd3de;
+}
+
+.text__list li{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    font-style:italic;
+    color: #cfd3de;
+    margin-left: 10px;
+}
+
+.text__list li:before{
+    content:'\2013 ';
+    color: #cfd3de;
+}
+
+.text__list li:not(:last-child){
+    margin-bottom: 10px;
+}
+
+/*источники по выбору комплектующего*/
+.sourcesofchoice{
+    margin: 0px 0px 40px 0px;
+}
+
+.sourcesofchoice__header h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #b9bfd0;
+}
+
+.website-container {
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 30px;
+}
+
+
+
+.website-container__item {
+    background: #47484a;
+    width:400px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    box-shadow: 4px 4px 18px 0px #cfd3de;
+    border-color: #cfd3de;
+    margin: 30px 0px 0px 30px;
+}
+
+
+
+.logosite{
+    display: flex;
+    padding: 10px 5px 5px 0px;
+}
+
+.logosite__image{
+    flex: 0 0 33.333%;
+    position: relative;
+    min-height: 40px;
+}
+
+.logosite__image img{
+    width: 100%;
+    height:100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.title{
+    margin: 10px 0px 10px 0px;
+}
+.title h3{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 18px;
+    text-align: center;
+    color: #e8e9e2;
+}
+
+.website-container__item-footer {
+    padding: 20px;
+}
+
+
+.website-container__item-footer  p {
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 16px;
+    line-height: 1.3em;
+    color: #e5e0f3;
+}
+
+.website-container__item-footer p:after{
+    content: '\2026';
+    font-size: 14px;
+    color: #e5e0f3;
+}
+
+
+.website-container__item > figure {
+    position: relative;
+    /*width: 100%;*/
+    height: 260px;
+    overflow: hidden;
+}
+
+.imgsettings{
+    flex: 0 0 33.333%;
+    position: relative;
+    min-height:260px;
+}
+
+.imgsettings img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.website-container__item > figure  > figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(22, 28, 53, 0);
+    display: flex;
+    justify-content: center;
+    transition-duration: 0.1s;
+}
+
+
+
+.website-container__item > figure  > figcaption > a {
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #FFFFFF;
+    margin: 10px;
+    margin-top: auto;
+    margin-bottom: 20px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+
+
+
+.website-container__item > figure  > figcaption > a:nth-child(1) {
+    transform: translateY(50px);
+}
+
+.website-container__item > figure  > figcaption > a:nth-child(2) {
+    transform: translateY(90px);
+}
+
+.website-container__item > figure  > figcaption > a:nth-child(3) {
+    transform: translateY(130px);
+}
+
+.website-container__item > figure  > figcaption > a:hover {
+    color:#47484a;
+    background: white;
+}
+
+
+.website-container__item > figure > img {
+    transition-duration: 1s;
+}
+
+
+.website-container__item > figure:hover > img {
+    transform: scale3d(1.1, 1.1, 1);
+}
+
+
+.website-container__item > figure:hover > figcaption {
+    background: rgba(22, 28, 53, 0.7);
+}
+
+.website-container__item > figure:hover > figcaption > a {
+    transform: translateY(0px);
+}
+
+@media(max-width: 1340px){
+    .website-container{
+        justify-content: center;
+    }
+}
+
+@media(max-width: 930px){
+    .website-container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .website-container__item{
+        margin: 30px 0px 0px 0px;
+    }
+}
+
+@media(max-width: 460px){
+    .website-container__item{
+        width: 100%;
+    }
+}
+
+/*tables*/
+
+.statistic{
+    display: none;
+    margin-bottom: 20px;
+}
+
+.effect{
+    display: block;
+}
+
+.statistic__header h3{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 18px;
+    text-align: center;
+    color: #e8e9e2;
+}
+
+.statistic__table{
+    display: flex;
+    flex-direction: column;
+}
+
+.refresh{
+    font-size: 1.3rem;
+    color: #bee5eb;
+}
+
+.dataTime{
+    display: flex;
+}
+
+.dataTime p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 16px;
+    line-height: 1.3em;
+    color: #e5e0f3;
+}
+
+@media(max-width: 290px){
+    .dataTime p{
+        font-size: 14px;
+    }
+
+    .statistic__header h3{
+        font-size: 16px;
+    }
+}
+
+.bgcolor{
+    padding-top: 10px;
+    background: #192231;
+}
+.table td, .table th {
+    padding: .42rem;
+    text-align: center;
+}
+
+.table-light tbody+tbody, .table-light td, .table-light th, .table-light thead th {
+    border-color: #a7acac;
+}
+
+.rating{
+    margin-bottom: 40px;
+}
+
+.showrating a{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 18px;
+    text-decoration: underline;
+    color: #e5e0f3;
+}
+
+.tablerating{
+    display: none;
+    padding: 10px 5px 5px 5px;
+    background: #192231;
+}
+
+.effect2{
+    display: block;
+}
+
+.rating__title h3{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.3em;
+    text-align: center;
+    color: #e8e9e2;
+}
+
+.imge{
+    flex: 0 0 33.333%;
+    position: relative;
+}
+
+.imge img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+
+/*Товары*/
+.products{
+    margin-bottom: 20px;
+}
+
+.products__title h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #b9bfd0;
+}
+
+.products__subtitle{
+    margin: 0px 0px 60px 0px;
+}
+.products__subtitle h3{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 40px;
+    color:#c9ba87;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.products__subtitle h3 > span {
+    position: relative;
+}
+
+.products__subtitle h3 > span::after{
+    content: "";
+    height: 2px;
+    background: #444444;
+    width: 40%;
+    margin-left: -20%;
+    left: 50%;
+    top:120%;
+    position: absolute;
+}
+
+.products__item{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+}
+
+.item__description{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.item__body{
+    width: 60%;
+    padding: 0px 20px 20px 20px;
+}
+
+
+.item__body h4{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 24px;
+    text-align: center;
+    color:#ede3c1;
+}
+
+.item__body p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    color: #cfd3de;
+}
+
+.price:after{
+    content: '\20BD';
+    color: #cfd3de;
+}
+
+.item__img{
+    flex: 0 0 40%;
+    position: relative;
+}
+
+.item__img img{
+    width: 80%;
+    display: block;
+}
+
+.item__monitoring{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.monitoring-title{
+    display: flex;
+}
+
+.refresh2{
+    font-size: 1.5rem;
+    color: #f5efda;
+}
+
+.refresh2:hover{
+    color: #fff;
+}
+
+.monitoring-title h5{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 24px;
+    line-height: 1.3em;
+    text-align: center;
+    color:#f5efda;
+}
+
+.monitoring__table{
+    width: 600px;
+}
+
+.imge2{
+    flex: 0 0 33.333%;
+    position: relative;
+}
+
+.imge2 img{
+    width: 100%;
+    height:100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+
+.bgcolor2{
+    padding-top: 10px;
+    background: #2a3952;
+}
+
+@media(max-width: 1340px){
+    .item__description{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item__body{
+        width: 100%;
+        padding: 0px;
+        margin-bottom: 20px;
+    }
+
+    .item__img{
+        flex: 0 0 100%;
+    }
+
+    .item__img img{
+        width: 100%;
+    }
+}
+
+@media(max-width: 620px){
+    .monitoring__table{
+        width: 100%;
+    }
+
+    .monitoring-title{
+        flex-direction: column;
+    }
+
+    .item__body p{
+        font-size: 18px;
+    }
+
+}
+
+@media(max-width: 560px){
+    .monitoring-title h5{
+        font-size: 18px;
+    }
+}
+
+.item__description2{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.item__body2{
+    width: 60%;
+    padding: 0px;
+}
+
+
+.item__body2 h4{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 24px;
+    text-align: center;
+    color:#ede3c1;
+}
+
+.item__body2 p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    color: #cfd3de;
+}
+
+.item__img2{
+    flex: 0 0 40%;
+    padding-left: 20px;
+    position: relative;
+}
+
+.item__img2 img{
+    width: 80%;
+    display: block;
+}
+
+
+@media(max-width: 1340px){
+    .item__description2{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item__body2{
+        width: 100%;
+        padding: 0px;
+    }
+
+    .item__img2{
+        flex: 0 0 100%;
+        padding: 0px;
+        margin-bottom: 20px;
+    }
+
+    .item__img2 img{
+        width: 100%;
+    }
+}
+
+@media(max-width: 620px){
+
+    .item__body2 p{
+        font-size: 18px;
+    }
+
+}

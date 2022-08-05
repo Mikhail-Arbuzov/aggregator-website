@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<title>Процессор</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/procesor.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu::menu}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="titlePage">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col">
+							<div class="titlePage__header">
+								<h1>Процессор</h1>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="titlePage__text">
+								<p>Центральный процессор (ЦП; также центральное процессорное устройство - ЦПУ) - интегральная схема, исполняющая код программ, главная часть аппаратного обеспечения компьютера или программируемого логического контроллера. Он состоит из множества транзисторов, с помощью которых собраны отдельные логические схемы, находящиеся в специальном кремниевом корпусе. В основе внутренних схем процессора лежит арифметико-логическое устройство, внутренняя память (регистры), и кеш-память (сверхпамять), которые образуют ядро процессора, а также схемы для управления всеми операциями и внешними устройствами - шинами.</p>
+								<p>Входной источник, представленный данными и командами, попадает в процессор через внешние шины. Обработка информации происходит в соответствие с командами в арифметико-логическом устройстве, а результат выводится устройством вывода. Чем больше разрядность всех схем процессора, тем большее количество данных можно обработать за единицу времени, а значит, от этого на прямую зависит производительность компьютерной системы в целом.</p>
+								<p>Хорошим примером станет один из первых микропроцессоров для IBM PC 80286, которые были 16 разрядными, дальше стали уже 32, а 64 разрядные процессоры появились в 2014 году, которые и по сей день остаются основной в производстве в современных процессорах.</p>
+								<p>Ещё важную роль играет тактовая частота, которая измеряется в мегагерцах (МГц), тоесть один мегагерц равен миллион тактов в секунду, соответственно 1000 МГц или 1 гигагерц - это миллиард тактов в секунду. Случайный фрагмент из информации выполняет один такт, и чем выше, тем процессор лучше обрабатывает поступающие в него данные. В принципе, работа компьютера возможна и при низких частотах, но тогда процессор затратит на обработку гораздо больше времени. К слову, современные ЦПУ работают гораздо быстрее, чем их предок Intel 80286, используемый в первом персональном компьютере. И несколько ядер ЦП имеют свойство многозадачности, даже если компьютер выполняет только одну задачу.</p>
+								<p>Сигналы, циркулирующие внутри кристалла процессора, имеют высокую частоту, и общаться с внешними компонентами компьютера на одной волне пока не могут: у материнской платы она одна, а у работы процессора другая - более высокая. Следовательно, он умножает её на внутренний коэффициент и получается внутренняя частота (внутренний множитель). Эти возможности очень часто используются для разгонного потенциала процессора. Данные для последующей работы процессор получает из оперативной памяти.</p>
+								<p>В процессоре для ускорения работы и системы в целом была интегрирована технология кэширования. Кэш – это небольшой набор ячеек памяти, выполняющих роль буфера. При считывании информации из общей памяти, готовая копия появляется в кэш - памяти центрального процессора.</p>
+								<p>В нынешних процессорах она имеет пирамидальный вид:</p>
+								<ul class="text__list">
+									<li> Кеш-память 1-го уровня - малая по объёму, но самая быстрая по скорости, входит в состав кристалла процессора. Производится по тем же технологиям, что и регистры процессора. Очень дорогая, но это стоит её скорости и надёжности, измеряется сотнями килобайт.</li>
+									<li> Кеш-память 2-го уровня - так же, как и 1-го уровня расположена на кристалле процессора и работает с частотой его ядра. Измеряется от сотен килобайт до нескольких мегабайт.</li>
+									<li> Кеш-память 3-го уровня медленнее предыдущих уровней этого вида, но эффективней оперативной памяти. Измеряется десятками мегабайт.</li>
+									<li> Кеш-память 4-го уровня присутствует в многопроцессорных системах, именно поэтому на обычном компьютере её найти не удаётся.</li>
+								</ul>
+								<p>Место крепления процессора к материнской плате называется Soket. Он сугубо индивидуален и подойдёт только для определённого типа или семейства процессоров, которые у разных производителей тоже разные.</p>
+								<p>Энергопотребление и тепловыделение процессора зависит от технологии, по которым они производятся. Для уменьшения обменных явлений выступает автоматическая система регулировки нагрузки на процессор. Высокопроизводительные компьютеры в обязательном порядке должны иметь хорошую систему охлаждения.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="sourcesofchoice">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="sourcesofchoice__header">
+								<h2>Источники по выбору лучшего процессора</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="website-container">
+								<div class="website-container__item">
+									<div class="logosite">
+										<div class="logosite__image">
+											<img src="img/рс2.jpeg" alt="logotip">
+										</div>
+									</div>
+									<div class="title">
+										<h3>Как выбрать процессор</h3>
+									</div>
+									<figure class="imgsettings">
+										<img src="img/рс2.jpeg"  alt="image">
+										<figcaption>
+											<a href="#tabl2">
+												<i class="fa-solid fa-arrow-up-wide-short"></i>
+											</a>
+											<a href="#">
+												<i class="fa-solid fa-trash"></i>
+											</a>
+											<a href="#tabl1" class="link">
+												<i class="fa-solid fa-chart-column"></i>
+											</a>
+										</figcaption>
+									</figure>
+									<div class="website-container__item-footer">
+										<p>Для получения полной информации нажмите на кнопку подробнее </p>
+										<a class="btn btn-outline-light float-right">подробнее</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="statistic">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col bgcolor">
+							<a name="tabl1"></a>
+							<div class="statistic__header mb-3">
+								<h3>Cтатистика сайта по трафику</h3>
+							</div>
+							<div class="statistic__table">
+								<div class="dataTime">
+									<p>Данные на май 2022</p>
+									<a href="#" class="refresh ml-2"><i class="fa-solid fa-rotate-right"></i></a>
+									<!-- <form>
+										<div class="form-group ml-2">
+											<input class="btn btn-outline-info" type="submit" value="Обновить"/>
+										</div>
+									</form> -->
+								</div>
+								<div class="tablica">
+									<table class="table table-bordered">
+										<thead>
+										<tr class="table-info">
+											<th scope="col">Домен</th>
+											<th scope="col">Рейтинг сайта по трафику в мире</th>
+											<th scope="col">Рейтинг сайта по трафику в стране</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr class="table-light">
+											<td>2hpc.ru</td>
+											<td >700</td>
+											<td >8</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="rating">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<a name="tabl2"></a>
+							<div class="showrating mb-4 text-center">
+								<a href="#table" class="link2">Показать рейтинг</a>
+							</div>
+							<div class="tablerating">
+								<a name="table"></a>
+								<div class="rating__title">
+									<h3>Таблица рейтинга сайтов с полезными источниками для выбора процессора</h3>
+								</div>
+								<table class="table table-bordered">
+									<thead>
+									<tr class="table-primary">
+										<th scope="col">Место</th>
+										<th scope="col">Сайт</th>
+										<th scope="col">Время посещения</th>
+										<th scope="col">Общее число визитов</th>
+										<th scope="col">Отказ от посещения</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr class="table-light">
+										<td scope="row">1</td>
+										<td class="imge">
+											<img src="img/рс2.jpeg" alt="iconka">
+										</td>
+										<td >00:08:40</td>
+										<td >1.8 млн.</td>
+										<td>48%</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="products">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row mb-4">
+						<div class="col">
+							<div class="products__title">
+								<h2>Популярные товары</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для офисного ПК</span></h3>
+							</div>
+							<div class="products__item">
+								<div class="item__description">
+									<div class="item__body">
+										<h4 class="mb-4">Intel Celeron G6900</h4>
+										<p>Процессор INTEL Celeron G6900 создан с 2 ядрами, сокетом 1700, построенным на 10 нм техпроцессоре, благодаря этому на кристалле размещается достаточное количество транзисторов. Он станет сердцем вашего компьютера и успешно справится с поставленными перед ним задачами. Его ядро AlderLake на тактовой частоте 3400 МГц использует кэш: L2 - 2.5 Мб, L3 - 4096 Кб, что позволяет обрабатывать инструкции и технологии: HT, SSE4, Virtualization Technology, а также быстрее работать с данными и производить вычисления. Интегрированное графическое ядро Intel UHD 710, 1300 МГц подготовит изображение для монитора и позволит во многих случаях обойтись без использования видеокарт. При своей работе он выделяет в среднем 46 Вт нагреваясь вплоть до 100 °C.</p>
+										<p class="price">Цена на процессор варьируется в приделах 3499</p>
+									</div>
+									<div class="item__img">
+										<img src="img/components/G6900.jpg" alt="procesor">
+									</div>
+								</div>
+								<div class="item__monitoring mt-5">
+									<div class="monitoring-title">
+										<h5>Мониторинг цен на данный процессор <a href="#" class="refresh2 ml-2"><i class="fa-solid fa-rotate"></i></a></h5>
+
+										<!-- <form>
+											<div class="form-group ml-2">
+												<input class="btn btn-outline-info" type="submit" value="Обновить"/>
+											</div>
+										</form> -->
+									</div>
+									<div class="monitoring__table">
+										<table class="table table-bordered">
+											<thead>
+											<tr class="table-secondary">
+												<th scope="col">Магазин</th>
+												<th scope="col">Цена</th>
+												<th scope="col">Ссылка на товар</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr class="table-light">
+												<td scope="row"class="imge2">
+													<img src="img/рс2.jpeg" alt="iconka">
+												</td>
+												<td >3400</td>
+												<td >
+													<a href="#" class="btn btn-primary">Посмотреть</a>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для игрового ПК</span></h3>
+							</div>
+							<div class="products__item">
+								<div class="item__description2">
+									<div class="item__img2">
+										<img src="img/components/Ryzen7.jpg" alt="procesor">
+									</div>
+									<div class="item__body2">
+										<h4 class="mb-4">AMD Ryzen 7 3700X</h4>
+										<p>Получить вычислительное оборудование высшего класса можно при помощи процессора AMD Ryzen 7 3700X. Данная модель рассчитана на создание как офисного оборудования для решения повседневных задач, так и для мощной игровой системы. Устройство оснащено сокетом AM4 с рабочей частотой 3,6 ГГц. При этом оборудование способно разогнаться до 4,4 ГГц при максимальной нагрузке. Общий объем кэша третьего уровня достигает 32 Мб. Этого хватает для достаточно высокой производительности, а также позволяет процессору AMD Ryzen 7 3700X мгновенно загружать нужную информацию и современные игры, успешно работать с текстовыми редакторами и просматривать видео контент без подвисания. Устройство обладает низким тепловыделением равным 65 Вт, а также имеется возможность установки оперативной памяти DDR4.</p>
+										<p class="price">Цена на процессор изменяется в приделах 20990</p>
+									</div>
+								</div>
+								<div class="item__monitoring mt-5">
+									<div class="monitoring-title">
+										<h5>Мониторинг цен на данный процессор <a href="#" class="refresh2 ml-2"><i class="fa-solid fa-rotate"></i></a></h5>
+										<!-- <form>
+											<div class="form-group ml-2">
+												<input class="btn btn-outline-info" type="submit" value="Обновить"/>
+											</div>
+										</form> -->
+									</div>
+									<div class="monitoring__table">
+										<table class="table table-bordered">
+											<thead>
+											<tr class="table-secondary">
+												<th scope="col">Магазин</th>
+												<th scope="col">Цена</th>
+												<th scope="col">Ссылка на товар</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr class="table-light">
+												<td scope="row"class="imge2">
+													<img src="img/рс2.jpeg" alt="iconka">
+												</td>
+												<td >7400</td>
+												<td >
+													<a href="#" class="btn btn-primary">Посмотреть</a>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для домашнего ПК</span></h3>
+							</div>
+							<div class="products__item">
+								<div class="item__description">
+									<div class="item__body">
+										<h4 class="mb-4">Intel Corei5 10400F</h4>
+										<p>Универсальный процессор для настольных компьютеров INTEL Core i5 10400F рассчитан для работы как в домашних, так и офисных условиях. Он может быть использован для сборок, перед которыми будут поставлены различные задачи. Создан на базе архитектуры CometLake с поддержкой материнских плат с сокетом LGA 1200. Имеет в своем распоряжении 6 ядер и 12 потоков, а также кэш память L3 объемом 12 Мб.Отличительной особенностью процессора INTEL Core i5 10400F является поставка OEM. Это означает, что в комплектации вместе с ЦПУ отсутствует кулер охлаждения. Пользователю нужно будет выбрать его отдельно. Техпроцесс 14 нм, который был использован при изготовлении процессора, позволил добиться низкого энергопотребления и небольшого выделения тепла. Присутствует технология Turbo Boost, отвечающая за разгон тактовой частоты. В режиме Turbo максимальная частота составляет 4.3 ГГц.</p>
+										<p class="price">Цена на процессор меняется в рамках 11890</p>
+									</div>
+									<div class="item__img">
+										<img src="img/components/Corei5.jpg" alt="procesor">
+									</div>
+								</div>
+								<div class="item__monitoring mt-5">
+									<div class="monitoring-title">
+										<h5>Мониторинг цен на данный процессор <a href="#" class="refresh2 ml-2"><i class="fa-solid fa-rotate"></i></a></h5>
+										<!-- <form>
+											<div class="form-group ml-2">
+												<input class="btn btn-outline-info" type="submit" value="Обновить"/>
+											</div>
+										</form> -->
+									</div>
+									<div class="monitoring__table">
+										<table class="table table-bordered">
+											<thead>
+											<tr class="table-secondary">
+												<th scope="col">Магазин</th>
+												<th scope="col">Цена</th>
+												<th scope="col">Ссылка на товар</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr class="table-light">
+												<td scope="row"class="imge2">
+													<img src="img/рс2.jpeg" alt="iconka">
+												</td>
+												<td >11000</td>
+												<td >
+													<a href="#" class="btn btn-primary">Посмотреть</a>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu.js}" type="text/javascript"></script>
+<script th:src="@{/js/equipment.js}" type="text/javascript"></script>
+</body>
+</html>

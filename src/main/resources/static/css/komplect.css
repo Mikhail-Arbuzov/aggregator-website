@@ -1,0 +1,155 @@
+.statisticweb{
+    margin: 120px 0px 40px 0px;
+}
+
+.statisticweb__item{
+    padding: 30px;
+    background: #24344e;
+}
+
+.statisticweb-header h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #c4c6c8;
+}
+
+.statisticweb-domen{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.formsetting{
+    display: flex;
+    align-items: baseline;
+}
+
+label{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 16px;
+    line-height: 1.3em;
+    color:#fff;
+}
+
+.form-group input:focus{
+    box-shadow: rgba(183, 237, 234, 1) 0px 3px 8px;
+    border-color: #b7edea;
+}
+
+.form-group select:focus{
+    box-shadow: rgba(183, 237, 234, 1) 0px 3px 8px;
+    border-color: #b7edea;
+}
+
+.form-group textarea:focus{
+    box-shadow: rgba(183, 237, 234, 1) 0px 3px 8px;
+    border-color: #b7edea;
+}
+
+.formsetting .btn{
+    height: 36px;
+}
+
+
+.check{
+    font-size: 1.6em;
+    color: #2ccc2c;
+}
+
+.exclamation{
+    font-size: 1.6em;
+    color: red;
+}
+
+.xmark{
+    font-size: 1.6em;
+    color: #000;
+}
+
+.tool-xmark{
+    font-size: 1.6em;
+    color: red;
+}
+
+/*.statisticweb-request{*/
+/*    width: 600px;*/
+/*}*/
+
+.addcomplect{
+    margin-bottom: 40px;
+}
+
+.addcomplect__item{
+    padding: 30px;
+    background: #3b537a;
+}
+
+.addcomplect__header h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #bcbebd;
+}
+
+/*.addcomplect-form{*/
+/*    width: 600px;*/
+/*}*/
+
+.toolt-info{
+    color:#fff;
+}
+
+@media(min-width: 790px){
+    .statisticweb-header h2{
+        font-size: 24px;
+    }
+    .addcomplect__header h2{
+        font-size: 24px;
+    }
+}
+
+@media(max-width: 480px){
+    .statisticweb-header h2{
+        font-size: 20px;
+    }
+    .addcomplect__header h2{
+        font-size: 20px;
+    }
+}
+
+
+@media(max-width: 440px){
+    .statisticweb__item{
+        padding: 10px;
+    }
+
+    .addcomplect__header h2{
+        font-size: 18px;
+    }
+
+    .statisticweb-header h2{
+        font-size: 18px;
+    }
+
+    .addcomplect__item{
+        padding: 10px;
+    }
+
+    label{
+        font-size: 12px;
+    }
+
+}
+
+@media(max-width: 320px){
+    .statisticweb__item{
+        padding: 10px 3px 10px 3px;
+    }
+
+    .addcomplect__item{
+        padding: 10px 3px 10px 3px;
+    }
+}

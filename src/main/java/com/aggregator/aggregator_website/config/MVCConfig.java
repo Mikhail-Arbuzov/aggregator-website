@@ -26,5 +26,8 @@ public class MVCConfig implements WebMvcConfigurer {
         registry
                 .addResourceHandler("profile/**")
                 .addResourceLocations("classpath:/static/");
+        registry
+                .addResourceHandler("admin/**")
+                .addResourceLocations("classpath:/static/");
     }
 }

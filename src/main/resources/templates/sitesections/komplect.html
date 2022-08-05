@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Раздел комплектующие ПК</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/komplect.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu2.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu2::menu2}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="statisticweb">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="statisticweb__item">
+								<div class="statisticweb-header mb-5">
+									<h2>Добавить источники по выбору комплектующего для ПК</h2>
+								</div>
+								<div class="statisticweb-domen">
+									<form class="formsetting">
+										<div class="form-group  mt-3">
+											<input type="text" class="form-control" placeholder="Введите домен сайта">
+										</div>
+										<button type="submit" class="btn btn-secondary ml-3">Отправить</button>
+									</form>
+									<span class="check ml-3" data-toggle="popover" data-placement="right" title="Процент отказов 76%" data-content="средний процент отказов от посещения сайта < 80%">
+											<i class="fa-solid fa-check"></i>
+										</span>
+									<span class="exclamation ml-3" data-toggle="popover" data-placement="right" title="Процент отказов 86%" data-content="средний процент отказов от посещения сайта > 80%">
+											<i class="fa-solid fa-exclamation"></i>
+										</span>
+									<span class="xmark ml-3" data-toggle="popover" data-placement="right" title="" data-content="информация о статистике отсутствует">
+											<i class="fa-solid fa-xmark"></i>
+										</span>
+									<span class="tool-xmark ml-3" data-toggle="popover" data-placement="right" title="" data-content="произошла ошибка">
+											<i class="fa-solid fa-xmark"></i>
+										</span>
+								</div>
+								<div class="statisticweb-request">
+									<form>
+										<div class="form-group mt-3">
+											<label for="formSelect">Выбирите страницу куда отправлять данные</label>
+											<select  id="formSelect" class="form-control">
+												<option value="">Как выбрать процессор</option>
+												<option value="">Как выбрать материнскую плату</option>
+												<option value="">Как выбрать кулер для процессора</option>
+												<option value="">Как выбрать SSD</option>
+												<option value="">Как выбрать жесткий диск</option>
+												<option value="">Как выбрать видеокарту</option>
+												<option value="">Как выбрать блок питания</option>
+												<option value="">Как выбрать оперативную память</option>
+												<option value="">Как выбрать кулер для корпуса</option>
+												<option value="">Как выбрать корпус</option>
+												<option value="">Как выбрать монитор</option>
+												<option value="">Как выбрать клавиатуру</option>
+												<option value="">Как выбрать мышь</option>
+												<option value="">Как выбрать МФУ</option>
+											</select>
+										</div>
+										<div class="form-group mt-5">
+											<label for="sectionKomponent">Выбирите раздел под комплектующее</label>
+											<select  id="sectionKomponent" class="form-control">
+												<optgroup label="Cистемный блок">
+													<option value="">Процессор</option>
+													<option value="">Материнская плата</option>
+													<option value="">Кулер для процессора</option>
+													<option value="">SSD</option>
+													<option value="">Жесткий диск</option>
+													<option value="">Видеокарта</option>
+													<option value="">Блок питания</option>
+													<option value="">Оперативная память</option>
+													<option value="">Кулер для корпуса</option>
+													<option value="">Корпус</option>
+												</optgroup>
+												<optgroup label="Периферийные устройства">
+													<option value="">Монитор</option>
+													<option value="">Клавиатура</option>
+													<option value="">Мышь</option>
+													<option value="">МФУ</option>
+												</optgroup>
+											</select>
+										</div>
+										<div class="form-group mt-5">
+											<label for="link">Укажите полную ссылку на выбранный сайт</label>
+											<input type="url" class="form-control" id="link" placeholder="Введите URL-адрес">
+										</div>
+										<div class="text-right">
+											<button type="submit" class="btn btn-secondary mt-3">Добавить сайт</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="addcomplect">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="addcomplect__item">
+								<div class="addcomplect__header mb-5">
+									<h2>Добавить комплектующее ПК</h2>
+								</div>
+								<div class="addcomplect-form">
+									<form action="#"enctype="multipart/form-data">
+										<div class="form-group mt-3">
+											<label for="brand">Полное название устройства</label>
+											<input type="text" class="form-control" id="brand" placeholder="Введите название" >
+										</div>
+										<div class="form-group mt-5" >
+											<label for="image">Укажите изображение</label>
+											<input type="file" class="form-control-file" id="image">
+										</div>
+										<div class="form-group mt-5">
+											<label for="description">Описание устройства</label>
+											<textarea class="form-control" id="description" rows="3" placeholder="Укажите описание..."></textarea>
+										</div>
+										<div class="form-group mt-5">
+											<label for="averageprice">Цена</label>
+											<input type="number" class="form-control" id="averageprice" placeholder="Введите цену на устройство">
+										</div>
+										<div class="form-group mt-5">
+											<label for="section">Выбирите раздел под устройство</label>
+											<select  id="section" class="form-control">
+												<option value="">Процессор</option>
+												<option value="">Материнская плата</option>
+												<option value="">Кулер для процессора</option>
+												<option value="">Твёрдотельный накопитель</option>
+												<option value="">Жесткий диск</option>
+												<option value="">Видеокарта</option>
+												<option value="">Блок питания</option>
+												<option value="">Оперативная память</option>
+												<option value="">Кулер для корпуса</option>
+												<option value="">Корпус</option>
+												<option value="">Монитор</option>
+												<option value="">Клавиатура</option>
+												<option value="">Мышь</option>
+												<option value="">МФУ</option>
+											</select>
+										</div>
+										<div class="form-group mt-5">
+											<label for="purpose">Выбирите назначение</label>
+											<select  id="purpose" class="form-control">
+												<option value="">Для офиса</option>
+												<option value="">Для игр</option>
+												<option value="">Для дома</option>
+											</select>
+										</div>
+										<div class="form-group mt-5">
+											<label for="shopurl">Cсылка на страницу устройства, где указана цена, в онлайн магазине  <span class="toolt-info" data-toggle="popover" data-placement="right" title="Онлайн магазины" data-content="Используйте ссылку на один из представленных магазинов: DNS, ситилинк, эльдорадо, М.видео, регард, Xcom-shop"><i class="fa-solid fa-info"></i></span></label>
+											<input type="url" class="form-control" id="shopurl" placeholder="Укажите ссылку">
+										</div>
+										<div class="form-group mt-5">
+											<label for="shopdomen">Домен выбранного онлайн магазина</label>
+											<input type="text" class="form-control" id="shopdomen" placeholder="Укажите домен сайта">
+										</div>
+										<div class="text-right">
+											<button type="submit" class="btn btn-secondary mt-3">Добавить</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu2.js}" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function(){
+        $('[data-toggle="popover"]').popover({
+            trigger:'hover'
+        });
+    });
+</script>
+</body>
+</html>
