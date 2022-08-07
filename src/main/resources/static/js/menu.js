@@ -29,7 +29,7 @@
     const dt = document.querySelector(".dropdown-toggle");
     const dropmenu = document.querySelector(".dropdown-menu");
 
-    let flag = document.documentElement.clientWidth <790;
+    let flag = document.documentElement.clientWidth < 790;
     console.log(flag);
     if(flag){
         if(dropdown.addEventListener){

@@ -48,7 +48,7 @@
 														<input class="form-control" placeholder="Введите логин" type="text" name="username" aria-describedby="log" th:field="*{username}">
 													</div>
 													<th:block th:if="${#fields.hasErrors('username')}">
-														<p class="invalid-input" th:errors="*{username}"></p>
+														<p class="invalid-input2" th:errors="*{username}"></p>
 													</th:block>
 													<div class="input-group mt-4 mb-3">
 														<div class="input-group-prepend ">
@@ -60,7 +60,7 @@
 <!--														<div th:each="err:${#fields.errors('password')}">-->
 <!--															<p th:errorclass="invalid-input" th:text="${err}"></p>-->
 <!--														</div>-->
-														<p class="invalid-input" th:errors="*{password}"></p>
+														<p class="invalid-input2" th:errors="*{password}"></p>
 													</th:block>
 													<div th:if="${error}" class="alert alert-danger mt-4" role="alert">
 														Попробуйте использовать другой логин или пароль
