@@ -80,11 +80,11 @@
 								</div>
 								<th:block th:if="${bounceRatePercent < 75 && bounceRatePercent != null}">
 									<div class="statisticweb-request">
-										<form>
+										<form th:action="@{/admin/addWebsite}" method="post" th:object="${infoWebsiteRequest}">
 											<div class="form-group mt-3">
 												<label for="formSelect">Выбирите страницу куда отправлять данные</label>
-												<select  id="formSelect" class="form-control">
-													<option value="">Как выбрать процессор</option>
+												<select  id="formSelect" name="dataTransferPage" class="form-control" th:field="*{dataTransferPage}">
+													<option value="/allForPC/processor">Как выбрать процессор</option>
 													<option value="">Как выбрать материнскую плату</option>
 													<option value="">Как выбрать кулер для процессора</option>
 													<option value="">Как выбрать SSD</option>
@@ -102,9 +102,9 @@
 											</div>
 											<div class="form-group mt-5">
 												<label for="sectionKomponent">Выбирите раздел под комплектующее</label>
-												<select  id="sectionKomponent" class="form-control">
+												<select  id="sectionKomponent" name="section" class="form-control" th:field="*{section}">
 													<optgroup label="Cистемный блок">
-														<option value="">Процессор</option>
+														<option value="Процессор">Процессор</option>
 														<option value="">Материнская плата</option>
 														<option value="">Кулер для процессора</option>
 														<option value="">SSD</option>
@@ -125,16 +125,36 @@
 											</div>
 											<div class="form-group  mt-5">
 												<label for="domain">Укажите домен сайта</label>
-												<input type="text" id="domain" class="form-control" placeholder="Введите домен сайта">
+												<input type="text" id="domain" class="form-control" name="domainSite" placeholder="Введите домен сайта" th:field="*{domainSite}">
 											</div>
+											<th:block th:if="${#fields.hasErrors('domainSite')}">
+												<p class="error-class" th:errors="*{domainSite}"></p>
+											</th:block>
 											<div class="form-group mt-5">
 												<label for="link">Укажите полную ссылку на выбранный сайт</label>
-												<input type="url" class="form-control" id="link" placeholder="Введите URL-адрес">
+												<input type="url" class="form-control" id="link" name="urlSite" placeholder="Введите URL-адрес" th:field="*{urlSite}">
 											</div>
+											<th:block th:if="${#fields.hasErrors('urlSite')}">
+												<th:block th:if="${#fields.errors('urlSite').size() == 3}">
+													<div class="error-class" th:each="err:${#fields.errors('urlSite')}">
+														<th:block th:if="${err.startsWith('URL не')}">
+															<p th:text="${err}"></p>
+														</th:block>
+														<th:block th:unless="${err.startsWith('URL не')}">
+														</th:block>
+													</div>
+												</th:block>
+												<th:block th:unless="${#fields.errors('urlSite').size() == 3}">
+													<div class="error-class" th:each="err:${#fields.errors('urlSite')}">
+														<p th:text="${err}"></p>
+													</div>
+												</th:block>
+											</th:block>
 											<div class="text-right">
 												<button type="submit" class="btn btn-secondary mt-3">Добавить сайт</button>
 											</div>
 										</form>
+										<div th:errors="${infoWebsiteRequest}" class="alert alert-danger mt-2" role="alert"></div>
 									</div>
 								</th:block>
 							</div>

@@ -66,34 +66,66 @@
 					<div class="row">
 						<div class="col">
 							<div class="website-container">
-								<div class="website-container__item">
-									<div class="logosite">
-										<div class="logosite__image">
-											<img src="img/comp.jpeg" alt="logotip">
+								<th:block th:each="website : ${processorWebsites}">
+									<div class="website-container__item">
+										<div class="logosite">
+											<div class="logosite__image">
+												<th:block th:if="${website.getIconSite() != null}">
+													<img th:src="@{(${website.getIconSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="logotip">
+												</th:block>
+												<th:block th:unless="${website.getIconSite() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</div>
+										</div>
+										<div class="title">
+											<h3 th:text="${website.getPage().getTitle()}"></h3>
+										</div>
+										<figure class="imgsettings">
+											<th:block th:if="${website.getPage().getImageUrl() != null}">
+												<img th:src="@{(${website.getPage().getImageUrl()})}" alt="image">
+											</th:block>
+											<th:block th:unless="${website.getPage().getImageUrl() != null}">
+												<img th:src="@{img/comp.jpeg}"  alt="image">
+											</th:block>
+											<th:block sec:authorize="isAuthenticated()">
+												<figcaption  class="formHidden">
+													<a href="#tabl2" class="link2">
+														<i class="fa-solid fa-arrow-up-wide-short"></i>
+													</a>
+													<a href="#tabl1" class="link">
+														<th:block sec:authorize="hasAuthority('ADMIN')">
+															<span class="transferId" style="display: none" th:text="${website.getId()}"></span>
+															<span class="transferSiteName" style="display: none" th:text="${website.getSiteName()}"></span>
+														</th:block>
+														<i class="fa-solid fa-chart-column"></i>
+													</a>
+													<th:block sec:authorize="hasAuthority('ADMIN')">
+														<form class="form-link" th:action="@{/allForPC/processor/id}" th:method="DELETE">
+															<input type="hidden" name="id" th:value="${website.getId()}">
+															<a href="#" onclick="$(this).closest('form').submit();">
+																<i class="fa-solid fa-trash"></i>
+															</a>
+														</form>
+													</th:block>
+													<!--<form th:action="@{/allForPC/processor/id}" method="post">-->
+													<!--	<input type="hidden" name="id" th:value="${website.getId()}"/>-->
+													<!--	<a href="#tabl1" class="link" onclick="$(this).closest('form').submit();">-->
+													<!--		<i class="fa-solid fa-chart-column"></i>-->
+													<!--	</a>-->
+													<!--</form>-->
+												</figcaption>
+											</th:block>
+
+										</figure>
+										<div class="website-container__item-footer">
+											<p th:text="${website.getPage().getText()}"></p>
+											<div class="text-right">
+												<a th:href="@{(${website.getPage().getLink()})}" class="btn btn-outline-light" target="_blank">подробнее</a>
+											</div>
 										</div>
 									</div>
-									<div class="title">
-										<h3>Как выбрать процессор</h3>
-									</div>
-									<figure class="imgsettings">
-										<img src="img/comp.jpeg"  alt="image">
-										<figcaption>
-											<a href="#tabl2">
-												<i class="fa-solid fa-arrow-up-wide-short"></i>
-											</a>
-											<a href="#">
-												<i class="fa-solid fa-trash"></i>
-											</a>
-											<a href="#tabl1" class="link">
-												<i class="fa-solid fa-chart-column"></i>
-											</a>
-										</figcaption>
-									</figure>
-									<div class="website-container__item-footer">
-										<p>Для получения полной информации нажмите на кнопку подробнее </p>
-										<a class="btn btn-outline-light float-right">подробнее</a>
-									</div>
-								</div>
+								</th:block>
 							</div>
 						</div>
 					</div>
@@ -108,33 +140,46 @@
 						<div class="col bgcolor">
 							<a name="tabl1"></a>
 							<div class="statistic__header mb-3">
-								<h3>Cтатистика сайта по трафику</h3>
+								<h3>Рейтинг сайтов на основе результатов оценки трафика</h3>
 							</div>
 							<div class="statistic__table">
-								<div class="dataTime">
-									<p>Данные на май 2022</p>
-									<a href="#" class="refresh ml-2"><i class="fa-solid fa-rotate-right"></i></a>
-									<!-- <form>
-										<div class="form-group ml-2">
-											<input class="btn btn-outline-info" type="submit" value="Обновить"/>
-										</div>
-									</form> -->
+								<div sec:authorize="hasAuthority('ADMIN')" class="dataTime mb-2">
+									<th:block th:if="${siteName != null and month != null and year != null}">
+										<p th:text="${'Получены данные для ' + siteName + ' за ' + month + ' ' + year}"></p>
+									</th:block>
+									<th:block th:if="${messageWeb != null}">
+										<p th:text="${messageWeb}"></p>
+									</th:block>
+
+									<form th:action="@{/allForPC/processor/id}" th:method="PUT">
+										<input class="result" type="hidden" name="id">
+										<a href="#" class="refresh ml-2" onclick="$(this).closest('form').submit();">
+											<span class="domenName mp-2"></span>
+											<i class="fa-solid fa-rotate-right"></i>
+										</a>
+									</form>
 								</div>
-								<div class="tablica">
+								<div class="tablica table-responsive">
 									<table class="table table-bordered">
 										<thead>
 										<tr class="table-info">
+											<th scope="col">Место</th>
 											<th scope="col">Домен</th>
-											<th scope="col">Рейтинг сайта по трафику в мире</th>
-											<th scope="col">Рейтинг сайта по трафику в стране</th>
+											<th scope="col">Позиция сайта в мире</th>
+											<th scope="col">Позиция сайта в стране</th>
+											<th scope="col">Данные за период</th>
 										</tr>
 										</thead>
 										<tbody>
-										<tr class="table-light">
-											<td>2hpc.ru</td>
-											<td >700</td>
-											<td >8</td>
-										</tr>
+										<th:block th:each="ratingTrafficWebsite, index : ${ratingTrafficProcessorWebsites}">
+											<tr class="table-light">
+												<td th:text="${index.index + 1}"></td>
+												<td th:text="${ratingTrafficWebsite.getSiteName()}"></td>
+												<td th:text="${ratingTrafficWebsite.getRatingInWorld()}"></td>
+												<td th:text="${ratingTrafficWebsite.getRatingInCountry()}"></td>
+												<td th:text="${ratingTrafficWebsite.getMonth() +' ' + ratingTrafficWebsite.getYear()}"></td>
+											</tr>
+										</th:block>
 										</tbody>
 									</table>
 								</div>
@@ -150,35 +195,44 @@
 				<div class="container">
 					<div class="row">
 						<div class="col">
-							<a name="tabl2"></a>
-							<div class="showrating mb-4 text-center">
-								<a href="#table" class="link2">Показать рейтинг</a>
-							</div>
-							<div class="tablerating">
-								<a name="table"></a>
+<!--							<div class="showrating mb-4 text-center">-->
+<!--								<a href="#table" class="link2">Показать рейтинг</a>-->
+<!--							</div>-->
+							<div class="tablerating table-responsive">
+<!--								<a name="table"></a>-->
+								<a name="tabl2"></a>
 								<div class="rating__title">
-									<h3>Таблица рейтинга сайтов с полезными источниками для выбора процессора</h3>
+									<h3>Рейтинг сайтов на основе показателей взаимодействия с ними пользователей</h3>
 								</div>
 								<table class="table table-bordered">
 									<thead>
 									<tr class="table-primary">
 										<th scope="col">Место</th>
-										<th scope="col">Сайт</th>
+										<th scope="col">Логотип</th>
 										<th scope="col">Время посещения</th>
 										<th scope="col">Общее число визитов</th>
 										<th scope="col">Отказ от посещения</th>
+										<th scope="col">Данные за период</th>
 									</tr>
 									</thead>
 									<tbody>
-									<tr class="table-light">
-										<td scope="row">1</td>
-										<td class="imge">
-											<img src="img/comp.jpeg" alt="iconka">
-										</td>
-										<td >00:08:40</td>
-										<td >1.8 млн.</td>
-										<td>48%</td>
-									</tr>
+									<th:block th:each="ratingWebsit, index : ${ratingProcessorWebsites}">
+										<tr class="table-light">
+											<td scope="row" th:text="${index.index + 1}"></td>
+											<td class="imge">
+												<th:block th:if="${ratingWebsit.getIconSite() != null}">
+													<img th:src="@{(${ratingWebsit.getIconSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="logotip">
+												</th:block>
+												<th:block th:unless="${ratingWebsit.getIconSite() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</td>
+											<td th:text="${ratingWebsit.getTimeOnSite()}"></td>
+											<td th:text="${ratingWebsit.getVisits()}"></td>
+											<td th:text="${ratingWebsit.getBounceRate()} + ' %'"></td>
+											<td th:text="${ratingWebsit.getMonth() + ' ' + ratingWebsit.getYear()}"></td>
+										</tr>
+									</th:block>
 									</tbody>
 								</table>
 							</div>

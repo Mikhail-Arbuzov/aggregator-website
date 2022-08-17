@@ -10,9 +10,13 @@ import java.util.List;
 
 @Repository
 public interface WebsiteRepository extends JpaRepository<Website,Long> {
-    List<Website> findBySection(String section);
+     List<Website> findAllBySection(String section);
 
-    @Query(value="SELECT w.icon_site,w.time_on_site,w.visits,w.bounce_rate FROM websites AS w" +
+    @Query(value="SELECT * FROM websites AS w" +
+            " WHERE w.section = :section ORDER BY  w.rating_in_country ASC, w.rating_in_world ASC ",nativeQuery=true)
+    List<Website> getByWebsitesRating(@Param("section") String section);
+
+    @Query(value="SELECT * FROM websites AS w" +
             " WHERE w.section = :section ORDER BY w.bounce_rate ASC ",nativeQuery=true)
     List<Website> getByWebsitesSection(@Param("section") String section);
 }

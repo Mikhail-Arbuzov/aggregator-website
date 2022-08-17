@@ -110,11 +110,11 @@ label{
     color:#a4a793;
 }
 
-/*.error-class{*/
-/*    font-family: 'Philosopher';*/
-/*    font-size: 14px;*/
-/*    color: red;*/
-/*}*/
+.error-class{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 14px;
+    color: red;
+}
 
 @media(min-width: 790px){
     .statisticweb-header h2{

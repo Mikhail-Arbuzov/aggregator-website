@@ -23,12 +23,12 @@ public class Page {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "image_url")
+    @Column(name = "image_url",columnDefinition = "text")
     private String imageUrl;
 
-    @Column(name ="text")
+    @Column(name ="text",columnDefinition = "text")
     private String text;
 
-    @Column(name="link")
+    @Column(name="link",columnDefinition = "text")
     private String link;
 }
