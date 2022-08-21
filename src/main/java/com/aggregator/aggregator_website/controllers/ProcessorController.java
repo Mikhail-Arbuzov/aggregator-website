@@ -1,8 +1,12 @@
 package com.aggregator.aggregator_website.controllers;
 
+import com.aggregator.aggregator_website.dto.DetailDto;
+import com.aggregator.aggregator_website.dto.DeviceDto;
 import com.aggregator.aggregator_website.dto.InfoTrafficWebsite;
 import com.aggregator.aggregator_website.dto.WebsiteDto;
 import com.aggregator.aggregator_website.dto.siteanalysis.SiteAnalysisDto;
+import com.aggregator.aggregator_website.entities.Device;
+import com.aggregator.aggregator_website.services.DeviceService;
 import com.aggregator.aggregator_website.services.SiteAnalysisClient;
 import com.aggregator.aggregator_website.services.StatisticDataConvector;
 import com.aggregator.aggregator_website.services.WebsiteService;
@@ -12,25 +16,39 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
 @AllArgsConstructor
-public class EquipmentController {
+public class ProcessorController {
     private final SiteAnalysisClient siteAnalysisClient;
     private final WebsiteService websiteService;
+    private final DeviceService deviceService;
     private final StatisticDataConvector statisticDataConvector;
 
     @GetMapping("/allForPC/processor")
     public String getProcessorsPage(Model model,String messageWeb, String siteName,
                                     String month,String year){
-        List<WebsiteDto> processorWebsites = websiteService.getAllWebsiteByProcessor();
-        List<WebsiteDto> ratingTrafficProcessorWebsites = websiteService.getAllWebsiteRatingTrafficByProcessor();
-        List<WebsiteDto> ratingProcessorWebsites = websiteService.getAllWebsiteRatingByProcessor();
+        WebsiteDto websiteDefaultDto = websiteService.addDefaultWebsite();
+        List<WebsiteDto> processorWebsites = websiteService.findAllWebsiteBySection("Процессор",websiteDefaultDto);
+        List<WebsiteDto> ratingTrafficProcessorWebsites = websiteService.findAllWebsiteRatingTrafficBySection("Процессор",websiteDefaultDto);
+        List<WebsiteDto> ratingProcessorWebsites = websiteService.findAllWebsiteRatingBySection("Процессор",websiteDefaultDto);
+
+        DeviceDto defaultDeviceDto = deviceService.addDefaultDevice();
+        List<DeviceDto> processorsForOffice = deviceService.findAllDevicesBySectionAndDestination("Процессор","Офис",defaultDeviceDto);
+        List<DeviceDto> processorsForGames = deviceService.findAllDevicesBySectionAndDestination("Процессор","Игры",defaultDeviceDto);
+        List<DeviceDto> processorsForHome = deviceService.findAllDevicesBySectionAndDestination("Процессор","Дом",defaultDeviceDto);
 
         model.addAttribute("processorWebsites",processorWebsites);
         model.addAttribute("ratingProcessorWebsites",ratingProcessorWebsites);
         model.addAttribute("ratingTrafficProcessorWebsites",ratingTrafficProcessorWebsites);
+
+        model.addAttribute("processorsForOffice",processorsForOffice);
+        model.addAttribute("processorsForGames",processorsForGames);
+        model.addAttribute("processorsForHome",processorsForHome);
 
         if(messageWeb != null){
             model.addAttribute("messageWeb",messageWeb);
@@ -90,11 +108,35 @@ public class EquipmentController {
         return "redirect:/allForPC/processor";
     }
 
+    @PutMapping("/allForPC/processor/number")
+    public String updateDevicePrice(@RequestParam("number") Long number){
+        try {
+            deviceService.updateDevicePrice(number);
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/allForPC/processor";
+    }
+
     @DeleteMapping("/allForPC/processor/id")
     public String deleteWebsite(@RequestParam("id") Long id){
         websiteService.deleteWebsite(id);
         return "redirect:/allForPC/processor";
     }
+
+    @DeleteMapping("/allForPC/processor/number")
+    public String deleteDevice(@RequestParam("number") Long number){
+        Device device = deviceService.getByIdDevice(number);
+        if (device != null){
+            String image = device.getImage();
+            if(deviceService.deleteDevice(device.getId())){
+                deviceService.deleteOldImage(image);
+            }
+        }
+        return "redirect:/allForPC/processor";
+    }
+
+
 
 //    private InfoTrafficWebsite getIfoTrafficWebsite(Long id){
 //        InfoTrafficWebsite trafficWebsite = new InfoTrafficWebsite();

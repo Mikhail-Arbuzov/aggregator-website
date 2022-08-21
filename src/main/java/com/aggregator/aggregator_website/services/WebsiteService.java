@@ -28,20 +28,20 @@ public class WebsiteService {
     private final WebsiteRepository websiteRepository;
 
 
-    public List<WebsiteDto> getAllWebsiteByProcessor(){
-        WebsiteDto websiteDto = addDefaultWebsite();
-       return findAllWebsiteBySection("Процессор",websiteDto);
-    }
-
-    public List<WebsiteDto> getAllWebsiteRatingTrafficByProcessor(){
-        WebsiteDto websiteDto1 = addDefaultWebsite();
-        return findAllWebsiteRatingTrafficBySection("Процессор",websiteDto1);
-    }
-
-    public List<WebsiteDto> getAllWebsiteRatingByProcessor(){
-        WebsiteDto websiteDto2 = addDefaultWebsite();
-        return findAllWebsiteRatingBySection("Процессор",websiteDto2);
-    }
+//    public List<WebsiteDto> getAllWebsiteByProcessor(){
+//        WebsiteDto websiteDto = addDefaultWebsite();
+//       return findAllWebsiteBySection("Процессор",websiteDto);
+//    }
+//
+//    public List<WebsiteDto> getAllWebsiteRatingTrafficByProcessor(){
+//        WebsiteDto websiteDto1 = addDefaultWebsite();
+//        return findAllWebsiteRatingTrafficBySection("Процессор",websiteDto1);
+//    }
+//
+//    public List<WebsiteDto> getAllWebsiteRatingByProcessor(){
+//        WebsiteDto websiteDto2 = addDefaultWebsite();
+//        return findAllWebsiteRatingBySection("Процессор",websiteDto2);
+//    }
 
     public WebsiteDto getWebsiteById(Long id){
         Website website = websiteRepository.findById(id).orElse(null);
@@ -110,12 +110,12 @@ public class WebsiteService {
         websiteRepository.delete(website);
     }
 
-    private WebsiteDto addDefaultWebsite() {
+    public WebsiteDto addDefaultWebsite() {
         WebsiteDto websiteDto = new WebsiteDto();
         websiteDto.setId(Long.valueOf(1));
-        websiteDto.setIconSite("http://favicon.yandex.net/favicon/www.citilink.ru");
-        websiteDto.setSiteName("citilink.ru");
-        websiteDto.setVisits("неизвестно");
+        websiteDto.setIconSite("img/iconSite.jpg");
+        websiteDto.setSiteName("не указано");
+        websiteDto.setVisits("не известно");
         websiteDto.setTimeOnSite("00:00:00");
         websiteDto.setBounceRate(0);
         websiteDto.setRatingInWorld(0);
@@ -125,15 +125,15 @@ public class WebsiteService {
         Page page = new Page();
         page.setId(Long.valueOf(1));
         page.setImageUrl("img/comp.jpeg");
-        page.setTitle("Неуказан заголовок");
+        page.setTitle("Заголовок не указан");
         page.setText("текст отсутствует");
-        page.setLink("https://www.citilink.ru/promo/cpu/");
+        page.setLink("#");
         websiteDto.setPage(page);
         websiteDto.setSection("Процессор");
         return websiteDto;
     }
 
-    private List<WebsiteDto> findAllWebsiteBySection(String section,WebsiteDto websiteDto){
+    public List<WebsiteDto> findAllWebsiteBySection(String section,WebsiteDto websiteDto){
         List<Website> webs = websiteRepository.findAllBySection(section);
 
         if(webs.size() > 0){
@@ -146,7 +146,7 @@ public class WebsiteService {
         }
     }
 
-    private List<WebsiteDto> findAllWebsiteRatingBySection(String section,WebsiteDto websiteDto2){
+    public List<WebsiteDto> findAllWebsiteRatingBySection(String section,WebsiteDto websiteDto2){
         List<Website> websites = websiteRepository.getByWebsitesSection(section);
 
         if (websites.size() > 0){
@@ -159,7 +159,7 @@ public class WebsiteService {
         }
     }
 
-    private List<WebsiteDto> findAllWebsiteRatingTrafficBySection(String section, WebsiteDto websiteDto3){
+    public List<WebsiteDto> findAllWebsiteRatingTrafficBySection(String section, WebsiteDto websiteDto3){
         List<Website> websites3 = websiteRepository.getByWebsitesRating(section);
         if (websites3.size() > 0){
             return MapperConfig.convertList(websites3,this::mapToDto);

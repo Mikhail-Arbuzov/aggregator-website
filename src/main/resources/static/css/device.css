@@ -448,6 +448,15 @@
     color:#ede3c1;
 }
 
+.deleteLink{
+    font-size: 1.5rem;
+    color:#ede3c1;
+}
+
+.deleteLink:hover{
+    color: #fff;
+}
+
 .item__body p{
     font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
     font-size: 20px;

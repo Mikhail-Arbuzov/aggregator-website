@@ -1,9 +1,12 @@
 package com.aggregator.aggregator_website.controllers;
 
+import com.aggregator.aggregator_website.dto.CreateDeviceDto;
+import com.aggregator.aggregator_website.dto.DeviceDto;
 import com.aggregator.aggregator_website.dto.DomainRequest;
 import com.aggregator.aggregator_website.dto.TransferInfoWebsiteRequest;
 import com.aggregator.aggregator_website.dto.siteanalysis.SiteAnalysisDto;
 import com.aggregator.aggregator_website.exceptionhandlers.notifications.ErrorMessage;
+import com.aggregator.aggregator_website.services.DeviceService;
 import com.aggregator.aggregator_website.services.SiteAnalysisClient;
 import com.aggregator.aggregator_website.services.WebsiteService;
 import com.aggregator.aggregator_website.services.globalerrors.ClientError;
@@ -27,12 +30,18 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.UUID;
 
 @Controller
 @AllArgsConstructor
 public class AdminController {
     private final SiteAnalysisClient siteAnalysisClient;
     private final WebsiteService websiteService;
+    private final DeviceService deviceService;
 
     @GetMapping("/admin")
     public String getAdminPage(){
@@ -46,11 +55,14 @@ public class AdminController {
 
     @GetMapping("/admin/section-equipment")
     public String getEquipmentSectionSite(Model model, Double bounceRatePercent,
-                                          String emptyDate,Integer errCod,Integer errCod1){
+                                          String emptyDate,Integer errCod,
+                                          Integer errCod1,String errFile){
         DomainRequest domainRequest = new DomainRequest();
         model.addAttribute("domainRequest",domainRequest);
         TransferInfoWebsiteRequest infoWebsiteRequest = new TransferInfoWebsiteRequest();
         model.addAttribute("infoWebsiteRequest",infoWebsiteRequest);
+        CreateDeviceDto createDeviceDto = new CreateDeviceDto();
+        model.addAttribute("createDeviceDto",createDeviceDto);
 
         if(bounceRatePercent != null){
             model.addAttribute("bounceRatePercent",bounceRatePercent);
@@ -65,6 +77,10 @@ public class AdminController {
 
         if(errCod1 != null){
             model.addAttribute("errCod1",errCod1);
+        }
+
+        if(errFile != null){
+            model.addAttribute("errFile",errFile);
         }
 
         return "sitesections/komplect";
@@ -122,7 +138,7 @@ public class AdminController {
     public String addWebsite( @Valid @ModelAttribute("infoWebsiteRequest") TransferInfoWebsiteRequest infoWebsiteRequest,
                               BindingResult bindingResult,Model model) throws IOException,NullPointerException  {
 
-        addGlobalErrorsValidURL(bindingResult);
+        addGlobalErrorsValidURL(bindingResult,"infoWebsiteRequest");
         if(bindingResult.hasErrors()){
             DomainRequest domainRequest = new DomainRequest();
             model.addAttribute("domainRequest",domainRequest);
@@ -154,17 +170,84 @@ public class AdminController {
         return "redirect:" + infoWebsiteRequest.getDataTransferPage();
     }
 
-    private  void addGlobalErrorsValidURL(BindingResult bindingResult){
+    @PostMapping("/admin/addDevice")
+    public String addDevice(@Valid @ModelAttribute("createDeviceDto")CreateDeviceDto createDeviceDto,
+                            BindingResult bindingResult,Model model){
+        if(bindingResult.hasErrors()){
+            DomainRequest domainRequest = new DomainRequest();
+            model.addAttribute("domainRequest",domainRequest);
+            TransferInfoWebsiteRequest infoWebsiteRequest = new TransferInfoWebsiteRequest();
+            model.addAttribute("infoWebsiteRequest",infoWebsiteRequest);
+            return "sitesections/komplect";
+        }
+
+        if(createDeviceDto.getFile().isEmpty()){
+            model.addAttribute("errFile","Изображение не было выбрано");
+            DomainRequest domainRequest = new DomainRequest();
+            model.addAttribute("domainRequest",domainRequest);
+            TransferInfoWebsiteRequest infoWebsiteRequest = new TransferInfoWebsiteRequest();
+            model.addAttribute("infoWebsiteRequest",infoWebsiteRequest);
+            return "sitesections/komplect";
+        }
+        double megabyte = createDeviceDto.getFile().getSize() * 0.00000095367432;
+        if(megabyte >= 1 || createDeviceDto.getFile().getSize() >= 1048576){
+            model.addAttribute("errFile","Размер изображения должен быть не более 1 МБ");
+            DomainRequest domainRequest = new DomainRequest();
+            model.addAttribute("domainRequest",domainRequest);
+            TransferInfoWebsiteRequest infoWebsiteRequest = new TransferInfoWebsiteRequest();
+            model.addAttribute("infoWebsiteRequest",infoWebsiteRequest);
+            return "sitesections/komplect";
+        }
+
+        String originalFileName = createDeviceDto.getFile().getOriginalFilename();
+        String extension1 = originalFileName.substring(originalFileName.lastIndexOf("."));
+
+        if (!extension1.equals(".jpg")){
+            model.addAttribute("errFile","Изображение должно быть с расширением .jpg");
+            DomainRequest domainRequest = new DomainRequest();
+            model.addAttribute("domainRequest",domainRequest);
+            TransferInfoWebsiteRequest infoWebsiteRequest = new TransferInfoWebsiteRequest();
+            model.addAttribute("infoWebsiteRequest",infoWebsiteRequest);
+            return "sitesections/komplect";
+        }
+
+        final String PATH_UPLOAD ="target\\classes\\static\\img\\components\\";
+        String uuidFile = UUID.randomUUID().toString();
+        DeviceDto deviceDto = new DeviceDto();
+
+        try {
+            byte[] arrBytes = createDeviceDto.getFile().getBytes();
+            Path path = Paths.get(PATH_UPLOAD + uuidFile + "."+ createDeviceDto.getFile().getOriginalFilename());
+            Files.write(path,arrBytes);
+            deviceDto.setImage("img/components/"+ uuidFile + "."+ createDeviceDto.getFile().getOriginalFilename());
+
+            deviceDto.setName(createDeviceDto.getName());
+            deviceDto.setAveragePrice(createDeviceDto.getAveragePrice());
+            deviceDto.setDescription(createDeviceDto.getDescription());
+            deviceDto.setDestination(createDeviceDto.getDestination());
+            deviceDto.setSection(createDeviceDto.getSection());
+            deviceDto.setMonitoringPrices(new ArrayList<>());
+            deviceService.addDevice(deviceDto,createDeviceDto.getCitilinkURL(),createDeviceDto.getRegardURL(),
+                    createDeviceDto.getComputerMarketURL(),createDeviceDto.getQukeURL(),createDeviceDto.getKnsURL());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "redirect:" + createDeviceDto.getUrlPage();
+    }
+
+    private  void addGlobalErrorsValidURL(BindingResult bindingResult,String objName){
         CheckURLValidator checkURL = new CheckURLValidator();
         ErrorMalformedURL errorMalformedURL = new ErrorMalformedURL();
         ErrorUnknownHost errorUnknownHost = new ErrorUnknownHost();
         ErrorIO errorIO = new ErrorIO();
         ClientError clientError = new ClientError();
 
-        ObjectError objectErrorMalFormedURL = checkURL.isExceptionValidField(errorMalformedURL,"infoWebsiteRequest");
-        ObjectError objectErrorUnknownHost = checkURL.isExceptionValidField(errorUnknownHost,"infoWebsiteRequest");
-        ObjectError objectErrorIO = checkURL.isExceptionValidField(errorIO,"infoWebsiteRequest");
-        ObjectError objectClientError = checkURL.isValidateResponseCode(clientError,"infoWebsiteRequest");
+        ObjectError objectErrorMalFormedURL = checkURL.isExceptionValidField(errorMalformedURL,objName);
+        ObjectError objectErrorUnknownHost = checkURL.isExceptionValidField(errorUnknownHost,objName);
+        ObjectError objectErrorIO = checkURL.isExceptionValidField(errorIO,objName);
+        ObjectError objectClientError = checkURL.isValidateResponseCode(clientError,objName);
 
         if(!objectErrorMalFormedURL.getDefaultMessage().isEmpty()){
             bindingResult.addError(objectErrorMalFormedURL);

@@ -25,7 +25,7 @@
 						<div class="col">
 							<div class="statisticweb__item">
 								<div class="statisticweb-header mb-5">
-									<h2>Добавить источники по выбору комплектующего для ПК</h2>
+									<h2>Добавить источник по выбору комплектующего для ПК</h2>
 								</div>
 								<div class="statisticweb-domen">
 									<form class="formsetting" th:action="@{/admin/result-bounceRate}" method="post" th:object="${domainRequest}">
@@ -53,12 +53,12 @@
 										</th:block>
 									</form>
 									<th:block th:if="${bounceRatePercent < 75 && bounceRatePercent != null}">
-										<span class="check ml-3" data-toggle="popover" data-placement="right" title=""  data-content="средний процент отказов от посещения сайта < 80%">
+										<span class="check ml-3" data-toggle="popover" data-placement="right" title=""  data-content="средний процент отказов от посещения сайта < 75%">
 											<i class="fa-solid fa-check"></i>
 										</span>
 									</th:block>
 									<th:block th:if="${bounceRatePercent > 75 && bounceRatePercent != null}">
-										<span class="exclamation ml-3" data-toggle="popover" data-placement="right" title=""  data-content="средний процент отказов от посещения сайта > 80%">
+										<span class="exclamation ml-3" data-toggle="popover" data-placement="right" title=""  data-content="средний процент отказов от посещения сайта > 75%">
 											<i class="fa-solid fa-exclamation"></i>
 										</span>
 									</th:block>
@@ -171,30 +171,61 @@
 						<div class="col">
 							<div class="addcomplect__item">
 								<div class="addcomplect__header mb-5">
-									<h2>Добавить комплектующее ПК</h2>
+									<h2>Добавить устройство ПК</h2>
 								</div>
 								<div class="addcomplect-form">
-									<form action="#"enctype="multipart/form-data">
+									<form th:action="@{/admin/addDevice}" enctype="multipart/form-data" method="post" th:object="${createDeviceDto}">
 										<div class="form-group mt-3">
-											<label for="brand">Полное название устройства</label>
-											<input type="text" class="form-control" id="brand" placeholder="Введите название" >
+											<label for="formSelect2">Выбирите страницу куда отправлять данные</label>
+											<select  id="formSelect2"  name="urlPage" class="form-control" th:field="*{urlPage}">
+												<option value="/allForPC/processor">Как выбрать процессор</option>
+												<option value="">Как выбрать материнскую плату</option>
+												<option value="">Как выбрать кулер для процессора</option>
+												<option value="">Как выбрать SSD</option>
+												<option value="">Как выбрать жесткий диск</option>
+												<option value="">Как выбрать видеокарту</option>
+												<option value="">Как выбрать блок питания</option>
+												<option value="">Как выбрать оперативную память</option>
+												<option value="">Как выбрать кулер для корпуса</option>
+												<option value="">Как выбрать корпус</option>
+												<option value="">Как выбрать монитор</option>
+												<option value="">Как выбрать клавиатуру</option>
+												<option value="">Как выбрать мышь</option>
+												<option value="">Как выбрать МФУ</option>
+											</select>
 										</div>
+										<div class="form-group mt-5">
+											<label for="brand">Полное название устройства</label>
+											<input type="text" class="form-control" id="brand" name="name" placeholder="Введите название" th:field="*{name}" >
+										</div>
+										<th:block th:if="${#fields.hasErrors('name')}">
+											<p class="error-class" th:errors="*{name}"></p>
+										</th:block>
 										<div class="form-group mt-5" >
 											<label for="image">Укажите изображение</label>
-											<input type="file" class="form-control-file" id="image">
+											<input type="file" class="form-control-file" name="file" id="image" th:field="*{file}">
 										</div>
+										<th:block th:if="${errFile != null}">
+											<p class="error-class" th:text="${errFile}"></p>
+										</th:block>
 										<div class="form-group mt-5">
 											<label for="description">Описание устройства</label>
-											<textarea class="form-control" id="description" rows="3" placeholder="Укажите описание..."></textarea>
+											<textarea class="form-control" id="description" name="description" rows="3" placeholder="Укажите описание..." th:field="*{description}"></textarea>
 										</div>
+										<th:block th:if="${#fields.hasErrors('description')}">
+											<p class="error-class" th:errors="*{description}"></p>
+										</th:block>
 										<div class="form-group mt-5">
 											<label for="averageprice">Цена</label>
-											<input type="number" class="form-control" id="averageprice" placeholder="Введите цену на устройство">
+											<input type="number" class="form-control" id="averageprice" name="averagePrice" placeholder="Введите цену на устройство" th:field="*{averagePrice}" required>
 										</div>
+										<th:block th:if="${#fields.hasErrors('averagePrice')}">
+											<p class="error-class" th:errors="*{averagePrice}"></p>
+										</th:block>
 										<div class="form-group mt-5">
 											<label for="section">Выбирите раздел под устройство</label>
-											<select  id="section" class="form-control">
-												<option value="">Процессор</option>
+											<select  id="section" name="section" class="form-control" th:field="*{section}">
+												<option value="Процессор">Процессор</option>
 												<option value="">Материнская плата</option>
 												<option value="">Кулер для процессора</option>
 												<option value="">Твёрдотельный накопитель</option>
@@ -212,39 +243,50 @@
 										</div>
 										<div class="form-group mt-5">
 											<label for="purpose">Выбирите назначение</label>
-											<select  id="purpose" class="form-control">
-												<option value="">Для офиса</option>
-												<option value="">Для игр</option>
-												<option value="">Для дома</option>
+											<select  id="purpose" name="destination" class="form-control" th:field="*{destination}">
+												<option value="Офис">Для офиса</option>
+												<option value="Игры">Для игр</option>
+												<option value="Дом">Для дома</option>
 											</select>
 										</div>
 										<div class="subtitleShop mt-5">
-											<h3>Cсылки на страницу устройства в онлайн магазинах  <span class="toolt-info" data-toggle="popover" data-placement="right" title="Онлайн магазины" data-content="Используйте ссылку на один из представленных магазинов: DNS, ситилинк, эльдорадо, М.видео, регард, Xcom-shop. Где указана цена на устройство"><i class="fa-solid fa-info"></i></span></h3>
-										</div>
-										<div class="form-group mt-5">
-											<label for="dns">DNS</label>
-											<input type="url" class="form-control" id="dns" placeholder="Укажите ссылку на DNS">
+											<h3>Cсылки на страницу устройства в онлайн магазинах  <span class="toolt-info" data-toggle="popover" data-placement="right" title="Онлайн магазины" data-content="Используйте ссылку на один из представленных магазинов: ситилинк, регард, компьютер маркет,guke.ru, KNS. Где указана цена на устройство"><i class="fa-solid fa-info"></i></span></h3>
 										</div>
 										<div class="form-group mt-5">
 											<label for="sitilink">Ситилинк</label>
-											<input type="url" class="form-control" id="sitilink" placeholder="Укажите ссылку на Ситилинк">
+											<input type="url" class="form-control" id="sitilink" name="citilinkURL" placeholder="Укажите ссылку на Ситилинк" th:field="*{citilinkURL}">
 										</div>
-										<div class="form-group mt-5">
-											<label for="eldorado">Эльдорадо</label>
-											<input type="url" class="form-control" id="eldorado" placeholder="Укажите ссылку на Эльдорадо">
-										</div>
-										<div class="form-group mt-5">
-											<label for="mvideo">М.Видео</label>
-											<input type="url" class="form-control" id="mvideo" placeholder="Укажите ссылку на М.Видео">
-										</div>
+										<th:block th:if="${#fields.hasErrors('citilinkURL')}">
+											<p class="error-class" th:errors="*{citilinkURL}"></p>
+										</th:block>
 										<div class="form-group mt-5">
 											<label for="regard">Регард</label>
-											<input type="url" class="form-control" id="regard" placeholder="Укажите ссылку на Регард">
+											<input type="url" class="form-control" id="regard" name="regardURL" placeholder="Укажите ссылку на Регард" th:field="*{regardURL}">
 										</div>
+										<th:block th:if="${#fields.hasErrors('regardURL')}">
+											<p class="error-class" th:errors="*{regardURL}"></p>
+										</th:block>
 										<div class="form-group mt-5">
-											<label for="xcom">Xcom-shop</label>
-											<input type="url" class="form-control" id="xcom" placeholder="Укажите ссылку на Xcom-shop">
+											<label for="compmaster">Компьютер маркет</label>
+											<input type="url" class="form-control" id="compmaster" name="computerMarketURL" placeholder="Укажите ссылку на Компьютер маркет" th:field="*{computerMarketURL}">
 										</div>
+										<th:block th:if="${#fields.hasErrors('computerMarketURL')}">
+											<p class="error-class" th:errors="*{computerMarketURL}"></p>
+										</th:block>
+										<div class="form-group mt-5">
+											<label for="quke">Quke.ru</label>
+											<input type="url" class="form-control" id="quke" name="qukeURL" placeholder="Укажите ссылку на Quke.ru" th:field="*{qukeURL}">
+										</div>
+										<th:block th:if="${#fields.hasErrors('qukeURL')}">
+											<p class="error-class" th:errors="*{qukeURL}"></p>
+										</th:block>
+										<div class="form-group mt-5">
+											<label for="kns">KNS</label>
+											<input type="url" class="form-control" id="kns" name="knsURL" placeholder="Укажите ссылку на KNS" th:field="*{knsURL}">
+										</div>
+										<th:block th:if="${#fields.hasErrors('knsURL')}">
+											<p class="error-class" th:errors="*{knsURL}"></p>
+										</th:block>
 										<div class="text-right">
 											<button type="submit" class="btn btn-secondary mt-3">Добавить</button>
 										</div>

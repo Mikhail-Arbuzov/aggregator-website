@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
-	<link rel="stylesheet" th:href="@{/css/procesor.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/device.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
@@ -257,51 +257,67 @@
 							<div class="products__subtitle">
 								<h3><span>Для офисного ПК</span></h3>
 							</div>
-							<div class="products__item">
-								<div class="item__description">
-									<div class="item__body">
-										<h4 class="mb-4">Intel Celeron G6900</h4>
-										<p>Процессор INTEL Celeron G6900 создан с 2 ядрами, сокетом 1700, построенным на 10 нм техпроцессоре, благодаря этому на кристалле размещается достаточное количество транзисторов. Он станет сердцем вашего компьютера и успешно справится с поставленными перед ним задачами. Его ядро AlderLake на тактовой частоте 3400 МГц использует кэш: L2 - 2.5 Мб, L3 - 4096 Кб, что позволяет обрабатывать инструкции и технологии: HT, SSE4, Virtualization Technology, а также быстрее работать с данными и производить вычисления. Интегрированное графическое ядро Intel UHD 710, 1300 МГц подготовит изображение для монитора и позволит во многих случаях обойтись без использования видеокарт. При своей работе он выделяет в среднем 46 Вт нагреваясь вплоть до 100 °C.</p>
-										<p class="price">Цена на процессор варьируется в приделах 3499</p>
+							<th:block th:each="processorForOffice : ${processorsForOffice}">
+								<div class="products__item">
+									<div class="item__description">
+										<div class="item__body">
+											<h4 class="mb-4" th:text="${processorForOffice.getName()}"></h4>
+											<p th:text="${processorForOffice.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на процессор варьируется в приделах '+ processorForOffice.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/processor/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${processorForOffice.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="item__img">
+											<img th:src="@{(${processorForOffice.getImage()})}" alt="procesor">
+										</div>
 									</div>
-									<div class="item__img">
-										<img src="img/components/G6900.jpg" alt="procesor">
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данный процессор</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/processor/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${processorForOffice.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceMonitoring : ${processorForOffice.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceMonitoring.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceMonitoring.getSiteName()}"></td>
+														<td  th:text="${priceMonitoring.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceMonitoring.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
 									</div>
 								</div>
-								<div class="item__monitoring mt-5">
-									<div class="monitoring-title">
-										<h5>Мониторинг цен на данный процессор <a href="#" class="refresh2 ml-2"><i class="fa-solid fa-rotate"></i></a></h5>
-
-										<!-- <form>
-											<div class="form-group ml-2">
-												<input class="btn btn-outline-info" type="submit" value="Обновить"/>
-											</div>
-										</form> -->
-									</div>
-									<div class="monitoring__table">
-										<table class="table table-bordered">
-											<thead>
-											<tr class="table-secondary">
-												<th scope="col">Магазин</th>
-												<th scope="col">Цена</th>
-												<th scope="col">Ссылка на товар</th>
-											</tr>
-											</thead>
-											<tbody>
-											<tr class="table-light">
-												<td scope="row"class="imge2">
-													<img src="img/comp.jpeg" alt="iconka">
-												</td>
-												<td >3400</td>
-												<td >
-													<a href="#" class="btn btn-primary">Посмотреть</a>
-												</td>
-											</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
+							</th:block>
 						</div>
 					</div>
 					<div class="row">
@@ -309,50 +325,67 @@
 							<div class="products__subtitle">
 								<h3><span>Для игрового ПК</span></h3>
 							</div>
-							<div class="products__item">
-								<div class="item__description2">
-									<div class="item__img2">
-										<img src="img/components/Ryzen7.jpg" alt="procesor">
+							<th:block th:each="processorForGame : ${processorsForGames}">
+								<div class="products__item">
+									<div class="item__description2">
+										<div class="item__img2">
+											<img th:src="@{(${processorForGame.getImage()})}" alt="processor">
+										</div>
+										<div class="item__body2">
+											<h4 class="mb-4" th:text="${processorForGame.getName()}"></h4>
+											<p th:text="${processorForGame.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на процессор изменяется в приделах '+ processorForGame.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/processor/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${processorForGame.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
 									</div>
-									<div class="item__body2">
-										<h4 class="mb-4">AMD Ryzen 7 3700X</h4>
-										<p>Получить вычислительное оборудование высшего класса можно при помощи процессора AMD Ryzen 7 3700X. Данная модель рассчитана на создание как офисного оборудования для решения повседневных задач, так и для мощной игровой системы. Устройство оснащено сокетом AM4 с рабочей частотой 3,6 ГГц. При этом оборудование способно разогнаться до 4,4 ГГц при максимальной нагрузке. Общий объем кэша третьего уровня достигает 32 Мб. Этого хватает для достаточно высокой производительности, а также позволяет процессору AMD Ryzen 7 3700X мгновенно загружать нужную информацию и современные игры, успешно работать с текстовыми редакторами и просматривать видео контент без подвисания. Устройство обладает низким тепловыделением равным 65 Вт, а также имеется возможность установки оперативной памяти DDR4.</p>
-										<p class="price">Цена на процессор изменяется в приделах 20990</p>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данный процессор</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/processor/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${processorForGame.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceGameProcessor : ${processorForGame.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceGameProcessor.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceGameProcessor.getSiteName()}"></td>
+														<td th:text="${priceGameProcessor.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceGameProcessor.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
 									</div>
 								</div>
-								<div class="item__monitoring mt-5">
-									<div class="monitoring-title">
-										<h5>Мониторинг цен на данный процессор <a href="#" class="refresh2 ml-2"><i class="fa-solid fa-rotate"></i></a></h5>
-										<!-- <form>
-											<div class="form-group ml-2">
-												<input class="btn btn-outline-info" type="submit" value="Обновить"/>
-											</div>
-										</form> -->
-									</div>
-									<div class="monitoring__table">
-										<table class="table table-bordered">
-											<thead>
-											<tr class="table-secondary">
-												<th scope="col">Магазин</th>
-												<th scope="col">Цена</th>
-												<th scope="col">Ссылка на товар</th>
-											</tr>
-											</thead>
-											<tbody>
-											<tr class="table-light">
-												<td scope="row"class="imge2">
-													<img src="img/comp.jpeg" alt="iconka">
-												</td>
-												<td >7400</td>
-												<td >
-													<a href="#" class="btn btn-primary">Посмотреть</a>
-												</td>
-											</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
+							</th:block>
 						</div>
 					</div>
 					<div class="row">
@@ -360,50 +393,67 @@
 							<div class="products__subtitle">
 								<h3><span>Для домашнего ПК</span></h3>
 							</div>
-							<div class="products__item">
-								<div class="item__description">
-									<div class="item__body">
-										<h4 class="mb-4">Intel Corei5 10400F</h4>
-										<p>Универсальный процессор для настольных компьютеров INTEL Core i5 10400F рассчитан для работы как в домашних, так и офисных условиях. Он может быть использован для сборок, перед которыми будут поставлены различные задачи. Создан на базе архитектуры CometLake с поддержкой материнских плат с сокетом LGA 1200. Имеет в своем распоряжении 6 ядер и 12 потоков, а также кэш память L3 объемом 12 Мб.Отличительной особенностью процессора INTEL Core i5 10400F является поставка OEM. Это означает, что в комплектации вместе с ЦПУ отсутствует кулер охлаждения. Пользователю нужно будет выбрать его отдельно. Техпроцесс 14 нм, который был использован при изготовлении процессора, позволил добиться низкого энергопотребления и небольшого выделения тепла. Присутствует технология Turbo Boost, отвечающая за разгон тактовой частоты. В режиме Turbo максимальная частота составляет 4.3 ГГц.</p>
-										<p class="price">Цена на процессор меняется в рамках 11890</p>
+							<th:block th:each="processorForHome : ${processorsForHome}">
+								<div class="products__item">
+									<div class="item__description">
+										<div class="item__body">
+											<h4 class="mb-4" th:text="${processorForHome.getName()}"></h4>
+											<p th:text="${processorForHome.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на процессор меняется в рамках ' + processorForHome.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/processor/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${processorForHome.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="item__img">
+											<img th:src="@{(${processorForHome.getImage()})}" alt="processor">
+										</div>
 									</div>
-									<div class="item__img">
-										<img src="img/components/Corei5.jpg" alt="procesor">
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данный процессор</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/processor/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${processorForHome.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceProcessorForHome : ${processorForHome.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceProcessorForHome.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceProcessorForHome.getSiteName()}"></td>
+														<td th:text="${priceProcessorForHome.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceProcessorForHome.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
 									</div>
 								</div>
-								<div class="item__monitoring mt-5">
-									<div class="monitoring-title">
-										<h5>Мониторинг цен на данный процессор <a href="#" class="refresh2 ml-2"><i class="fa-solid fa-rotate"></i></a></h5>
-										<!-- <form>
-											<div class="form-group ml-2">
-												<input class="btn btn-outline-info" type="submit" value="Обновить"/>
-											</div>
-										</form> -->
-									</div>
-									<div class="monitoring__table">
-										<table class="table table-bordered">
-											<thead>
-											<tr class="table-secondary">
-												<th scope="col">Магазин</th>
-												<th scope="col">Цена</th>
-												<th scope="col">Ссылка на товар</th>
-											</tr>
-											</thead>
-											<tbody>
-											<tr class="table-light">
-												<td scope="row"class="imge2">
-													<img src="img/comp.jpeg" alt="iconka">
-												</td>
-												<td >11000</td>
-												<td >
-													<a href="#" class="btn btn-primary">Посмотреть</a>
-												</td>
-											</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
+							</th:block>
 						</div>
 					</div>
 				</div>

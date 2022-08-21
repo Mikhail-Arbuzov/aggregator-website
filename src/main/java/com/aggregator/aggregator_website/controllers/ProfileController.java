@@ -98,8 +98,8 @@ public class ProfileController {
         String message2 ="Файл должен быть с расширением .jpg";
         String fileName = file.getOriginalFilename();
         String extension = fileName.substring(fileName.lastIndexOf("."));
-        String jpg = ".jpg";
-        String jpeg = ".jpeg";
+//        String jpg = ".jpg";
+//        String jpeg = ".jpeg";
 
         if (!extension.equals(".jpg")){
             model.addAttribute("message2",message2);
