@@ -65,6 +65,20 @@
     margin-bottom: 10px;
 }
 
+/*без маркера*/
+.text__list3 li{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    font-style:italic;
+    color: #cfd3de;
+    margin-left: 10px;
+}
+
+.text__list3 li:not(:last-child){
+    margin-bottom: 10px;
+}
+
 .text__header3{
     font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
     font-size: 24px;
