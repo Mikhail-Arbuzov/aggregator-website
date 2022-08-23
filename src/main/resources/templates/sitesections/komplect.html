@@ -85,7 +85,7 @@
 												<label for="formSelect">Выбирите страницу куда отправлять данные</label>
 												<select  id="formSelect" name="dataTransferPage" class="form-control" th:field="*{dataTransferPage}">
 													<option value="/allForPC/processor">Как выбрать процессор</option>
-													<option value="">Как выбрать материнскую плату</option>
+													<option value="/allForPC/motherboard">Как выбрать материнскую плату</option>
 													<option value="">Как выбрать кулер для процессора</option>
 													<option value="">Как выбрать SSD</option>
 													<option value="">Как выбрать жесткий диск</option>
@@ -105,7 +105,7 @@
 												<select  id="sectionKomponent" name="section" class="form-control" th:field="*{section}">
 													<optgroup label="Cистемный блок">
 														<option value="Процессор">Процессор</option>
-														<option value="">Материнская плата</option>
+														<option value="Материнка">Материнская плата</option>
 														<option value="">Кулер для процессора</option>
 														<option value="">SSD</option>
 														<option value="">Жесткий диск</option>
@@ -179,7 +179,7 @@
 											<label for="formSelect2">Выбирите страницу куда отправлять данные</label>
 											<select  id="formSelect2"  name="urlPage" class="form-control" th:field="*{urlPage}">
 												<option value="/allForPC/processor">Как выбрать процессор</option>
-												<option value="">Как выбрать материнскую плату</option>
+												<option value="/allForPC/motherboard">Как выбрать материнскую плату</option>
 												<option value="">Как выбрать кулер для процессора</option>
 												<option value="">Как выбрать SSD</option>
 												<option value="">Как выбрать жесткий диск</option>
@@ -226,7 +226,7 @@
 											<label for="section">Выбирите раздел под устройство</label>
 											<select  id="section" name="section" class="form-control" th:field="*{section}">
 												<option value="Процессор">Процессор</option>
-												<option value="">Материнская плата</option>
+												<option value="Материнка">Материнская плата</option>
 												<option value="">Кулер для процессора</option>
 												<option value="">Твёрдотельный накопитель</option>
 												<option value="">Жесткий диск</option>

@@ -91,6 +91,10 @@ public class AdminController {
     public String getBounceRate(@Valid @ModelAttribute("domainRequest")DomainRequest domainRequest,
                                 BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
+            TransferInfoWebsiteRequest infoWebsiteRequest = new TransferInfoWebsiteRequest();
+            model.addAttribute("infoWebsiteRequest",infoWebsiteRequest);
+            CreateDeviceDto createDeviceDto = new CreateDeviceDto();
+            model.addAttribute("createDeviceDto",createDeviceDto);
             return "sitesections/komplect";
         }
         else {
@@ -142,6 +146,8 @@ public class AdminController {
         if(bindingResult.hasErrors()){
             DomainRequest domainRequest = new DomainRequest();
             model.addAttribute("domainRequest",domainRequest);
+            CreateDeviceDto createDeviceDto = new CreateDeviceDto();
+            model.addAttribute("createDeviceDto",createDeviceDto);
             Double bounceRatePercent = 30.3;
             model.addAttribute("bounceRatePercent",bounceRatePercent);
             return "sitesections/komplect";
@@ -159,6 +165,8 @@ public class AdminController {
                 String er = "Не удалось передать данные. Код ошибки - " + statusCode;
                 FieldError fieldDomainError = new FieldError("infoWebsiteRequest","domainSite",er);
                 bindingResult.addError(fieldDomainError);
+                CreateDeviceDto createDeviceDto = new CreateDeviceDto();
+                model.addAttribute("createDeviceDto",createDeviceDto);
                 DomainRequest domainRequest = new DomainRequest();
                 model.addAttribute("domainRequest",domainRequest);
                 Double bounceRatePercent = 30.3;

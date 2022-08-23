@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<title>Материнская плата</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/device.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu::menu}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="titlePage">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col">
+							<div class="titlePage__header">
+								<h1>Материнская плата</h1>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="titlePage__text">
+								<p>Материнская плата (печатная, системная плата) представляет собой основу построения любого модульного электронного устройства, объединяющая между собой все компоненты системы. Форм-фактор определяет её положение для последующего крепежа к корпусу, тип разъёмов питания, количество интерфейсов подключения устройств и их местоположение. Вот самые основные из них:</p>
+								<ul class="text__list2">
+									<li><strong> Mini ITX</strong> - имеет наименьшие размеры 17 на 17 см, идёт в комплекте с интегрированным процессором, малым числом интерфейсов подключения, редко используется в самостоятельных сборках, продаётся в составе готового компьютера.</li>
+									<li><strong> Micro ATX</strong> - функциональная плата со средними размерами, является лучшей составляющей для бюджетного компьютера, небольшим количеством интерфейсов и предустановкой чипсетов с не значительными ограничениями в работе компьютера.</li>
+									<li><strong> ATX</strong> - солидная модель, может быть как функциональная, так и лимитированная с большим количеством интерфейсов, отличается более удобным монтажом и возможностями подключения.</li>
+								</ul>
+								<h3 class="text__header3">Компоненты материнской платы</h3>
+								<p>При выборе материнской платы необходимо обращать внимание на количество и качество разъёмов (сокетов). Их довольно много и для каждого процессора подойдёт свой. Например, Intel используют маркировки LGA 1150 или 1155, а их конкуренты от AMD - FX2, AM3 и AM3+.</p>
+								<p><strong>Чипсет</strong> – это основа возможностей материнской платы и представляет собой микропроцессорный комплект для взаимодействия центрального процессора с остальной электронной составляющей компьютера. Именно от него зависят все возможности и дальнейшая работа материнской платы. Дословно переводится как «набор микросхем», так было изначально, но чуть позже их объединили в северный и южный мост. При этом северный мост отвечает за коммуникацию с видеокартой и оперативной памятью, а южный за подключение к периферии: накопители, слоты расширения, звуковой кодек и порты USB. Каждый чипсет обязательно должен быть согласован с процессором, следовательно, не каждая материнская плата сможет раскрыть потенциал процессора и наоборот.</p>
+								<p><strong>BIOS</strong> считается одной из важнейших микросхем системной платы, т.к. в нём находятся важные программы, нужные для первичной загрузки компьютера. Он сразу же после включения проверяет основные системы, а также обеспечивает взаимодействие с клавиатурой, мышью и монитором, а в случае с ноутбуком - с его дисплеем. Для восстановления по умолчанию настроек BIOS нужно извлечь батарейку независимого питания или же при помощи специальной перемычки, которые находятся посередине или же в правом нижнем углу.</p>
+								<p><strong>Шины материнской платы</strong> – группа проводников, необходимая для связывания процессора с другими устройствами компьютера. Их различают  по функциональности: шина команд, шина данных, адресная шина. Последняя является главной и служит для выбора команд, а также информации из оперативной памяти, но все вместе они образуют одну главную шину - FSB (Front Side Bus).</p>
+								<p><strong>Шина plug-and-play</strong> является высокопроизводительной и простотой в  установке, благодаря ней создали самодостаточные устройства (plug-and-play), тоесть после подключения системной платы к дочерней, автоматически распознаётся устройство и выдаётся ему необходимое количество ресурсов для корректной работы.</p>
+								<p><strong>Шины PCI и PCI Express</strong>. Благодаря PCI устанавливаются тв-тюнеры для просмотра аналогового телевидения (при отсутствии Wi – Fi), также увеличивается функционал аудиокарты компьютера, а через разветвитель прибавляется количество разъёмов USB, что актуально в плане устаревших и бюджетных материнских плат. Но технологии не стоят на месте, поэтому возникла  необходимость в появлении PCI Express 16x и PCI Express X1 в помощь усовершенствованной сетевой и видеокарты.</p>
+								<p><strong>Интерфейс подключения шины AGP</strong> в своё время обеспечивал высокопроизводительный обмен данных, но вскоре производители от неё отказались так же, как и от PCI в пользу PCI Express, а сейчас он стоит только на устаревших моделях компьютеров.</p>
+								<p>Для более удобной работы за компьютером появился универсальный <strong>порт шины USB (Universal Serial Port)</strong>. Сейчас он входит в состав любого компьютера: от стационарного ПК, переносного ноутбука, до планшета и смартфона. Благодаря нему к системной плате подключаются такие устройства, как 3g/4g модемы, МФУ, компьютерные мыши и клавиатуры. В нынешнее время используются порты USB 3.0, USB 2.0. и вся их работа связана с функцией южного моста чипсета материнской платы.</p>
+								<h3 class="text__header3">Интегрированные компоненты материнской платы</h3>
+								<p>На сегодняшний день много офисных компьютеров имеют в себе интегрированный видеоадаптер, благодаря этому на многих материнских платах появилась VGA, DVI и HDMI, а сетевая и аудио платы стали встроенной составляющей системной платы.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="sourcesofchoice">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="sourcesofchoice__header">
+								<h2>Источники по выбору лучшей материнской платы</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="website-container">
+								<th:block th:each="website : ${motherboardWebsites}">
+									<div class="website-container__item">
+										<div class="logosite">
+											<div class="logosite__image">
+												<th:block th:if="${website.getIconSite() != null}">
+													<img th:src="@{(${website.getIconSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="logotip">
+												</th:block>
+												<th:block th:unless="${website.getIconSite() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</div>
+										</div>
+										<div class="title">
+											<h3 th:text="${website.getPage().getTitle()}"></h3>
+										</div>
+										<figure class="imgsettings">
+											<th:block th:if="${website.getPage().getImageUrl() != null}">
+												<img th:src="@{(${website.getPage().getImageUrl()})}" alt="image">
+											</th:block>
+											<th:block th:unless="${website.getPage().getImageUrl() != null}">
+												<img th:src="@{img/comp.jpeg}"  alt="image">
+											</th:block>
+											<th:block sec:authorize="isAuthenticated()">
+												<figcaption  class="formHidden">
+													<a href="#tabl2" class="link2">
+														<i class="fa-solid fa-arrow-up-wide-short"></i>
+													</a>
+													<a href="#tabl1" class="link">
+														<th:block sec:authorize="hasAuthority('ADMIN')">
+															<span class="transferId" style="display: none" th:text="${website.getId()}"></span>
+															<span class="transferSiteName" style="display: none" th:text="${website.getSiteName()}"></span>
+														</th:block>
+														<i class="fa-solid fa-chart-column"></i>
+													</a>
+													<th:block sec:authorize="hasAuthority('ADMIN')">
+														<form class="form-link" th:action="@{/allForPC/motherboard/id}" th:method="DELETE">
+															<input type="hidden" name="id" th:value="${website.getId()}">
+															<a href="#" onclick="$(this).closest('form').submit();">
+																<i class="fa-solid fa-trash"></i>
+															</a>
+														</form>
+													</th:block>
+												</figcaption>
+											</th:block>
+										</figure>
+										<div class="website-container__item-footer">
+											<p th:text="${website.getPage().getText()}"></p>
+											<div class="text-right">
+												<a th:href="@{(${website.getPage().getLink()})}" class="btn btn-outline-light" target="_blank">подробнее</a>
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="statistic">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col bgcolor">
+							<a name="tabl1"></a>
+							<div class="statistic__header mb-3">
+								<h3>Рейтинг сайтов на основе результатов оценки трафика</h3>
+							</div>
+							<div class="statistic__table">
+								<div sec:authorize="hasAuthority('ADMIN')" class="dataTime mb-2">
+									<th:block th:if="${siteName1 != null and month1 != null and year1 != null}">
+										<p th:text="${'Получены данные для ' + siteName1 + ' за ' + month1 + ' ' + year1}"></p>
+									</th:block>
+									<th:block th:if="${messageWeb1 != null}">
+										<p th:text="${messageWeb1}"></p>
+									</th:block>
+
+									<form th:action="@{/allForPC/motherboard/id}" th:method="PUT">
+										<input class="result" type="hidden" name="id">
+										<a href="#" class="refresh ml-2" onclick="$(this).closest('form').submit();">
+											<span class="domenName mp-2"></span>
+											<i class="fa-solid fa-rotate-right"></i>
+										</a>
+									</form>
+								</div>
+								<div class="tablica table-responsive">
+									<table class="table table-bordered">
+										<thead>
+										<tr class="table-info">
+											<th scope="col">Место</th>
+											<th scope="col">Домен</th>
+											<th scope="col">Позиция сайта в мире</th>
+											<th scope="col">Позиция сайта в стране</th>
+											<th scope="col">Данные за период</th>
+										</tr>
+										</thead>
+										<tbody>
+										<th:block th:each="ratingTrafficWebsite, index : ${ratingTrafficMotherboardWebsites}">
+											<tr class="table-light">
+												<td th:text="${index.index + 1}"></td>
+												<td th:text="${ratingTrafficWebsite.getSiteName()}"></td>
+												<td th:text="${ratingTrafficWebsite.getRatingInWorld()}"></td>
+												<td th:text="${ratingTrafficWebsite.getRatingInCountry()}"></td>
+												<td th:text="${ratingTrafficWebsite.getMonth() +' ' + ratingTrafficWebsite.getYear()}"></td>
+											</tr>
+										</th:block>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="rating">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<!--							<div class="showrating mb-4 text-center">-->
+							<!--								<a href="#table" class="link2">Показать рейтинг</a>-->
+							<!--							</div>-->
+							<div class="tablerating table-responsive">
+								<a name="tabl2"></a>
+								<div class="rating__title">
+									<h3>Рейтинг сайтов на основе показателей взаимодействия с ними пользователей</h3>
+								</div>
+								<table class="table table-bordered">
+									<thead>
+									<tr class="table-primary">
+										<th scope="col">Место</th>
+										<th scope="col">Логотип</th>
+										<th scope="col">Время посещения</th>
+										<th scope="col">Общее число визитов</th>
+										<th scope="col">Отказ от посещения</th>
+										<th scope="col">Данные за период</th>
+									</tr>
+									</thead>
+									<tbody>
+									<th:block th:each="ratingWebsite, index : ${ratings}">
+										<tr class="table-light">
+											<td scope="row" th:text="${index.index + 1}"></td>
+											<td class="imge">
+												<th:block th:if="${ratingWebsite.getIconSite() != null}">
+													<img th:src="@{(${ratingWebsite.getIconSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="logotip">
+												</th:block>
+												<th:block th:unless="${ratingWebsite.getIconSite() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</td>
+											<td th:text="${ratingWebsite.getTimeOnSite()}"></td>
+											<td th:text="${ratingWebsite.getVisits()}"></td>
+											<td th:text="${ratingWebsite.getBounceRate()} + ' %'"></td>
+											<td th:text="${ratingWebsite.getMonth() + ' ' + ratingWebsite.getYear()}"></td>
+										</tr>
+									</th:block>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="products">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row mb-4">
+						<div class="col">
+							<div class="products__title">
+								<h2>Популярные товары</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для офисного ПК</span></h3>
+							</div>
+
+							<th:block th:each="motherboardForOffice : ${officeMotherboards}">
+								<div class="products__item">
+									<div class="item__description">
+										<div class="item__body">
+											<h4 class="mb-4" th:text="${motherboardForOffice.getName()}"></h4>
+											<p th:text="${motherboardForOffice.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на материнскую плату варьируется в приделах '+ motherboardForOffice.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/motherboard/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${motherboardForOffice.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="item__img">
+											<img th:src="@{(${motherboardForOffice.getImage()})}" alt="motherboard">
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данную материнскую плату</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/motherboard/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${motherboardForOffice.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceOfficeMotherboard : ${motherboardForOffice.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceOfficeMotherboard.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceOfficeMotherboard.getSiteName()}"></td>
+														<td  th:text="${priceOfficeMotherboard.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceOfficeMotherboard.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для игрового ПК</span></h3>
+							</div>
+							<th:block th:each="motherboardForGame : ${motherboardsForGames}">
+								<div class="products__item">
+									<div class="item__description2">
+										<div class="item__img2">
+											<img th:src="@{(${motherboardForGame.getImage()})}" alt="motherboard">
+										</div>
+										<div class="item__body2">
+											<h4 class="mb-4" th:text="${motherboardForGame.getName()}"></h4>
+											<p th:text="${motherboardForGame.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на материнскую плату изменяется в приделах '+ motherboardForGame.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/motherboard/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${motherboardForGame.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данную материнскую плату</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/motherboard/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${motherboardForGame.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceGameMotherboard : ${motherboardForGame.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceGameMotherboard.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceGameMotherboard.getSiteName()}"></td>
+														<td th:text="${priceGameMotherboard.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceGameMotherboard.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для домашнего ПК</span></h3>
+							</div>
+							<th:block th:each="motherboardForHome : ${motherboardsForHome}">
+								<div class="products__item">
+									<div class="item__description">
+										<div class="item__body">
+											<h4 class="mb-4" th:text="${motherboardForHome.getName()}"></h4>
+											<p th:text="${motherboardForHome.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на материнскую плату меняется в рамках ' + motherboardForHome.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/motherboard/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${motherboardForHome.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="item__img">
+											<img th:src="@{(${motherboardForHome.getImage()})}" alt="motherboard">
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данную материнскую плату</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/motherboard/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${motherboardForHome.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceMotherboardForHome : ${motherboardForHome.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceMotherboardForHome.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceMotherboardForHome.getSiteName()}"></td>
+														<td th:text="${priceMotherboardForHome.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceMotherboardForHome.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu.js}" type="text/javascript"></script>
+<script th:src="@{/js/equipment.js}" type="text/javascript"></script>
+</body>
+</html>

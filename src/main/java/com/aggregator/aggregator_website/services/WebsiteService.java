@@ -52,6 +52,23 @@ public class WebsiteService {
         return null;
     }
 
+    public InfoTrafficWebsite getInfoTrafficWebsiteDto(Long id,SiteAnalysisDto siteAnalysis){
+        InfoTrafficWebsite trafficWebsite = new InfoTrafficWebsite();
+        trafficWebsite.setId(id);
+        String month = statisticDataConvector.monthConvector(siteAnalysis.getEngagments().getMonth());
+        trafficWebsite.setMonth(month);
+        trafficWebsite.setYear(siteAnalysis.getEngagments().getYear());
+        String time = statisticDataConvector.timeOnSiteConvector(siteAnalysis.getEngagments().getTimeOnSite());
+        trafficWebsite.setTimeOnSite(time);
+        double bounceRate1 = statisticDataConvector.bounceRateConvector(siteAnalysis.getEngagments().getBounceRate());
+        trafficWebsite.setBounceRate(bounceRate1);
+        String visits1 = statisticDataConvector.visitsConvectorInStr(siteAnalysis.getEngagments().getVisits());
+        trafficWebsite.setVisits(visits1);
+        trafficWebsite.setRatingInWorld(siteAnalysis.getGlobalRank().getRank());
+        trafficWebsite.setRatingInCountry(siteAnalysis.getCountryRank().getRank());
+        return trafficWebsite;
+    }
+
     @Transactional
     public void addWebsite(SiteAnalysisDto analysisDto, String domain,String url, String section) throws IOException,NullPointerException {
         WebsiteDto websiteDto = new WebsiteDto();

@@ -70,25 +70,29 @@ public class ProcessorController {
     @PutMapping("/allForPC/processor/id")
     public String updateWebsiteById(@RequestParam("id") Long id, Model model){
         WebsiteDto websiteDto = websiteService.getWebsiteById(id);
-        InfoTrafficWebsite trafficWebsite = new InfoTrafficWebsite();
+//        InfoTrafficWebsite trafficWebsite = new InfoTrafficWebsite();
         if (websiteDto != null){
            try{
                SiteAnalysisDto analysisDto = siteAnalysisClient.getSiteAnalysis(websiteDto.getSiteName());
                if(analysisDto != null){
+//                   String siteName = analysisDto.getSiteName();
+//                   trafficWebsite.setId(websiteDto.getId());
+//                   String timeOnSite = statisticDataConvector.timeOnSiteConvector(analysisDto.getEngagments().getTimeOnSite());
+//                   trafficWebsite.setTimeOnSite(timeOnSite);
+//                   double bounceRate = statisticDataConvector.bounceRateConvector(analysisDto.getEngagments().getBounceRate());
+//                   trafficWebsite.setBounceRate(bounceRate);
+//                   String visits = statisticDataConvector.visitsConvectorInStr(analysisDto.getEngagments().getVisits());
+//                   trafficWebsite.setVisits(visits);
+//                   trafficWebsite.setRatingInWorld(analysisDto.getGlobalRank().getRank());
+//                   trafficWebsite.setRatingInCountry(analysisDto.getCountryRank().getRank());
+//                   String month = statisticDataConvector.monthConvector(analysisDto.getEngagments().getMonth());
+//                   trafficWebsite.setMonth(month);
+//                   String year = analysisDto.getEngagments().getYear();
+//                   trafficWebsite.setYear(year);
+                   InfoTrafficWebsite trafficWebsite = websiteService.getInfoTrafficWebsiteDto(websiteDto.getId(),analysisDto);
                    String siteName = analysisDto.getSiteName();
-                   trafficWebsite.setId(websiteDto.getId());
-                   String timeOnSite = statisticDataConvector.timeOnSiteConvector(analysisDto.getEngagments().getTimeOnSite());
-                   trafficWebsite.setTimeOnSite(timeOnSite);
-                   double bounceRate = statisticDataConvector.bounceRateConvector(analysisDto.getEngagments().getBounceRate());
-                   trafficWebsite.setBounceRate(bounceRate);
-                   String visits = statisticDataConvector.visitsConvectorInStr(analysisDto.getEngagments().getVisits());
-                   trafficWebsite.setVisits(visits);
-                   trafficWebsite.setRatingInWorld(analysisDto.getGlobalRank().getRank());
-                   trafficWebsite.setRatingInCountry(analysisDto.getCountryRank().getRank());
                    String month = statisticDataConvector.monthConvector(analysisDto.getEngagments().getMonth());
-                   trafficWebsite.setMonth(month);
                    String year = analysisDto.getEngagments().getYear();
-                   trafficWebsite.setYear(year);
                    websiteService.updateWebsite(trafficWebsite);
 
                    model.addAttribute("siteName",siteName);
