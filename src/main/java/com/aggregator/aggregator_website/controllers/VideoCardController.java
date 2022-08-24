@@ -74,7 +74,7 @@ public class VideoCardController {
                 if(siteAnalysisVideoC != null){
                     InfoTrafficWebsite trafficWebsiteVideoC = websiteService.getInfoTrafficWebsiteDto(websiteVideoCard.getId(),siteAnalysisVideoC);
                     String siteName_videoC = siteAnalysisVideoC.getSiteName();
-                    String month_videoC = siteAnalysisVideoC.getEngagments().getMonth();
+                    String month_videoC = statisticDataConvector.monthConvector(siteAnalysisVideoC.getEngagments().getMonth());
                     String year_videoC = siteAnalysisVideoC.getEngagments().getYear();
                     websiteService.updateWebsite(trafficWebsiteVideoC);
 
