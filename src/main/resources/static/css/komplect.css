@@ -113,7 +113,7 @@ label{
 .error-class{
     font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
     font-size: 14px;
-    color: red;
+    color: #ffeeba;
 }
 
 @media(min-width: 790px){
