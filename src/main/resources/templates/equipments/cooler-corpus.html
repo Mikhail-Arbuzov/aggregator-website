@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<title>Кулер для корпуса</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/device.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu::menu}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="titlePage">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col">
+							<div class="titlePage__header">
+								<h1>Кулер для корпуса</h1>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="titlePage__text">
+								<p>Кулер - это вентилятор, используемый для активного охлаждения, путём втягивания более холодного воздуха в корпус снаружи, вытеснения теплого изнутри и его перемещения через радиатор для охлаждения определенного компонента персонального компьютера. Они бывают осевые и центробежные и имеют стандартные размеры 92 мм, 120 мм - наиболее распространенные, 140 мм и 200-220 мм. Питаются и управляются с помощью 3-контактных или 4-контактных разъемов для подключения вентиляторов.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="sourcesofchoice">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="sourcesofchoice__header mb-4">
+								<h2>Источники по выбору лучшего кулера для корпуса</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="website-container">
+								<th:block th:each="coolerWebsite : ${coolerWebsites}">
+									<div class="website-container__item">
+										<div class="logosite">
+											<div class="logosite__image">
+												<th:block th:if="${coolerWebsite.getIconSite() != null}">
+													<img th:src="@{(${coolerWebsite.getIconSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="logotip">
+												</th:block>
+												<th:block th:unless="${coolerWebsite.getIconSite() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</div>
+										</div>
+										<div class="title">
+											<h3 th:text="${coolerWebsite.getPage().getTitle()}"></h3>
+										</div>
+										<figure class="imgsettings">
+											<th:block th:if="${coolerWebsite.getPage().getImageUrl() != null}">
+												<img th:src="@{(${coolerWebsite.getPage().getImageUrl()})}" alt="image">
+											</th:block>
+											<th:block th:unless="${coolerWebsite.getPage().getImageUrl() != null}">
+												<img th:src="@{img/comp.jpeg}"  alt="image">
+											</th:block>
+											<th:block sec:authorize="isAuthenticated()">
+												<figcaption  class="formHidden">
+													<a href="#tabl2" class="link2">
+														<i class="fa-solid fa-arrow-up-wide-short"></i>
+													</a>
+													<a href="#tabl1" class="link">
+														<th:block sec:authorize="hasAuthority('ADMIN')">
+															<span class="transferId" style="display: none" th:text="${coolerWebsite.getId()}"></span>
+															<span class="transferSiteName" style="display: none" th:text="${coolerWebsite.getSiteName()}"></span>
+														</th:block>
+														<i class="fa-solid fa-chart-column"></i>
+													</a>
+													<th:block sec:authorize="hasAuthority('ADMIN')">
+														<form class="form-link" th:action="@{/allForPC/cooler-corpus/id}" th:method="DELETE">
+															<input type="hidden" name="id" th:value="${coolerWebsite.getId()}">
+															<a href="#" onclick="$(this).closest('form').submit();">
+																<i class="fa-solid fa-trash"></i>
+															</a>
+														</form>
+													</th:block>
+												</figcaption>
+											</th:block>
+										</figure>
+										<div class="website-container__item-footer">
+											<p th:text="${coolerWebsite.getPage().getText()}"></p>
+											<div class="text-right">
+												<a th:href="@{(${coolerWebsite.getPage().getLink()})}" class="btn btn-outline-light" target="_blank">подробнее</a>
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="statistic">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col bgcolor">
+							<a name="tabl1"></a>
+							<div class="statistic__header mb-3">
+								<h3>Рейтинг сайтов на основе результатов оценки трафика</h3>
+							</div>
+							<div class="statistic__table">
+								<div sec:authorize="hasAuthority('ADMIN')" class="dataTime mb-2">
+									<th:block th:if="${siteName_cooler != null and month_cooler != null and year_cooler != null}">
+										<p th:text="${'Получены данные для ' + siteName_cooler + ' за ' + month_cooler + ' ' + year_cooler}"></p>
+									</th:block>
+									<th:block th:if="${messageWeb_cooler != null}">
+										<p th:text="${messageWeb_cooler}"></p>
+									</th:block>
+
+									<form th:action="@{/allForPC/cooler-corpus/id}" th:method="PUT">
+										<input class="result" type="hidden" name="id">
+										<a href="#" class="refresh ml-2" onclick="$(this).closest('form').submit();">
+											<span class="domenName mp-2"></span>
+											<i class="fa-solid fa-rotate-right"></i>
+										</a>
+									</form>
+								</div>
+								<div class="tablica table-responsive">
+									<table class="table table-bordered">
+										<thead>
+										<tr class="table-info">
+											<th scope="col">Место</th>
+											<th scope="col">Домен</th>
+											<th scope="col">Позиция сайта в мире</th>
+											<th scope="col">Позиция сайта в стране</th>
+											<th scope="col">Данные за период</th>
+										</tr>
+										</thead>
+										<tbody>
+										<th:block th:each="coolerRatingTraffic, index : ${ratingTrafficCoolers}">
+											<tr class="table-light">
+												<td th:text="${index.index + 1}"></td>
+												<td th:text="${coolerRatingTraffic.getSiteName()}"></td>
+												<td th:text="${coolerRatingTraffic.getRatingInWorld()}"></td>
+												<td th:text="${coolerRatingTraffic.getRatingInCountry()}"></td>
+												<td th:text="${coolerRatingTraffic.getMonth() + ' ' + coolerRatingTraffic.getYear()}"></td>
+											</tr>
+										</th:block>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="rating">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<!--							<div class="showrating mb-4 text-center">-->
+							<!--								<a href="#table" class="link2">Показать рейтинг</a>-->
+							<!--							</div>-->
+							<div class="tablerating table-responsive">
+								<a name="tabl2"></a>
+								<div class="rating__title">
+									<h3>Рейтинг сайтов на основе показателей взаимодействия с ними пользователей</h3>
+								</div>
+								<table class="table table-bordered">
+									<thead>
+									<tr class="table-primary">
+										<th scope="col">Место</th>
+										<th scope="col">Логотип</th>
+										<th scope="col">Время посещения</th>
+										<th scope="col">Общее число визитов</th>
+										<th scope="col">Отказ от посещения</th>
+										<th scope="col">Данные за период</th>
+									</tr>
+									</thead>
+									<tbody>
+									<th:block th:each="coolerWebsiteRating, index : ${ratingCoolerWebsites}">
+										<tr class="table-light">
+											<td scope="row" th:text="${index.index + 1}"></td>
+											<td class="imge">
+												<th:block th:if="${coolerWebsiteRating.getIconSite() != null}">
+													<img th:src="@{(${coolerWebsiteRating.getIconSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="logotip">
+												</th:block>
+												<th:block th:unless="${coolerWebsiteRating.getIconSite() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</td>
+											<td th:text="${coolerWebsiteRating.getTimeOnSite()}"></td>
+											<td th:text="${coolerWebsiteRating.getVisits()}"></td>
+											<td th:text="${coolerWebsiteRating.getBounceRate() + ' %'}"></td>
+											<td th:text="${coolerWebsiteRating.getMonth() + ' ' + coolerWebsiteRating.getYear()}"></td>
+										</tr>
+									</th:block>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="products">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row mb-4">
+						<div class="col">
+							<div class="products__title">
+								<h2>Популярные товары</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для офисного ПК</span></h3>
+							</div>
+
+							<th:block th:each="officeCooler : ${coolerOffices}">
+								<div class="products__item">
+									<div class="item__description">
+										<div class="item__body">
+											<h4 class="mb-4" th:text="${officeCooler.getName()}"></h4>
+											<p th:text="${officeCooler.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на кулер для корпуса варьируется в приделах ' + officeCooler.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/cooler-corpus/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${officeCooler.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="item__img">
+											<img th:src="@{(${officeCooler.getImage()})}" alt="coolerForCorpus">
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данный кулер для корпуса</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/cooler-corpus/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${officeCooler.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceOfficeCooler : ${officeCooler.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceOfficeCooler.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceOfficeCooler.getSiteName()}"></td>
+														<td  th:text="${priceOfficeCooler.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceOfficeCooler.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для игрового ПК</span></h3>
+							</div>
+							<th:block th:each="gameCooler : ${coolerGames}">
+								<div class="products__item">
+									<div class="item__description2">
+										<div class="item__img2">
+											<img th:src="@{(${gameCooler.getImage()})}" alt="coolerForCorpus">
+										</div>
+										<div class="item__body2">
+											<h4 class="mb-4" th:text="${gameCooler.getName()}"></h4>
+											<p th:text="${gameCooler.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на кулер для корпуса изменяется в приделах ' + gameCooler.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/cooler-corpus/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${gameCooler.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данный кулер для корпуса</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/cooler-corpus/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${gameCooler.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceGameCooler : ${gameCooler.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceGameCooler.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceGameCooler.getSiteName()}"></td>
+														<td th:text="${priceGameCooler.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceGameCooler.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для домашнего ПК</span></h3>
+							</div>
+							<th:block th:each="homeCooler : ${coolerHomes}">
+								<div class="products__item">
+									<div class="item__description">
+										<div class="item__body">
+											<h4 class="mb-4" th:text="${homeCooler.getName()}"></h4>
+											<p th:text="${homeCooler.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на кулер для корпуса меняется в рамках ' + homeCooler.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/cooler-corpus/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${homeCooler.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="item__img">
+											<img th:src="@{(${homeCooler.getImage()})}" alt="CoolerForCorpus">
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данный кулер для корпуса</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/cooler-corpus/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${homeCooler.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceHomeCooler : ${homeCooler.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceHomeCooler.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceHomeCooler.getSiteName()}"></td>
+														<td th:text="${priceHomeCooler.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceHomeCooler.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu.js}" type="text/javascript"></script>
+<script th:src="@{/js/equipment.js}" type="text/javascript"></script>
+</body>
+</html>
