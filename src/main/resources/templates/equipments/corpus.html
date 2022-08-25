@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<title>Корпус</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/device.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu::menu}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="titlePage">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col">
+							<div class="titlePage__header">
+								<h1>Корпус</h1>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="titlePage__text">
+								<p>Корпус для компьютера физически представляет собой базовую несущую конструкцию (шасси), которая предназначена для последующего наполнения аппаратным обеспечением с целью создания электронной вычислительной машины. Он должен быть достаточно просторным для иных частей ПК, но при этом малогабаритным, чтобы уместить на своём рабочем столе. Также в функции корпуса входит:</p>
+								<ul class="text__list3">
+									<li>защита "внутренностей" системного блока от внешнего физического воздействия;</li>
+									<li>поддержка оптимального температурного режима (при правильной организации охлаждения);</li>
+									<li>экранирование электромагнитного излучения, создаваемого работающим ПК.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="sourcesofchoice">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="sourcesofchoice__header mb-4">
+								<h2>Источники по выбору лучшего корпуса</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="website-container">
+								<th:block th:each="corpusWebsite : ${corpusWebsites}">
+									<div class="website-container__item">
+										<div class="logosite">
+											<div class="logosite__image">
+												<th:block th:if="${corpusWebsite.getIconSite() != null}">
+													<img th:src="@{(${corpusWebsite.getIconSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="logotip">
+												</th:block>
+												<th:block th:unless="${corpusWebsite.getIconSite() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</div>
+										</div>
+										<div class="title">
+											<h3 th:text="${corpusWebsite.getPage().getTitle()}"></h3>
+										</div>
+										<figure class="imgsettings">
+											<th:block th:if="${corpusWebsite.getPage().getImageUrl() != null}">
+												<img th:src="@{(${corpusWebsite.getPage().getImageUrl()})}" alt="image">
+											</th:block>
+											<th:block th:unless="${corpusWebsite.getPage().getImageUrl() != null}">
+												<img th:src="@{img/comp.jpeg}"  alt="image">
+											</th:block>
+											<th:block sec:authorize="isAuthenticated()">
+												<figcaption  class="formHidden">
+													<a href="#tabl2" class="link2">
+														<i class="fa-solid fa-arrow-up-wide-short"></i>
+													</a>
+													<a href="#tabl1" class="link">
+														<th:block sec:authorize="hasAuthority('ADMIN')">
+															<span class="transferId" style="display: none" th:text="${corpusWebsite.getId()}"></span>
+															<span class="transferSiteName" style="display: none" th:text="${corpusWebsite.getSiteName()}"></span>
+														</th:block>
+														<i class="fa-solid fa-chart-column"></i>
+													</a>
+													<th:block sec:authorize="hasAuthority('ADMIN')">
+														<form class="form-link" th:action="@{/allForPC/corpus/id}" th:method="DELETE">
+															<input type="hidden" name="id" th:value="${corpusWebsite.getId()}">
+															<a href="#" onclick="$(this).closest('form').submit();">
+																<i class="fa-solid fa-trash"></i>
+															</a>
+														</form>
+													</th:block>
+												</figcaption>
+											</th:block>
+										</figure>
+										<div class="website-container__item-footer">
+											<p th:text="${corpusWebsite.getPage().getText()}"></p>
+											<div class="text-right">
+												<a th:href="@{(${corpusWebsite.getPage().getLink()})}" class="btn btn-outline-light" target="_blank">подробнее</a>
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="statistic">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col bgcolor">
+							<a name="tabl1"></a>
+							<div class="statistic__header mb-3">
+								<h3>Рейтинг сайтов на основе результатов оценки трафика</h3>
+							</div>
+							<div class="statistic__table">
+								<div sec:authorize="hasAuthority('ADMIN')" class="dataTime mb-2">
+									<th:block th:if="${siteName_corpus != null and month_corpus != null and year_corpus != null}">
+										<p th:text="${'Получены данные для ' + siteName_corpus + ' за ' + month_corpus + ' ' + year_corpus}"></p>
+									</th:block>
+									<th:block th:if="${messageWeb_corpus != null}">
+										<p th:text="${messageWeb_corpus}"></p>
+									</th:block>
+
+									<form th:action="@{/allForPC/corpus/id}" th:method="PUT">
+										<input class="result" type="hidden" name="id">
+										<a href="#" class="refresh ml-2" onclick="$(this).closest('form').submit();">
+											<span class="domenName mp-2"></span>
+											<i class="fa-solid fa-rotate-right"></i>
+										</a>
+									</form>
+								</div>
+								<div class="tablica table-responsive">
+									<table class="table table-bordered">
+										<thead>
+										<tr class="table-info">
+											<th scope="col">Место</th>
+											<th scope="col">Домен</th>
+											<th scope="col">Позиция сайта в мире</th>
+											<th scope="col">Позиция сайта в стране</th>
+											<th scope="col">Данные за период</th>
+										</tr>
+										</thead>
+										<tbody>
+										<th:block th:each="corpusTrafficRating, index : ${corpusTrafficRatings}">
+											<tr class="table-light">
+												<td th:text="${index.index + 1}"></td>
+												<td th:text="${corpusTrafficRating.getSiteName()}"></td>
+												<td th:text="${corpusTrafficRating.getRatingInWorld()}"></td>
+												<td th:text="${corpusTrafficRating.getRatingInCountry()}"></td>
+												<td th:text="${corpusTrafficRating.getMonth() + ' ' + corpusTrafficRating.getYear()}"></td>
+											</tr>
+										</th:block>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="rating">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<!--							<div class="showrating mb-4 text-center">-->
+							<!--								<a href="#table" class="link2">Показать рейтинг</a>-->
+							<!--							</div>-->
+							<div class="tablerating table-responsive">
+								<a name="tabl2"></a>
+								<div class="rating__title">
+									<h3>Рейтинг сайтов на основе показателей взаимодействия с ними пользователей</h3>
+								</div>
+								<table class="table table-bordered">
+									<thead>
+									<tr class="table-primary">
+										<th scope="col">Место</th>
+										<th scope="col">Логотип</th>
+										<th scope="col">Время посещения</th>
+										<th scope="col">Общее число визитов</th>
+										<th scope="col">Отказ от посещения</th>
+										<th scope="col">Данные за период</th>
+									</tr>
+									</thead>
+									<tbody>
+									<th:block th:each="ratingCorpusWebsite, index : ${corpusWebsiteRatings}">
+										<tr class="table-light">
+											<td scope="row" th:text="${index.index + 1}"></td>
+											<td class="imge">
+												<th:block th:if="${ratingCorpusWebsite.getIconSite() != null}">
+													<img th:src="@{(${ratingCorpusWebsite.getIconSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="logotip">
+												</th:block>
+												<th:block th:unless="${ratingCorpusWebsite.getIconSite() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</td>
+											<td th:text="${ratingCorpusWebsite.getTimeOnSite()}"></td>
+											<td th:text="${ratingCorpusWebsite.getVisits()}"></td>
+											<td th:text="${ratingCorpusWebsite.getBounceRate() + ' %'}"></td>
+											<td th:text="${ratingCorpusWebsite.getMonth() + ' ' + ratingCorpusWebsite.getYear()}"></td>
+										</tr>
+									</th:block>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="products">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row mb-4">
+						<div class="col">
+							<div class="products__title">
+								<h2>Популярные товары</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для офисного ПК</span></h3>
+							</div>
+
+							<th:block th:each="officeCorpus : ${corpusOffices}">
+								<div class="products__item">
+									<div class="item__description">
+										<div class="item__body">
+											<h4 class="mb-4" th:text="${officeCorpus.getName()}"></h4>
+											<p th:text="${officeCorpus.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на корпус варьируется в приделах ' + officeCorpus.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/corpus/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${officeCorpus.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="item__img">
+											<img th:src="@{(${officeCorpus.getImage()})}" alt="corpus">
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данный корпус</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/corpus/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${officeCorpus.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceOfficeCorpus : ${officeCorpus.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceOfficeCorpus.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceOfficeCorpus.getSiteName()}"></td>
+														<td  th:text="${priceOfficeCorpus.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceOfficeCorpus.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для игрового ПК</span></h3>
+							</div>
+							<th:block th:each="gameCorpus : ${corpusGames}">
+								<div class="products__item">
+									<div class="item__description2">
+										<div class="item__img2">
+											<img th:src="@{(${gameCorpus.getImage()})}" alt="corpus">
+										</div>
+										<div class="item__body2">
+											<h4 class="mb-4" th:text="${gameCorpus.getName()}"></h4>
+											<p th:text="${gameCorpus.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на корпус изменяется в приделах '+ gameCorpus.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/corpus/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${gameCorpus.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данный корпус</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/corpus/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${gameCorpus.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceGameCorpus : ${gameCorpus.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceGameCorpus.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceGameCorpus.getSiteName()}"></td>
+														<td th:text="${priceGameCorpus.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceGameCorpus.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для домашнего ПК</span></h3>
+							</div>
+							<th:block th:each="homeCorpus : ${corpusHomes}">
+								<div class="products__item">
+									<div class="item__description">
+										<div class="item__body">
+											<h4 class="mb-4" th:text="${homeCorpus.getName()}"></h4>
+											<p th:text="${homeCorpus.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на корпус меняется в рамках ' + homeCorpus.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/corpus/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${homeCorpus.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="item__img">
+											<img th:src="@{(${homeCorpus.getImage()})}" alt="Corpus">
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данный корпус</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/corpus/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${homeCorpus.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceHomeCorpus : ${homeCorpus.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceHomeCorpus.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceHomeCorpus.getSiteName()}"></td>
+														<td th:text="${priceHomeCorpus.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceHomeCorpus.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu.js}" type="text/javascript"></script>
+<script th:src="@{/js/equipment.js}" type="text/javascript"></script>
+</body>
+</html>
