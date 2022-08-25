@@ -72,16 +72,17 @@ public class PowerSupplyController {
         if(sitePowerS != null){
             try{
                 SiteAnalysisDto analysisDtoPowerS = siteAnalysisClient.getSiteAnalysis(sitePowerS.getSiteName());
-                String siteName_powerS = analysisDtoPowerS.getSiteName();
-                String month_powerS = statisticDataConvector.monthConvector(analysisDtoPowerS.getEngagments().getMonth());
-                String year_powerS = analysisDtoPowerS.getEngagments().getYear();
-                InfoTrafficWebsite trafficWebsitePowerS = websiteService.getInfoTrafficWebsiteDto(sitePowerS.getId(),analysisDtoPowerS);
-                websiteService.updateWebsite(trafficWebsitePowerS);
+                if(analysisDtoPowerS != null){
+                    String siteName_powerS = analysisDtoPowerS.getSiteName();
+                    String month_powerS = statisticDataConvector.monthConvector(analysisDtoPowerS.getEngagments().getMonth());
+                    String year_powerS = analysisDtoPowerS.getEngagments().getYear();
+                    InfoTrafficWebsite trafficWebsitePowerS = websiteService.getInfoTrafficWebsiteDto(sitePowerS.getId(),analysisDtoPowerS);
+                    websiteService.updateWebsite(trafficWebsitePowerS);
 
-                model.addAttribute("siteName_powerS", siteName_powerS);
-                model.addAttribute("month_powerS", month_powerS);
-                model.addAttribute("year_powerS", year_powerS);
-
+                    model.addAttribute("siteName_powerS", siteName_powerS);
+                    model.addAttribute("month_powerS", month_powerS);
+                    model.addAttribute("year_powerS", year_powerS);
+                }
             }
             catch (HttpClientErrorException e){
                 e.getMessage();

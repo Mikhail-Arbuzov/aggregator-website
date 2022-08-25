@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<title>Оперативная память</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/device.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu::menu}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="titlePage">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col">
+							<div class="titlePage__header">
+								<h1>Оперативная память</h1>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="titlePage__text">
+								<p>Оперативная память, или оперативное запоминающее устройство (ОЗУ) – это временное хранилище данных, необходимых для работы игр и программ. Она обеспечивает процессору и видеокарте мгновенный доступ к запрашиваемой информации, является непостоянной и имеет свойства перезаписываться, обновляться, быть энергозависимой, поэтому после выключения ПК она автоматически очищается. В момент запуска программы необходимые сведения выгружаются с HDD/SSD в оперативную память, а затем становятся доступными для процессора. Если программы требуют хранения тяжёлых файлов, то места должно быть много. Например, для игр сохраняются текстуры виртуальных объектов: чем больше разрешение, тем больше места они занимают.</p>
+								<p>Оперативная память выглядит как узкие печатные платы называемые модулями или планками памяти, маркируются обозначением DRAM  (Dynamic Random Access Memory). У планок имеется разная ёмкость - 8, 16, 32 Гб. При этом скорость работы памяти и ёмкость помогают определить быстроту реакции программ, а также многозадачность компьютера. Количество планок зависит от типоразмера материнской платы: у micro -ATX - два слота для установки DRAM, у mini-ITX и ATX - четыре и восемь. Современные материнские платы поддерживают до 32 Гб памяти, что вполне достаточно для большинства решений. Не рекомендуется ставить в разъёмы плат разночастотные модули памяти от разных производителей.</p>
+								<p>При разгоне до 3200 МГц производительность памяти возрастает, усиливается нагрев чипов, поэтому для высокочастотных планок с рабочим напряжением 1,35 V и выше необходим радиатор.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="sourcesofchoice">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="sourcesofchoice__header mb-4">
+								<h2>Источники по выбору лучшего ОЗУ</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="website-container">
+								<th:block th:each="ramWebsite : ${ramWebsites}">
+									<div class="website-container__item">
+										<div class="logosite">
+											<div class="logosite__image">
+												<th:block th:if="${ramWebsite.getIconSite() != null}">
+													<img th:src="@{(${ramWebsite.getIconSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="logotip">
+												</th:block>
+												<th:block th:unless="${ramWebsite.getIconSite() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</div>
+										</div>
+										<div class="title">
+											<h3 th:text="${ramWebsite.getPage().getTitle()}"></h3>
+										</div>
+										<figure class="imgsettings">
+											<th:block th:if="${ramWebsite.getPage().getImageUrl() != null}">
+												<img th:src="@{(${ramWebsite.getPage().getImageUrl()})}" alt="image">
+											</th:block>
+											<th:block th:unless="${ramWebsite.getPage().getImageUrl() != null}">
+												<img th:src="@{img/comp.jpeg}"  alt="image">
+											</th:block>
+											<th:block sec:authorize="isAuthenticated()">
+												<figcaption  class="formHidden">
+													<a href="#tabl2" class="link2">
+														<i class="fa-solid fa-arrow-up-wide-short"></i>
+													</a>
+													<a href="#tabl1" class="link">
+														<th:block sec:authorize="hasAuthority('ADMIN')">
+															<span class="transferId" style="display: none" th:text="${ramWebsite.getId()}"></span>
+															<span class="transferSiteName" style="display: none" th:text="${ramWebsite.getSiteName()}"></span>
+														</th:block>
+														<i class="fa-solid fa-chart-column"></i>
+													</a>
+													<th:block sec:authorize="hasAuthority('ADMIN')">
+														<form class="form-link" th:action="@{/allForPC/ram/id}" th:method="DELETE">
+															<input type="hidden" name="id" th:value="${ramWebsite.getId()}">
+															<a href="#" onclick="$(this).closest('form').submit();">
+																<i class="fa-solid fa-trash"></i>
+															</a>
+														</form>
+													</th:block>
+												</figcaption>
+											</th:block>
+										</figure>
+										<div class="website-container__item-footer">
+											<p th:text="${ramWebsite.getPage().getText()}"></p>
+											<div class="text-right">
+												<a th:href="@{(${ramWebsite.getPage().getLink()})}" class="btn btn-outline-light" target="_blank">подробнее</a>
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="statistic">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col bgcolor">
+							<a name="tabl1"></a>
+							<div class="statistic__header mb-3">
+								<h3>Рейтинг сайтов на основе результатов оценки трафика</h3>
+							</div>
+							<div class="statistic__table">
+								<div sec:authorize="hasAuthority('ADMIN')" class="dataTime mb-2">
+									<th:block th:if="${siteName_ram !=null and month_ram != null and year_ram != null}">
+										<p th:text="${'Получены данные для ' + siteName_ram + ' за ' + month_ram + ' ' + year_ram}"></p>
+									</th:block>
+									<th:block th:if="${messageWeb_ram != null}">
+										<p th:text="${messageWeb_ram}"></p>
+									</th:block>
+
+									<form th:action="@{/allForPC/ram/id}" th:method="PUT">
+										<input class="result" type="hidden" name="id">
+										<a href="#" class="refresh ml-2" onclick="$(this).closest('form').submit();">
+											<span class="domenName mp-2"></span>
+											<i class="fa-solid fa-rotate-right"></i>
+										</a>
+									</form>
+								</div>
+								<div class="tablica table-responsive">
+									<table class="table table-bordered">
+										<thead>
+										<tr class="table-info">
+											<th scope="col">Место</th>
+											<th scope="col">Домен</th>
+											<th scope="col">Позиция сайта в мире</th>
+											<th scope="col">Позиция сайта в стране</th>
+											<th scope="col">Данные за период</th>
+										</tr>
+										</thead>
+										<tbody>
+										<th:block th:each="ratingTrafficRAM, index : ${ramTrafficRatings}">
+											<tr class="table-light">
+												<td th:text="${index.index + 1}"></td>
+												<td th:text="${ratingTrafficRAM.getSiteName()}"></td>
+												<td th:text="${ratingTrafficRAM.getRatingInWorld()}"></td>
+												<td th:text="${ratingTrafficRAM.getRatingInCountry()}"></td>
+												<td th:text="${ratingTrafficRAM.getMonth() + ' ' + ratingTrafficRAM.getYear()}"></td>
+											</tr>
+										</th:block>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="rating">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<!--							<div class="showrating mb-4 text-center">-->
+							<!--								<a href="#table" class="link2">Показать рейтинг</a>-->
+							<!--							</div>-->
+							<div class="tablerating table-responsive">
+								<a name="tabl2"></a>
+								<div class="rating__title">
+									<h3>Рейтинг сайтов на основе показателей взаимодействия с ними пользователей</h3>
+								</div>
+								<table class="table table-bordered">
+									<thead>
+									<tr class="table-primary">
+										<th scope="col">Место</th>
+										<th scope="col">Логотип</th>
+										<th scope="col">Время посещения</th>
+										<th scope="col">Общее число визитов</th>
+										<th scope="col">Отказ от посещения</th>
+										<th scope="col">Данные за период</th>
+									</tr>
+									</thead>
+									<tbody>
+									<th:block th:each="ramWebsiteRating, index : ${ramRatings}">
+										<tr class="table-light">
+											<td scope="row" th:text="${index.index + 1}"></td>
+											<td class="imge">
+												<th:block th:if="${ramWebsiteRating.getIconSite() != null}">
+													<img th:src="@{(${ramWebsiteRating.getIconSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="logotip">
+												</th:block>
+												<th:block th:unless="${ramWebsiteRating.getIconSite() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</td>
+											<td th:text="${ramWebsiteRating.getTimeOnSite()}"></td>
+											<td th:text="${ramWebsiteRating.getVisits()}"></td>
+											<td th:text="${ramWebsiteRating.getBounceRate() + ' %'}"></td>
+											<td th:text="${ramWebsiteRating.getMonth() + ' ' + ramWebsiteRating.getYear()}"></td>
+										</tr>
+									</th:block>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="products">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row mb-4">
+						<div class="col">
+							<div class="products__title">
+								<h2>Популярные товары</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для офисного ПК</span></h3>
+							</div>
+
+							<th:block th:each="officeRAM : ${ramOffices}">
+								<div class="products__item">
+									<div class="item__description">
+										<div class="item__body">
+											<h4 class="mb-4" th:text="${officeRAM.getName()}"></h4>
+											<p th:text="${officeRAM.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на ОЗУ варьируется в приделах ' + officeRAM.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/ram/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${officeRAM.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="item__img">
+											<img th:src="@{(${officeRAM.getImage()})}" alt="RAM">
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данное ОЗУ</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/ram/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${officeRAM.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceOfficeRAM : ${officeRAM.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceOfficeRAM.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceOfficeRAM.getSiteName()}"></td>
+														<td  th:text="${priceOfficeRAM.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceOfficeRAM.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для игрового ПК</span></h3>
+							</div>
+							<th:block th:each="gameRAM : ${ramGames}">
+								<div class="products__item">
+									<div class="item__description2">
+										<div class="item__img2">
+											<img th:src="@{(${gameRAM.getImage()})}" alt="RAM">
+										</div>
+										<div class="item__body2">
+											<h4 class="mb-4" th:text="${gameRAM.getName()}"></h4>
+											<p th:text="${gameRAM.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на ОЗУ изменяется в приделах ' + gameRAM.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/ram/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${gameRAM.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данное ОЗУ</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/ram/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${gameRAM.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceGameRAM : ${gameRAM.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceGameRAM.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceGameRAM.getSiteName()}"></td>
+														<td th:text="${priceGameRAM.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceGameRAM.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для домашнего ПК</span></h3>
+							</div>
+							<th:block th:each="homeRAM : ${ramHomes}">
+								<div class="products__item">
+									<div class="item__description">
+										<div class="item__body">
+											<h4 class="mb-4" th:text="${homeRAM.getName()}"></h4>
+											<p th:text="${homeRAM.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на ОЗУ меняется в рамках ' + homeRAM.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/ram/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${homeRAM.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="item__img">
+											<img th:src="@{(${homeRAM.getImage()})}" alt="RAM">
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данное ОЗУ</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/ram/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${homeRAM.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceHomeRAM : ${homeRAM.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceHomeRAM.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceHomeRAM.getSiteName()}"></td>
+														<td th:text="${priceHomeRAM.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceHomeRAM.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu.js}" type="text/javascript"></script>
+<script th:src="@{/js/equipment.js}" type="text/javascript"></script>
+</body>
+</html>

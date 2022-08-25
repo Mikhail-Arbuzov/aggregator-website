@@ -72,15 +72,17 @@ public class HDDController {
         if(websiteDto4 != null){
             try{
                 SiteAnalysisDto analysisDto2 = siteAnalysisClient.getSiteAnalysis(websiteDto4.getSiteName());
-                InfoTrafficWebsite website = websiteService.getInfoTrafficWebsiteDto(websiteDto4.getId(),analysisDto2);
-                String siteName4 = analysisDto2.getSiteName();
-                String month4 = statisticDataConvector.monthConvector(analysisDto2.getEngagments().getMonth());
-                String year4 = analysisDto2.getEngagments().getYear();
-                websiteService.updateWebsite(website);
+                if(analysisDto2 != null){
+                    InfoTrafficWebsite website = websiteService.getInfoTrafficWebsiteDto(websiteDto4.getId(),analysisDto2);
+                    String siteName4 = analysisDto2.getSiteName();
+                    String month4 = statisticDataConvector.monthConvector(analysisDto2.getEngagments().getMonth());
+                    String year4 = analysisDto2.getEngagments().getYear();
+                    websiteService.updateWebsite(website);
 
-                model.addAttribute("siteName4",siteName4);
-                model.addAttribute("month4", month4);
-                model.addAttribute("year4",year4);
+                    model.addAttribute("siteName4",siteName4);
+                    model.addAttribute("month4", month4);
+                    model.addAttribute("year4",year4);
+                }
             }
             catch (HttpClientErrorException e){
                 e.getMessage();
