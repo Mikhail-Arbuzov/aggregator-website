@@ -33,8 +33,8 @@
 							<div class="titlePage__text">
 								<p>Компьютерная мышь – один из периферийных элементов компьютера, который необходим для управления курсором и отдачи различных команд компьютеру. Управление курсором осуществляется путём перемещения мыши по поверхности стола или коврика для мыши. Клавиши и колёсико мыши вызывают определённые действия, например: активация указанного объекта, вызов контекстного меню, вертикальная и горизонтальная прокрутка веб-страниц, окон операционной системы и электронных документов. Встречается большое количество видов компьютерных мышек: лазерные, оптические, индукционные, гироскопические и другие. По способу подключения, компьютерные мыши делятся на два типа.</p>
 								<ul class="text__list2">
-									<li><strong> Проводная мышь</strong>. Это компьютерные мыши, которые подключаются к компьютеру через USB провод.</li>
-									<li><strong> Беспроводная</strong>. Такие устройства можно подключить к компьютеру через Bluetooth или посредством дополнительного устройства, например, через OTG переходник. </li>
+									<li><strong> Проводная мышь.</strong> Это компьютерные мыши, которые подключаются к компьютеру через USB провод.</li>
+									<li><strong> Беспроводная.</strong> Такие устройства можно подключить к компьютеру через Bluetooth или посредством дополнительного устройства, например, через OTG переходник. </li>
 								</ul>
 								<p>Современные модели могут обладать не только стандартным набором клавиш (левая, правая и колесо прокрутки), но и иметь дополнительные кнопки, которым можно назначать определенные функции. Наибольшим числом кнопок обладают компьютерные мыши для «геймеров».</p>
 							</div>
@@ -44,405 +44,405 @@
 			</div>
 		</section>
 
-<!--		<section class="sourcesofchoice">-->
-<!--			<div class="corobka">-->
-<!--				<div class="container-fluid">-->
-<!--					<div class="row">-->
-<!--						<div class="col">-->
-<!--							<div class="sourcesofchoice__header mb-4">-->
-<!--								<h2>Источники по выбору лучшего кулера для процессора</h2>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--					<div class="row">-->
-<!--						<div class="col">-->
-<!--							<div class="website-container">-->
-<!--								<th:block th:each="">-->
-<!--									<div class="website-container__item">-->
-<!--										<div class="logosite">-->
-<!--											<div class="logosite__image">-->
-<!--												<th:block th:if="">-->
-<!--													<img th:src="" onerror="this.src ='img/iconSite.jpg'" alt="logotip">-->
-<!--												</th:block>-->
-<!--												<th:block th:unless="">-->
-<!--													<img th:src="@{img/iconSite.jpg}"  alt="logotip">-->
-<!--												</th:block>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--										<div class="title">-->
-<!--											<h3 th:text=""></h3>-->
-<!--										</div>-->
-<!--										<figure class="imgsettings">-->
-<!--											<th:block th:if="">-->
-<!--												<img th:src="" alt="image">-->
-<!--											</th:block>-->
-<!--											<th:block th:unless="">-->
-<!--												<img th:src="@{img/comp.jpeg}"  alt="image">-->
-<!--											</th:block>-->
-<!--											<th:block sec:authorize="isAuthenticated()">-->
-<!--												<figcaption  class="formHidden">-->
-<!--													<a href="#tabl2" class="link2">-->
-<!--														<i class="fa-solid fa-arrow-up-wide-short"></i>-->
-<!--													</a>-->
-<!--													<a href="#tabl1" class="link">-->
-<!--														<th:block sec:authorize="hasAuthority('ADMIN')">-->
-<!--															<span class="transferId" style="display: none" th:text=""></span>-->
-<!--															<span class="transferSiteName" style="display: none" th:text=""></span>-->
-<!--														</th:block>-->
-<!--														<i class="fa-solid fa-chart-column"></i>-->
-<!--													</a>-->
-<!--													<th:block sec:authorize="hasAuthority('ADMIN')">-->
-<!--														<form class="form-link" th:action="@{/allForPC/cooler-cpu/id}" th:method="DELETE">-->
-<!--															<input type="hidden" name="id" th:value="">-->
-<!--															<a href="#" onclick="$(this).closest('form').submit();">-->
-<!--																<i class="fa-solid fa-trash"></i>-->
-<!--															</a>-->
-<!--														</form>-->
-<!--													</th:block>-->
-<!--												</figcaption>-->
-<!--											</th:block>-->
-<!--										</figure>-->
-<!--										<div class="website-container__item-footer">-->
-<!--											<p th:text=""></p>-->
-<!--											<div class="text-right">-->
-<!--												<a th:href="" class="btn btn-outline-light" target="_blank">подробнее</a>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</th:block>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</section>-->
+		<section class="sourcesofchoice">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="sourcesofchoice__header mb-4">
+								<h2>Источники по выбору лучшей компьютерной мыши</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="website-container">
+								<th:block th:each="mouseWebsite : ${mouseWebsites} ">
+									<div class="website-container__item">
+										<div class="logosite">
+											<div class="logosite__image">
+												<th:block th:if="${mouseWebsite.getIconSite() != null}">
+													<img th:src="@{(${mouseWebsite.getIconSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="logotip">
+												</th:block>
+												<th:block th:unless="${mouseWebsite.getIconSite() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</div>
+										</div>
+										<div class="title">
+											<h3 th:text="${mouseWebsite.getPage().getTitle()}"></h3>
+										</div>
+										<figure class="imgsettings">
+											<th:block th:if="${mouseWebsite.getPage().getImageUrl() != null}">
+												<img th:src="@{(${mouseWebsite.getPage().getImageUrl()})}" alt="image">
+											</th:block>
+											<th:block th:unless="${mouseWebsite.getPage().getImageUrl() != null}">
+												<img th:src="@{img/comp.jpeg}"  alt="image">
+											</th:block>
+											<th:block sec:authorize="isAuthenticated()">
+												<figcaption  class="formHidden">
+													<a href="#tabl2" class="link2">
+														<i class="fa-solid fa-arrow-up-wide-short"></i>
+													</a>
+													<a href="#tabl1" class="link">
+														<th:block sec:authorize="hasAuthority('ADMIN')">
+															<span class="transferId" style="display: none" th:text="${mouseWebsite.getId()}"></span>
+															<span class="transferSiteName" style="display: none" th:text="${mouseWebsite.getSiteName()}"></span>
+														</th:block>
+														<i class="fa-solid fa-chart-column"></i>
+													</a>
+													<th:block sec:authorize="hasAuthority('ADMIN')">
+														<form class="form-link" th:action="@{/allForPC/mouse/id}" th:method="DELETE">
+															<input type="hidden" name="id" th:value="${mouseWebsite.getId()}">
+															<a href="#" onclick="$(this).closest('form').submit();">
+																<i class="fa-solid fa-trash"></i>
+															</a>
+														</form>
+													</th:block>
+												</figcaption>
+											</th:block>
+										</figure>
+										<div class="website-container__item-footer">
+											<p th:text="${mouseWebsite.getPage().getText()}"></p>
+											<div class="text-right">
+												<a th:href="@{(${mouseWebsite.getPage().getLink()})}" class="btn btn-outline-light" target="_blank">подробнее</a>
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-<!--		<section class="statistic">-->
-<!--			<div class="corobka">-->
-<!--				<div class="container">-->
-<!--					<div class="row">-->
-<!--						<div class="col bgcolor">-->
-<!--							<a name="tabl1"></a>-->
-<!--							<div class="statistic__header mb-3">-->
-<!--								<h3>Рейтинг сайтов на основе результатов оценки трафика</h3>-->
-<!--							</div>-->
-<!--							<div class="statistic__table">-->
-<!--								<div sec:authorize="hasAuthority('ADMIN')" class="dataTime mb-2">-->
-<!--									<th:block th:if="">-->
-<!--										<p th:text=""></p>-->
-<!--									</th:block>-->
-<!--									<th:block th:if="">-->
-<!--										<p th:text=""></p>-->
-<!--									</th:block>-->
+		<section class="statistic">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col bgcolor">
+							<a name="tabl1"></a>
+							<div class="statistic__header mb-3">
+								<h3>Рейтинг сайтов на основе результатов оценки трафика</h3>
+							</div>
+							<div class="statistic__table">
+								<div sec:authorize="hasAuthority('ADMIN')" class="dataTime mb-2">
+									<th:block th:if="${siteName_mouse != null and month_mouse != null and year_mouse != null}">
+										<p th:text="${'Получены данные для ' + siteName_mouse + ' за ' + month_mouse + ' ' + year_mouse}"></p>
+									</th:block>
+									<th:block th:if="${messageWeb_mouse != null}">
+										<p th:text="${messageWeb_mouse}"></p>
+									</th:block>
 
-<!--									<form th:action="@{/allForPC/cooler-cpu/id}" th:method="PUT">-->
-<!--										<input class="result" type="hidden" name="id">-->
-<!--										<a href="#" class="refresh ml-2" onclick="$(this).closest('form').submit();">-->
-<!--											<span class="domenName mp-2"></span>-->
-<!--											<i class="fa-solid fa-rotate-right"></i>-->
-<!--										</a>-->
-<!--									</form>-->
-<!--								</div>-->
-<!--								<div class="tablica table-responsive">-->
-<!--									<table class="table table-bordered">-->
-<!--										<thead>-->
-<!--										<tr class="table-info">-->
-<!--											<th scope="col">Место</th>-->
-<!--											<th scope="col">Домен</th>-->
-<!--											<th scope="col">Позиция сайта в мире</th>-->
-<!--											<th scope="col">Позиция сайта в стране</th>-->
-<!--											<th scope="col">Данные за период</th>-->
-<!--										</tr>-->
-<!--										</thead>-->
-<!--										<tbody>-->
-<!--										<th:block th:each="">-->
-<!--											<tr class="table-light">-->
-<!--												<td th:text=""></td>-->
-<!--												<td th:text=""></td>-->
-<!--												<td th:text=""></td>-->
-<!--												<td th:text=""></td>-->
-<!--												<td th:text=""></td>-->
-<!--											</tr>-->
-<!--										</th:block>-->
-<!--										</tbody>-->
-<!--									</table>-->
-<!--								</div>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</section>-->
+									<form th:action="@{/allForPC/mouse/id}" th:method="PUT">
+										<input class="result" type="hidden" name="id">
+										<a href="#" class="refresh ml-2" onclick="$(this).closest('form').submit();">
+											<span class="domenName mp-2"></span>
+											<i class="fa-solid fa-rotate-right"></i>
+										</a>
+									</form>
+								</div>
+								<div class="tablica table-responsive">
+									<table class="table table-bordered">
+										<thead>
+										<tr class="table-info">
+											<th scope="col">Место</th>
+											<th scope="col">Домен</th>
+											<th scope="col">Позиция сайта в мире</th>
+											<th scope="col">Позиция сайта в стране</th>
+											<th scope="col">Данные за период</th>
+										</tr>
+										</thead>
+										<tbody>
+										<th:block th:each="ratingTrafficMouse, index : ${ratingTrafficMouses}">
+											<tr class="table-light">
+												<td th:text="${index.index + 1}"></td>
+												<td th:text="${ratingTrafficMouse.getSiteName()}"></td>
+												<td th:text="${ratingTrafficMouse.getRatingInWorld()}"></td>
+												<td th:text="${ratingTrafficMouse.getRatingInCountry()}"></td>
+												<td th:text="${ratingTrafficMouse.getMonth() + ' ' + ratingTrafficMouse.getYear()}"></td>
+											</tr>
+										</th:block>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-<!--		<section class="rating">-->
-<!--			<div class="corobka">-->
-<!--				<div class="container">-->
-<!--					<div class="row">-->
-<!--						<div class="col">-->
-<!--							&lt;!&ndash;							<div class="showrating mb-4 text-center">&ndash;&gt;-->
-<!--							&lt;!&ndash;								<a href="#table" class="link2">Показать рейтинг</a>&ndash;&gt;-->
-<!--							&lt;!&ndash;							</div>&ndash;&gt;-->
-<!--							<div class="tablerating table-responsive">-->
-<!--								<a name="tabl2"></a>-->
-<!--								<div class="rating__title">-->
-<!--									<h3>Рейтинг сайтов на основе показателей взаимодействия с ними пользователей</h3>-->
-<!--								</div>-->
-<!--								<table class="table table-bordered">-->
-<!--									<thead>-->
-<!--									<tr class="table-primary">-->
-<!--										<th scope="col">Место</th>-->
-<!--										<th scope="col">Логотип</th>-->
-<!--										<th scope="col">Время посещения</th>-->
-<!--										<th scope="col">Общее число визитов</th>-->
-<!--										<th scope="col">Отказ от посещения</th>-->
-<!--										<th scope="col">Данные за период</th>-->
-<!--									</tr>-->
-<!--									</thead>-->
-<!--									<tbody>-->
-<!--									<th:block th:each="">-->
-<!--										<tr class="table-light">-->
-<!--											<td scope="row" th:text=""></td>-->
-<!--											<td class="imge">-->
-<!--												<th:block th:if="">-->
-<!--													<img th:src="" onerror="this.src ='img/iconSite.jpg'" alt="logotip">-->
-<!--												</th:block>-->
-<!--												<th:block th:unless="">-->
-<!--													<img th:src="@{img/iconSite.jpg}"  alt="logotip">-->
-<!--												</th:block>-->
-<!--											</td>-->
-<!--											<td th:text=""></td>-->
-<!--											<td th:text=""></td>-->
-<!--											<td th:text=""></td>-->
-<!--											<td th:text=""></td>-->
-<!--										</tr>-->
-<!--									</th:block>-->
-<!--									</tbody>-->
-<!--								</table>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</section>-->
+		<section class="rating">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<!--							<div class="showrating mb-4 text-center">-->
+							<!--								<a href="#table" class="link2">Показать рейтинг</a>-->
+							<!--							</div>-->
+							<div class="tablerating table-responsive">
+								<a name="tabl2"></a>
+								<div class="rating__title">
+									<h3>Рейтинг сайтов на основе показателей взаимодействия с ними пользователей</h3>
+								</div>
+								<table class="table table-bordered">
+									<thead>
+									<tr class="table-primary">
+										<th scope="col">Место</th>
+										<th scope="col">Логотип</th>
+										<th scope="col">Время посещения</th>
+										<th scope="col">Общее число визитов</th>
+										<th scope="col">Отказ от посещения</th>
+										<th scope="col">Данные за период</th>
+									</tr>
+									</thead>
+									<tbody>
+									<th:block th:each="ratingMouseWebsite, index : ${ratingMouseWebsites}">
+										<tr class="table-light">
+											<td scope="row" th:text="${index.index + 1}"></td>
+											<td class="imge">
+												<th:block th:if="${ratingMouseWebsite.getIconSite() != null}">
+													<img th:src="@{(${ratingMouseWebsite.getIconSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="logotip">
+												</th:block>
+												<th:block th:unless="${ratingMouseWebsite.getIconSite() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</td>
+											<td th:text="${ratingMouseWebsite.getTimeOnSite()}"></td>
+											<td th:text="${ratingMouseWebsite.getVisits()}"></td>
+											<td th:text="${ratingMouseWebsite.getBounceRate() + ' %'}"></td>
+											<td th:text="${ratingMouseWebsite.getMonth() + ' ' + ratingMouseWebsite.getYear()}"></td>
+										</tr>
+									</th:block>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-<!--		<section class="products">-->
-<!--			<div class="corobka">-->
-<!--				<div class="container-fluid">-->
-<!--					<div class="row mb-4">-->
-<!--						<div class="col">-->
-<!--							<div class="products__title">-->
-<!--								<h2>Популярные товары</h2>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--					<div class="row">-->
-<!--						<div class="col bgcolor2">-->
-<!--							<div class="products__subtitle">-->
-<!--								<h3><span>Для офисного ПК</span></h3>-->
-<!--							</div>-->
+		<section class="products">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row mb-4">
+						<div class="col">
+							<div class="products__title">
+								<h2>Популярные товары</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для офисного ПК</span></h3>
+							</div>
 
-<!--							<th:block th:each="">-->
-<!--								<div class="products__item">-->
-<!--									<div class="item__description">-->
-<!--										<div class="item__body">-->
-<!--											<h4 class="mb-4" th:text=""></h4>-->
-<!--											<p th:text=""></p>-->
-<!--											<p class="price" th:text=""></p>-->
-<!--											<th:block sec:authorize="hasAuthority('ADMIN')">-->
-<!--												<form class="mt-2" th:action="@{/allForPC/cooler-cpu/number}" th:method="DELETE">-->
-<!--													<input type="hidden" name="number" th:value="">-->
-<!--													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">-->
-<!--														<i class="fa-solid fa-trash"></i>-->
-<!--													</a>-->
-<!--												</form>-->
-<!--											</th:block>-->
-<!--										</div>-->
-<!--										<div class="item__img">-->
-<!--											<img th:src="" alt="coolerForCpu">-->
-<!--										</div>-->
-<!--									</div>-->
-<!--									<div class="item__monitoring mt-5">-->
-<!--										<div class="monitoring-title mb-2">-->
-<!--											<h5 class="mb-3">Мониторинг цен на данный кулер для процессора</h5>-->
-<!--											<th:block sec:authorize="isAuthenticated()">-->
-<!--												<form class="mb-2" th:action="@{/allForPC/cooler-cpu/number}" th:method="PUT">-->
-<!--													<input type="hidden" name="number" th:value="">-->
-<!--													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">-->
-<!--														<i class="fa-solid fa-rotate"></i>-->
-<!--													</a>-->
-<!--												</form>-->
-<!--											</th:block>-->
-<!--										</div>-->
-<!--										<div class="monitoring__table table-responsive">-->
-<!--											<table class="table table-bordered">-->
-<!--												<thead>-->
-<!--												<tr class="table-secondary">-->
-<!--													<th scope="col">Логотип</th>-->
-<!--													<th scope="col">Онлайн магазин</th>-->
-<!--													<th scope="col">Цена</th>-->
-<!--													<th scope="col">Ссылка на товар</th>-->
-<!--												</tr>-->
-<!--												</thead>-->
-<!--												<tbody>-->
-<!--												<th:block th:each="">-->
-<!--													<tr class="table-light">-->
-<!--														<td scope="row"class="imge2">-->
-<!--															<img th:src="" onerror="this.src ='img/iconSite.jpg'" alt="iconka">-->
-<!--														</td>-->
-<!--														<td th:text=""></td>-->
-<!--														<td  th:text=""></td>-->
-<!--														<td >-->
-<!--															<a th:href="" class="btn btn-primary" target="_blank">Посмотреть</a>-->
-<!--														</td>-->
-<!--													</tr>-->
-<!--												</th:block>-->
-<!--												</tbody>-->
-<!--											</table>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--							</th:block>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--					<div class="row">-->
-<!--						<div class="col bgcolor2">-->
-<!--							<div class="products__subtitle">-->
-<!--								<h3><span>Для игрового ПК</span></h3>-->
-<!--							</div>-->
-<!--							<th:block th:each="">-->
-<!--								<div class="products__item">-->
-<!--									<div class="item__description2">-->
-<!--										<div class="item__img2">-->
-<!--											<img th:src="" alt="coolerForCpu">-->
-<!--										</div>-->
-<!--										<div class="item__body2">-->
-<!--											<h4 class="mb-4" th:text=""></h4>-->
-<!--											<p th:text=""></p>-->
-<!--											<p class="price" th:text=""></p>-->
-<!--											<th:block sec:authorize="hasAuthority('ADMIN')">-->
-<!--												<form class="mt-2" th:action="@{/allForPC/cooler-cpu/number}" th:method="DELETE">-->
-<!--													<input type="hidden" name="number" th:value="">-->
-<!--													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">-->
-<!--														<i class="fa-solid fa-trash"></i>-->
-<!--													</a>-->
-<!--												</form>-->
-<!--											</th:block>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--									<div class="item__monitoring mt-5">-->
-<!--										<div class="monitoring-title mb-2">-->
-<!--											<h5 class="mb-3">Мониторинг цен на данный кулер для процессора</h5>-->
-<!--											<th:block sec:authorize="isAuthenticated()">-->
-<!--												<form class="mb-2" th:action="@{/allForPC/cooler-cpu/number}" th:method="PUT">-->
-<!--													<input type="hidden" name="number" th:value="">-->
-<!--													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">-->
-<!--														<i class="fa-solid fa-rotate"></i>-->
-<!--													</a>-->
-<!--												</form>-->
-<!--											</th:block>-->
-<!--										</div>-->
-<!--										<div class="monitoring__table table-responsive">-->
-<!--											<table class="table table-bordered">-->
-<!--												<thead>-->
-<!--												<tr class="table-secondary">-->
-<!--													<th scope="col">Логотип</th>-->
-<!--													<th scope="col">Онлайн магазин</th>-->
-<!--													<th scope="col">Цена</th>-->
-<!--													<th scope="col">Ссылка на товар</th>-->
-<!--												</tr>-->
-<!--												</thead>-->
-<!--												<tbody>-->
-<!--												<th:block th:each="">-->
-<!--													<tr class="table-light">-->
-<!--														<td scope="row"class="imge2">-->
-<!--															<img th:src="" onerror="this.src ='img/iconSite.jpg'" alt="iconka">-->
-<!--														</td>-->
-<!--														<td th:text=""></td>-->
-<!--														<td th:text=""></td>-->
-<!--														<td >-->
-<!--															<a th:href="" class="btn btn-primary" target="_blank">Посмотреть</a>-->
-<!--														</td>-->
-<!--													</tr>-->
-<!--												</th:block>-->
-<!--												</tbody>-->
-<!--											</table>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--							</th:block>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--					<div class="row">-->
-<!--						<div class="col bgcolor2">-->
-<!--							<div class="products__subtitle">-->
-<!--								<h3><span>Для домашнего ПК</span></h3>-->
-<!--							</div>-->
-<!--							<th:block th:each="">-->
-<!--								<div class="products__item">-->
-<!--									<div class="item__description">-->
-<!--										<div class="item__body">-->
-<!--											<h4 class="mb-4" th:text=""></h4>-->
-<!--											<p th:text=""></p>-->
-<!--											<p class="price" th:text=""></p>-->
-<!--											<th:block sec:authorize="hasAuthority('ADMIN')">-->
-<!--												<form class="mt-2" th:action="@{/allForPC/cooler-cpu/number}" th:method="DELETE">-->
-<!--													<input type="hidden" name="number" th:value="">-->
-<!--													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">-->
-<!--														<i class="fa-solid fa-trash"></i>-->
-<!--													</a>-->
-<!--												</form>-->
-<!--											</th:block>-->
-<!--										</div>-->
-<!--										<div class="item__img">-->
-<!--											<img th:src="" alt="CoolerForCpu">-->
-<!--										</div>-->
-<!--									</div>-->
-<!--									<div class="item__monitoring mt-5">-->
-<!--										<div class="monitoring-title mb-2">-->
-<!--											<h5 class="mb-3">Мониторинг цен на данный кулер для процессора</h5>-->
-<!--											<th:block sec:authorize="isAuthenticated()">-->
-<!--												<form class="mb-2" th:action="@{/allForPC/cooler-cpu/number}" th:method="PUT">-->
-<!--													<input type="hidden" name="number" th:value="">-->
-<!--													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">-->
-<!--														<i class="fa-solid fa-rotate"></i>-->
-<!--													</a>-->
-<!--												</form>-->
-<!--											</th:block>-->
-<!--										</div>-->
-<!--										<div class="monitoring__table table-responsive">-->
-<!--											<table class="table table-bordered">-->
-<!--												<thead>-->
-<!--												<tr class="table-secondary">-->
-<!--													<th scope="col">Логотип</th>-->
-<!--													<th scope="col">Онлайн магазин</th>-->
-<!--													<th scope="col">Цена</th>-->
-<!--													<th scope="col">Ссылка на товар</th>-->
-<!--												</tr>-->
-<!--												</thead>-->
-<!--												<tbody>-->
-<!--												<th:block th:each="">-->
-<!--													<tr class="table-light">-->
-<!--														<td scope="row"class="imge2">-->
-<!--															<img th:src="" onerror="this.src ='img/iconSite.jpg'" alt="iconka">-->
-<!--														</td>-->
-<!--														<td th:text=""></td>-->
-<!--														<td th:text=""></td>-->
-<!--														<td >-->
-<!--															<a th:href="" class="btn btn-primary" target="_blank">Посмотреть</a>-->
-<!--														</td>-->
-<!--													</tr>-->
-<!--												</th:block>-->
-<!--												</tbody>-->
-<!--											</table>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--							</th:block>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</section>-->
+							<th:block th:each="officeMouse : ${mouseOffices}">
+								<div class="products__item">
+									<div class="item__description">
+										<div class="item__body">
+											<h4 class="mb-4" th:text="${officeMouse.getName()}"></h4>
+											<p th:text="${officeMouse.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на мышку варьируется в приделах ' + officeMouse.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/mouse/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${officeMouse.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="item__img">
+											<img th:src="@{(${officeMouse.getImage()})}" alt="mouse">
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данную мышку</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/mouse/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${officeMouse.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceMouseOffice : ${officeMouse.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceMouseOffice.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceMouseOffice.getSiteName()}"></td>
+														<td  th:text="${priceMouseOffice.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceMouseOffice.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для игрового ПК</span></h3>
+							</div>
+							<th:block th:each="gameMouse : ${mouseGames}">
+								<div class="products__item">
+									<div class="item__description2">
+										<div class="item__img2">
+											<img th:src="@{(${gameMouse.getImage()})}" alt="mouse">
+										</div>
+										<div class="item__body2">
+											<h4 class="mb-4" th:text="${gameMouse.getName()}"></h4>
+											<p th:text="${gameMouse.getDescription()}"></p>
+											<p class="price" th:text="${'Цена на мышку изменяется в приделах ' + gameMouse.getAveragePrice() }"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/mouse/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${gameMouse.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данную мышку</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/mouse/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${gameMouse.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceMouseGame : ${gameMouse.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceMouseGame.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceMouseGame.getSiteName()}"></td>
+														<td th:text="${priceMouseGame.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceMouseGame.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col bgcolor2">
+							<div class="products__subtitle">
+								<h3><span>Для домашнего ПК</span></h3>
+							</div>
+							<th:block th:each="homeMouse : ${mouseHomes}">
+								<div class="products__item">
+									<div class="item__description">
+										<div class="item__body">
+											<h4 class="mb-4" th:text="${homeMouse.getName()}"></h4>
+											<p th:text="${homeMouse.getDescription()}"></p>
+											<p class="price" th:text="${ 'Цена на мышку меняется в рамках ' + homeMouse.getAveragePrice()}"></p>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<form class="mt-2" th:action="@{/allForPC/mouse/number}" th:method="DELETE">
+													<input type="hidden" name="number" th:value="${homeMouse.getId()}">
+													<a href="#" class="deleteLink" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-trash"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="item__img">
+											<img th:src="@{(${homeMouse.getImage()})}" alt="mouse">
+										</div>
+									</div>
+									<div class="item__monitoring mt-5">
+										<div class="monitoring-title mb-2">
+											<h5 class="mb-3">Мониторинг цен на данную мышку</h5>
+											<th:block sec:authorize="isAuthenticated()">
+												<form class="mb-2" th:action="@{/allForPC/mouse/number}" th:method="PUT">
+													<input type="hidden" name="number" th:value="${homeMouse.getId()}">
+													<a href="#" class="refresh2 ml-2" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-rotate"></i>
+													</a>
+												</form>
+											</th:block>
+										</div>
+										<div class="monitoring__table table-responsive">
+											<table class="table table-bordered">
+												<thead>
+												<tr class="table-secondary">
+													<th scope="col">Логотип</th>
+													<th scope="col">Онлайн магазин</th>
+													<th scope="col">Цена</th>
+													<th scope="col">Ссылка на товар</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="priceMouseHome : ${homeMouse.getMonitoringPrices()}">
+													<tr class="table-light">
+														<td scope="row"class="imge2">
+															<img th:src="@{(${priceMouseHome.getLogoSite()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+														</td>
+														<td th:text="${priceMouseHome.getSiteName()}"></td>
+														<td th:text="${priceMouseHome.getPrice()}"></td>
+														<td >
+															<a th:href="@{(${priceMouseHome.getLink()})}" class="btn btn-primary" target="_blank">Посмотреть</a>
+														</td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</th:block>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	</div>
 	<!--Footer-->
 	<div th:replace="~{fragments/footer::footer}"></div>
