@@ -1,11 +1,9 @@
 package com.aggregator.aggregator_website.controllers;
 
-import com.aggregator.aggregator_website.dto.CreateDeviceDto;
-import com.aggregator.aggregator_website.dto.DeviceDto;
-import com.aggregator.aggregator_website.dto.DomainRequest;
-import com.aggregator.aggregator_website.dto.TransferInfoWebsiteRequest;
+import com.aggregator.aggregator_website.dto.*;
 import com.aggregator.aggregator_website.dto.siteanalysis.SiteAnalysisDto;
 import com.aggregator.aggregator_website.exceptionhandlers.notifications.ErrorMessage;
+import com.aggregator.aggregator_website.services.ConfiguratorService;
 import com.aggregator.aggregator_website.services.DeviceService;
 import com.aggregator.aggregator_website.services.SiteAnalysisClient;
 import com.aggregator.aggregator_website.services.WebsiteService;
@@ -25,11 +23,14 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -42,6 +43,7 @@ public class AdminController {
     private final SiteAnalysisClient siteAnalysisClient;
     private final WebsiteService websiteService;
     private final DeviceService deviceService;
+    private final ConfiguratorService configuratorService;
 
     @GetMapping("/admin")
     public String getAdminPage(){
@@ -84,6 +86,13 @@ public class AdminController {
         }
 
         return "sitesections/komplect";
+    }
+
+    @GetMapping("/admin/section-configurator")
+    public String getConfiguratorSection(Model model){
+        SourceRequest sourceConfigurator = new SourceRequest();
+        model.addAttribute("sourceConfigurator",sourceConfigurator);
+        return "sitesections/configurator-add";
     }
 
 
@@ -243,6 +252,43 @@ public class AdminController {
         }
 
         return "redirect:" + createDeviceDto.getUrlPage();
+    }
+
+    @PostMapping("/admin/addConfigurator")
+    public String addConfigurator(@Valid @ModelAttribute("sourceConfigurator") SourceRequest sourceConfigurator,
+                                  BindingResult bindingResult){
+        addGlobalErrorsValidURL(bindingResult,"sourceConfigurator");
+        if(bindingResult.hasErrors()){
+            return "sitesections/configurator-add";
+        }
+        else{
+            try {
+                SiteAnalysisDto siteConfAnalysis = siteAnalysisClient.getSiteAnalysis(sourceConfigurator.getDomain());
+                if(siteConfAnalysis != null){
+                    BigDecimal resultVisit = new BigDecimal(siteConfAnalysis.getEngagments().getVisits());
+                    BigDecimal res = resultVisit.setScale(0, RoundingMode.HALF_UP);
+                    long value = res.longValue();
+                    if(value > 100000){
+                        configuratorService.addConfigurator(siteConfAnalysis,sourceConfigurator.getDomain(),sourceConfigurator.getUrlSite());
+                    }
+                    else{
+                        String err = "Число визитов на данном сайте меньше 100 тыс.";
+                        FieldError fieldErrorDomain = new FieldError("sourceConfigurator","domain",err);
+                        bindingResult.addError(fieldErrorDomain);
+                        return "sitesections/configurator-add";
+                    }
+
+                }
+            }
+            catch (HttpClientErrorException ex){
+                int statusCode1 = ex.getStatusCode().value();
+                String er1 = "Не удалось передать данные. Код ошибки - " + statusCode1;
+                FieldError fieldDomainError = new FieldError("sourceConfigurator","domain",er1);
+                bindingResult.addError(fieldDomainError);
+                return "sitesections/configurator-add";
+            }
+        }
+        return "redirect:/allForPC/configurator";
     }
 
     private  void addGlobalErrorsValidURL(BindingResult bindingResult,String objName){

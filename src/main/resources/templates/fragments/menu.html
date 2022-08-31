@@ -15,7 +15,7 @@
 				<nav class="header__menu">
 					<ul class="header__list">
 						<li><a href="#" class="header__link">Cовместимость</a></li>
-						<li><a href="#" class="header__link">Конфигурация</a></li>
+						<li><a th:href="@{/allForPC/configurator}" class="header__link">Конфигурация</a></li>
 						<div sec:authorize="isAuthenticated()">
 							<li class="dropdown">
 								<a href="#" class="header__link dropdown-toggle" id="dropdownMenulink" data-toggle ="dropdown">Сборка</a>

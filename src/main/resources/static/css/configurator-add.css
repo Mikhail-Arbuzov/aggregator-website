@@ -1,0 +1,56 @@
+.addConfigurator{
+    margin: 120px 0px 40px 0px;
+}
+
+.addConfigurator__content{
+    padding: 30px;
+    background: #24344e;
+}
+
+.addConfigurator-header h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #c4c6c8;
+}
+
+.addConfigurator-form{}
+
+label{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 16px;
+    line-height: 1.3em;
+    color:#fff;
+}
+
+.form-group input:focus{
+    box-shadow: rgba(183, 237, 234, 1) 0px 3px 8px;
+    border-color: #b7edea;
+}
+
+.form-group select:focus{
+    box-shadow: rgba(183, 237, 234, 1) 0px 3px 8px;
+    border-color: #b7edea;
+}
+
+.form-group textarea:focus{
+    box-shadow: rgba(183, 237, 234, 1) 0px 3px 8px;
+    border-color: #b7edea;
+}
+
+.err-class{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 1.3em;
+    color: #ffeeba;
+}
+
+@media(max-width: 790px){
+    .addConfigurator{
+        margin: 80px 0px 40px 0px;
+    }
+    .addConfigurator-header h2{
+        font-size: 28px;
+    }
+}

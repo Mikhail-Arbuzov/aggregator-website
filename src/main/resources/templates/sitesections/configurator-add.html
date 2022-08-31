@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Раздел конфигурация</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/configurator-add.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu2.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu2::menu2}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="addConfigurator">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="addConfigurator__content">
+								<div class="addConfigurator-header">
+									<h2>Добавить онлайн конфигуратор ПК</h2>
+								</div>
+								<div class="addConfigurator-form">
+									<form th:action="@{/admin/addConfigurator}" method="post" th:object="${sourceConfigurator}">
+										<div class="form-group  mt-5">
+											<label for="domain1">Домен сайта</label>
+											<input type="text" id="domain1" class="form-control" name="domain" placeholder="Введите домен сайта" th:field="*{domain}">
+										</div>
+										<th:block th:if="${#fields.hasErrors('domain')}">
+											<p class="err-class" th:errors="*{domain}"></p>
+										</th:block>
+										<div class="form-group mt-5">
+											<label for="link1">Ссылка на выбранный источник</label>
+											<input type="url" class="form-control" id="link1" name="urlSite" placeholder="Введите URL-адрес" th:field="*{urlSite}">
+										</div>
+										<th:block th:if="${#fields.hasErrors('urlSite')}">
+											<th:block th:if="${#fields.errors('urlSite').size() == 3}">
+												<div class="err-class" th:each="err:${#fields.errors('urlSite')}">
+													<th:block th:if="${err.startsWith('URL не')}">
+														<p th:text="${err}"></p>
+													</th:block>
+													<th:block th:unless="${err.startsWith('URL не')}">
+													</th:block>
+												</div>
+											</th:block>
+											<th:block th:unless="${#fields.errors('urlSite').size() == 3}">
+												<div class="err-class" th:each="err:${#fields.errors('urlSite')}">
+													<p th:text="${err}"></p>
+												</div>
+											</th:block>
+										</th:block>
+										<div class="text-right">
+											<button type="submit" class="btn btn-secondary mt-3">Добавить конфигуратор</button>
+										</div>
+									</form>
+									<div th:errors="${sourceConfigurator}" class="alert alert-danger mt-2" role="alert"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu2.js}" type="text/javascript"></script>
+</body>
+</html>

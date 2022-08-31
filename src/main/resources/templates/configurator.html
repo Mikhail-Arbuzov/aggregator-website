@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<title>Конфигурация</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/configurator.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" th:inline="javascript">
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var d = /*[[${statisticByVisits}]]*/ [];
+            var data = google.visualization.arrayToDataTable(d);
+
+            var options = {
+                title: "Общее число визитов на сайте",
+                //bar: {groupWidth: "95%"},
+                legend: { position: "none" },
+                hAxis: {title: 'Сайты'},
+                vAxis: {title: 'Число визитов'}
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById("visit_values"));
+            chart.draw(data, options);
+        }
+	</script>
+	<script type="text/javascript" th:inline="javascript">
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var ar = /*[[${statisticByBounceRate}]]*/ [];
+            var data = google.visualization.arrayToDataTable(ar);
+
+            var options = {
+                title: "Средний процент отказов от посещения сайта",
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById("bounceRate_values"));
+            chart.draw(data, options);
+        }
+	</script>
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu::menu}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="configurator-body">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="configurator-body__title">
+								<h2>Каким лучше воспользоваться онлайн конфигуратором ПК ?</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="configurator-body__text">
+								<p>Производительный, технологичный и в то же время, подходящий по цене компьютер, можно собрать самостоятельно, используя онлайн-конфигуратор. Конфигуратор ПК — онлайн - инструмент, позволяющий самостоятельно подобрать аппаратные компоненты будущего ПК (процессор, материнскую плату, видеокарту, оперативную память и другое). Чаще всего используется для компоновки системного блока, поскольку его характеристики, в первую очередь, влияют на общую производительность компьютера с нужным для пользователя сочетанием цены и скорости работы. Он позволяет исключить из состава системного блока ненужные пользователю аппаратные компоненты и сделать сборку бюджетной с минимально допустимой для пользователя производительностью. При этом нужно учитывать, что конфигуратор компьютера не всегда приспособлен к сопоставлению различных комплектующих на предмет совместимости, хотя современные поставщики такие, как Ozon наделяют их соответствующим функционалом.</p>
+								<p>Конкретная комплектация компьютера будет зависеть от необходимых задач. Так, например, для игр с мощной 3D-графикой потребуется выбрать наиболее производительный процессор и видеокарту.</p>
+								<p>Классические стационарные компьютеры всегда востребованы в офисе и дома, так как они намного производительнее, чем ноутбуки и мобильные гаджеты, стабильны в работе и ремонтопригодны. Но главным их преимуществом является возможность подобрать подходящие по цене и скорости работы аппаратные компоненты, в связи с чем задействуется конфигуратор системного блока.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="alalysis-configurator">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="alalysis-configurator__statistic">
+								<div id="visit_values" ></div>
+								<div id="bounceRate_values"></div>
+								<div class="timeOnSite_values table-responsive">
+									<h4 class="mb-3">Рейтинг сайтов по показателю средней продолжительности визита</h4>
+									<table class="table table-bordered">
+										<thead>
+										<tr class="table-dark">
+											<th scope="col">Место</th>
+											<th scope="col">Сайт</th>
+											<th scope="col">Время</th>
+										</tr>
+										</thead>
+										<tbody>
+										<th:block th:each="timeStatistic, index : ${statisticsByTimeOnSite}">
+											<tr class="table-light">
+												<td th:text="${index.index + 1}"></td>
+												<td th:text="${timeStatistic.getSiteName()}"></td>
+												<td th:text="${timeStatistic.getTimeOnSite()}"></td>
+											</tr>
+										</th:block>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="configurators">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="configurators__title">
+								<h3 class="mb-4">Онлайн конфигураторы ПК <span class="tooltinfo ml-2" data-toggle="popover" data-placement="right" title="Статистика онлайн конфигуратора" data-content="Данные по аналитики сайтов изменяются через каждые 28 или 31 день"><i class="fa-solid fa-info"></i></span></h3>
+							</div>
+							<div class="configurators__table table-responsive">
+								<table class="table table-bordered table-hover table-dark">
+									<thead>
+									<tr>
+										<th scope="col">Логотип</th>
+										<th scope="col">Онлайн конфигуратор</th>
+										<th scope="col">Ссылка</th>
+										<th scope="col">Данные за период</th>
+										<th scope="col">Статистика</th>
+									</tr>
+									</thead>
+									<tbody>
+									<th:block th:each="configurator : ${configurators}">
+										<tr>
+											<td scope="row" class="imgConf">
+												<th:block th:if="${configurator.getLogotype() != null}">
+													<img th:src="@{(${configurator.getLogotype()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+												</th:block>
+												<th:block th:unless="${configurator.getLogotype() != null}">
+													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+												</th:block>
+											</td>
+											<td th:text="${configurator.getSiteName()}"></td>
+											<td >
+												<a th:href="@{(${configurator.getLink()})}" class="btn btn-success br" target="_blank">Перейти</a>
+											</td>
+											<td th:text="${configurator.getMonth() + ' ' + configurator.getYear()}"></td>
+											<td>
+												<form th:action="@{/allForPC/configurator/id}" th:method="PUT">
+													<input type="hidden" name="id" th:value="${configurator.getId()}">
+													<a href="#" class="btn btn-info br" onclick="$(this).closest('form').submit();">Обновить</a>
+												</form>
+											</td>
+										</tr>
+									</th:block>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="newCompilation">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="newCompilation__title">
+								<h2 class="mb-5">Готовые подборки комплектующих для ПК от пользователей данного сайта</h2>
+							</div>
+							<div class="newCompilation-container">
+								<div class="newCompilation-item mb-4">
+									<div class="item__delete mb-2">
+										<div class="text-right">
+											<form>
+												<input type="hidden" name="number">
+												<a href="#" class="linkd" onclick="$(this).closest('form').submit();">
+													<i class="fa-solid fa-square-xmark"></i>
+												</a>
+											</form>
+										</div>
+									</div>
+									<div class="item__imgAndTime mb-2">
+										<div class="imgAndTime__elem1">
+											<div class="elem1-ava">
+												<img src="avatars/ty.jpg" alt="avatar">
+											</div>
+											<div class="elem1-name">
+												<p>Имя фамилия</p>
+											</div>
+										</div>
+										<div class="imgAndTime__elem2">
+											<div class="elem2-time">
+												<p>16.07.2022 15:40</p>
+											</div>
+										</div>
+									</div>
+									<div class="item__brand mb-2">
+										<div class="brand__title">
+											<h4><span>Игровой ПК</span></h4>
+										</div>
+									</div>
+									<div class="item__table table-responsive">
+										<table class="table table-bordered statsTable">
+											<thead>
+											<tr class="table-success">
+												<th scope="col">Комплектующее</th>
+												<th scope="col">Цена</th>
+												<th scope="col">Посмотреть</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr class="table-light">
+												<td>GIGABYTE GeForce GTX 1050 Ti [GV-N105TD5-4GD]</td>
+												<td>3499</td>
+												<td>
+													<a href="#" class="btn btn-success">Перейти</a>
+												</td>
+											</tr>
+											<tr class="table-light">
+												<td>GIGABYTE H310M S2H </td>
+												<td>5900</td>
+												<td >
+													<a href="#" class="btn btn-success">Перейти</a>
+												</td>
+											</tr>
+											<tr class="table-light">
+												<td>512 ГБ SSD M.2 накопитель A-Data XPG GAMMIX S11 Pro [AGAMMIXS11P-512GT-C]</td>
+												<td>3000</td>
+												<td >
+													<a href="#" class="btn btn-success">Перейти</a>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="item__result">
+										<p>Общая сумма: <span class="sum"></span> руб.</p>
+									</div>
+								</div>
+								<div class="newCompilation-item mb-4">
+									<div class="item__delete mb-2">
+										<div class="text-right">
+											<form>
+												<input type="hidden" name="number">
+												<a href="#" class="linkd" onclick="$(this).closest('form').submit();">
+													<i class="fa-solid fa-square-xmark"></i>
+												</a>
+											</form>
+										</div>
+									</div>
+									<div class="item__imgAndTime mb-2">
+										<div class="imgAndTime__elem1">
+											<div class="elem1-ava">
+												<img src="avatars/ty.jpg" alt="avatar">
+											</div>
+											<div class="elem1-name">
+												<p>Имя фамилия</p>
+											</div>
+										</div>
+										<div class="imgAndTime__elem2">
+											<div class="elem2-time">
+												<p>16.07.2022 15:40</p>
+											</div>
+										</div>
+									</div>
+									<div class="item__brand mb-2">
+										<div class="brand__title">
+											<h4><span>Игровой ПК</span></h4>
+										</div>
+									</div>
+									<div class="item__table table-responsive">
+										<table class="table table-bordered statsTable">
+											<thead>
+											<tr class="table-success">
+												<th scope="col">Комплектующее</th>
+												<th scope="col">Цена</th>
+												<th scope="col">Посмотреть</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr class="table-light">
+												<td>GIGABYTE GeForce GTX 1050 Ti [GV-N105TD5-4GD]</td>
+												<td>3799</td>
+												<td>
+													<a href="#" class="btn btn-primary">Перейти</a>
+												</td>
+											</tr>
+											<tr class="table-light">
+												<td>GIGABYTE H310M S2H </td>
+												<td>5000</td>
+												<td >
+													<a href="#" class="btn btn-primary">Перейти</a>
+												</td>
+											</tr>
+											<tr class="table-light">
+												<td>512 ГБ SSD M.2 накопитель A-Data XPG GAMMIX S11 Pro [AGAMMIXS11P-512GT-C]</td>
+												<td>7000</td>
+												<td >
+													<a href="#" class="btn btn-primary">Перейти</a>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="item__result">
+										<p>Общая сумма: <span class="sum"></span> руб.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu.js}" type="text/javascript"></script>
+<script th:src="@{/js/configurator.js}" type="text/javascript"></script>
+</body>
+</html>

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @Component
 public class StatisticDataConvector {
@@ -20,9 +22,19 @@ public class StatisticDataConvector {
     }
 
     public String timeOnSiteConvector(String timeOnSite){
-        BigDecimal time = new BigDecimal(timeOnSite);
-        BigDecimal time2 =time.setScale(0, RoundingMode.HALF_UP);
-        long sec = time2.longValue();
+        return getStrFormat(timeOnSite);
+    }
+
+    public LocalTime timeConvector(String timeOnSite){
+        String strf = getStrFormat(timeOnSite);
+        LocalTime resultTime = LocalTime.parse(strf, DateTimeFormatter.ofPattern("HH:mm:ss"));
+        return resultTime;
+    }
+
+    private String getStrFormat(String time){
+        BigDecimal timeSite = new BigDecimal(time);
+        BigDecimal timeSite2 = timeSite.setScale(0,RoundingMode.HALF_UP);
+        long sec = timeSite2.longValue();
         long s = sec % 60;
         long m = (sec / 60) % 60;
         long h = (sec / (60 * 60)) % 24;

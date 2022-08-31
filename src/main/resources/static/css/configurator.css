@@ -1,0 +1,358 @@
+.configurator-body{
+    margin: 120px 0px 40px 0px;
+}
+
+.alalysis-configurator{
+    margin: 0px 0px 40px 0px;
+}
+
+.configurator-body__title h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #d4d09b;
+    margin-bottom: 40px;
+}
+
+.configurator-body__text p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    color: #cfd3de;
+}
+
+.alalysis-configurator__statistic{
+    background: #2d4162;
+    padding: 20px;
+    margin: 0px 0px 40px 0px;
+}
+
+#visit_values{
+    width: 100%;
+    height: 600px;
+    margin: 0px 0px 40px 0px;
+}
+
+#bounceRate_values{
+    width: 100%;
+    height: 400px;
+    margin: 0px 0px 40px 0px;
+}
+
+.timeOnSite_values{
+    margin: 0px 0px 40px 0px;
+}
+
+.timeOnSite_values h4{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 24px;
+    color: #bee5eb;
+    text-align: center;
+}
+
+.timeOnSite_values{}
+
+.table-dark>th{
+    background-color: #5e6266;
+}
+
+
+.table td, .table th {
+    padding: .42rem;
+    text-align: center;
+}
+
+
+.table-light tbody+tbody, .table-light td, .table-light th, .table-light thead th {
+    border-color: #a7acac;
+}
+
+
+.configurators{
+    margin: 0px 0px 60px 0px;
+}
+
+.configurators__title h3{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 28px;
+    color:#e2f2d0;
+    text-align: center;
+}
+
+.tooltinfo{
+    font-size: 1.6rem;
+    color:#e2f2d0;
+}
+
+.configurators__table{}
+
+.imgConf{
+    flex: 0 0 33.333%;
+    position: relative;
+}
+
+.imgConf img{
+    width: 100%;
+    height:100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.br {
+    border-radius: 10px;
+}
+
+.newCompilation{
+    margin: 0px 0px 40px 0px;
+}
+
+.newCompilation__title h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #c4c6c8;
+}
+
+.newCompilation-container{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newCompilation-item{
+    background: #2c3c4b;
+    width: 68%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 4px 4px 18px 0px #cfd3de; /*#ffc107;*/
+    border-color: #cfd3de;
+}
+
+.item__imgAndTime{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.imgAndTime__elem1{
+    display: flex;
+    width: 30%;
+    height: 70px;
+    background:#293743;
+    padding: 5px;
+}
+
+.elem1-ava{
+    flex: 0 0 33.333%;
+    position: relative;
+    min-height: 60px;
+}
+
+.elem1-ava img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left:0;
+    border-radius: 50%;
+}
+
+.elem1-name{
+    flex: 1 1 auto;
+    align-self: center;
+    padding: 0px 0px 0px 12px;
+}
+
+.elem1-name p {
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size:16px;
+    color:#c3f7cf;
+}
+
+.imgAndTime__elem2{
+    /*background: red;*/
+}
+
+.elem2-time{
+    background: #3b4146;
+    padding: 14px 6px 6px 6px;
+}
+
+.elem2-time p{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size:16px;
+    color:#fff;
+}
+
+.item__brand{
+    /*border: 1px solid #fff;*/
+}
+
+.brand__title h4{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: center;
+    color: #13f246;
+    text-transform: uppercase;
+}
+
+.brand__title h4 > span{
+    position: relative;
+}
+
+.brand__title h4 > span::after{
+    content: "";
+    height: 2px;
+    background: #13f246;
+    width: 40%;
+    margin-left: -20%;
+    left: 50%;
+    top:120%;
+    position: absolute;
+}
+
+.item__table{
+    /*border: 1px solid yellow;*/
+}
+
+.item__result{
+    padding: 5px;
+}
+
+.item__result p{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size:16px;
+    font-weight: bold;
+    color:#fff;
+}
+
+.sum{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size:16px;
+    color:#fff;
+}
+
+.item__delete{
+    padding: 5px;
+}
+
+.linkd{
+    font-size: 2rem;
+    color: red;
+}
+
+.linkd:hover{
+    color: #f77474;
+}
+
+@media(max-width: 990px){
+    .imgAndTime__elem1{
+        flex-direction: column;
+        height: auto;
+    }
+    .item__imgAndTime{
+        height: 220px;
+    }
+
+    .elem1-name{
+        margin: 10px 0px 0px 0px;
+    }
+
+    .elem1-name p {
+        font-size: 18px;
+    }
+
+    .elem1-ava{
+        min-height: 150px;
+    }
+}
+
+@media(max-width: 790px){
+    .configurator-body{
+        margin: 100px 0px 40px 0px;
+    }
+
+    .imgAndTime__elem1{
+        width: 50%;
+    }
+
+}
+
+@media(max-width: 540px){
+    .newCompilation-item{
+        width: 100%;
+    }
+
+    .imgAndTime__elem1{
+        width: 40%;
+    }
+
+}
+
+@media(max-width: 450px){
+    .configurator-body__title h2{
+        font-size: 28px;
+    }
+
+    .configurators__title h3{
+        font-size: 26px;
+    }
+
+    .newCompilation__title h2{
+        font-size: 28px;
+    }
+    .imgAndTime__elem1{
+        width: 50%;
+        order: 2;
+    }
+    .imgAndTime__elem2{
+        order: 1;
+        width: 50%;
+        margin-bottom: 5px;
+    }
+
+    .item__imgAndTime{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item__imgAndTime{
+        height: auto;
+    }
+
+    .elem2-time p{
+        text-align: center;
+    }
+}
+
+@media(max-width: 390px){
+    .newCompilation-container{
+        padding: 0px;
+    }
+    .configurators__title h3{
+        font-size: 24px;
+    }
+
+    .item__imgAndTime{
+        align-items: flex-start;
+    }
+    .imgAndTime__elem1{
+        width: 100%;
+    }
+    .imgAndTime__elem2{
+        width: 100%;
+    }
+
+    .elem1-ava{
+        min-height: 200px;
+    }
+}
