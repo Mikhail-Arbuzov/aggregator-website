@@ -112,57 +112,59 @@
 			</div>
 		</section>
 
-		<section class="configurators">
-			<div class="corobka">
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<div class="configurators__title">
-								<h3 class="mb-4">Онлайн конфигураторы ПК <span class="tooltinfo ml-2" data-toggle="popover" data-placement="right" title="Статистика онлайн конфигуратора" data-content="Данные по аналитики сайтов изменяются через каждые 28 или 31 день"><i class="fa-solid fa-info"></i></span></h3>
-							</div>
-							<div class="configurators__table table-responsive">
-								<table class="table table-bordered table-hover table-dark">
-									<thead>
-									<tr>
-										<th scope="col">Логотип</th>
-										<th scope="col">Онлайн конфигуратор</th>
-										<th scope="col">Ссылка</th>
-										<th scope="col">Данные за период</th>
-										<th scope="col">Статистика</th>
-									</tr>
-									</thead>
-									<tbody>
-									<th:block th:each="configurator : ${configurators}">
+		<th:block sec:authorize="isAuthenticated()">
+			<section class="configurators">
+				<div class="corobka">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<div class="configurators__title">
+									<h3 class="mb-4">Онлайн конфигураторы ПК <span class="tooltinfo ml-2" data-toggle="popover" data-placement="right" title="Статистика онлайн конфигуратора" data-content="Данные по аналитики сайтов изменяются через каждые 28 или 31 день"><i class="fa-solid fa-info"></i></span></h3>
+								</div>
+								<div class="configurators__table table-responsive">
+									<table class="table table-bordered table-hover table-dark">
+										<thead>
 										<tr>
-											<td scope="row" class="imgConf">
-												<th:block th:if="${configurator.getLogotype() != null}">
-													<img th:src="@{(${configurator.getLogotype()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
-												</th:block>
-												<th:block th:unless="${configurator.getLogotype() != null}">
-													<img th:src="@{img/iconSite.jpg}"  alt="logotip">
-												</th:block>
-											</td>
-											<td th:text="${configurator.getSiteName()}"></td>
-											<td >
-												<a th:href="@{(${configurator.getLink()})}" class="btn btn-success br" target="_blank">Перейти</a>
-											</td>
-											<td th:text="${configurator.getMonth() + ' ' + configurator.getYear()}"></td>
-											<td>
-												<form th:action="@{/allForPC/configurator/id}" th:method="PUT">
-													<input type="hidden" name="id" th:value="${configurator.getId()}">
-													<a href="#" class="btn btn-info br" onclick="$(this).closest('form').submit();">Обновить</a>
-												</form>
-											</td>
+											<th scope="col">Логотип</th>
+											<th scope="col">Онлайн конфигуратор</th>
+											<th scope="col">Ссылка</th>
+											<th scope="col">Данные за период</th>
+											<th scope="col">Статистика</th>
 										</tr>
-									</th:block>
-									</tbody>
-								</table>
+										</thead>
+										<tbody>
+										<th:block th:each="configurator : ${configurators}">
+											<tr>
+												<td scope="row" class="imgConf">
+													<th:block th:if="${configurator.getLogotype() != null}">
+														<img th:src="@{(${configurator.getLogotype()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+													</th:block>
+													<th:block th:unless="${configurator.getLogotype() != null}">
+														<img th:src="@{img/iconSite.jpg}"  alt="logotip">
+													</th:block>
+												</td>
+												<td th:text="${configurator.getSiteName()}"></td>
+												<td >
+													<a th:href="@{(${configurator.getLink()})}" class="btn btn-success br" target="_blank">Перейти</a>
+												</td>
+												<td th:text="${configurator.getMonth() + ' ' + configurator.getYear()}"></td>
+												<td>
+													<form th:action="@{/allForPC/configurator/id}" th:method="PUT">
+														<input type="hidden" name="id" th:value="${configurator.getId()}">
+														<a href="#" class="btn btn-info br" onclick="$(this).closest('form').submit();">Обновить</a>
+													</form>
+												</td>
+											</tr>
+										</th:block>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		</th:block>
 
 		<section class="newCompilation">
 			<div class="corobka">
@@ -173,144 +175,71 @@
 								<h2 class="mb-5">Готовые подборки комплектующих для ПК от пользователей данного сайта</h2>
 							</div>
 							<div class="newCompilation-container">
-								<div class="newCompilation-item mb-4">
-									<div class="item__delete mb-2">
-										<div class="text-right">
-											<form>
-												<input type="hidden" name="number">
-												<a href="#" class="linkd" onclick="$(this).closest('form').submit();">
-													<i class="fa-solid fa-square-xmark"></i>
-												</a>
-											</form>
-										</div>
-									</div>
-									<div class="item__imgAndTime mb-2">
-										<div class="imgAndTime__elem1">
-											<div class="elem1-ava">
-												<img src="avatars/ty.jpg" alt="avatar">
+								<th:block th:each="compilation : ${compilationDtoList}">
+									<div class="newCompilation-item mb-4">
+										<th:block sec:authorize="isAuthenticated()">
+											<th:block th:if="${currentUser != null and currentUser.getDetail().getFirstName().equals(compilation.getFirstName()) and currentUser.getDetail().getSecondName().equals(compilation.getSecondName())}">
+												<div class="item__delete mb-2">
+													<div class="text-right">
+														<form th:action="@{/allForPC/configurator/id}" th:method="DELETE">
+															<input type="hidden" name="id" th:value="${compilation.getId()}">
+															<a href="#" class="linkd" onclick="$(this).closest('form').submit();">
+																<i class="fa-solid fa-square-xmark"></i>
+															</a>
+														</form>
+													</div>
+												</div>
+											</th:block>
+										</th:block>
+
+										<div class="item__imgAndTime mb-2">
+											<div class="imgAndTime__elem1">
+												<div class="elem1-ava">
+													<th:block th:if="${compilation.getAvatarUser() != null}">
+														<img th:src="@{(${compilation.getAvatarUser()})}" alt="avatar">
+													</th:block>
+													<th:block th:unless="${compilation.getAvatarUser() != null}">
+														<img src="avatars/ty.jpg" alt="avatar">
+													</th:block>
+												</div>
+												<div class="elem1-name">
+													<p th:text="${compilation.getFirstName() + ' ' + compilation.getSecondName()}"></p>
+												</div>
 											</div>
-											<div class="elem1-name">
-												<p>Имя фамилия</p>
-											</div>
-										</div>
-										<div class="imgAndTime__elem2">
-											<div class="elem2-time">
-												<p>16.07.2022 15:40</p>
-											</div>
-										</div>
-									</div>
-									<div class="item__brand mb-2">
-										<div class="brand__title">
-											<h4><span>Игровой ПК</span></h4>
-										</div>
-									</div>
-									<div class="item__table table-responsive">
-										<table class="table table-bordered statsTable">
-											<thead>
-											<tr class="table-success">
-												<th scope="col">Комплектующее</th>
-												<th scope="col">Цена</th>
-												<th scope="col">Посмотреть</th>
-											</tr>
-											</thead>
-											<tbody>
-											<tr class="table-light">
-												<td>GIGABYTE GeForce GTX 1050 Ti [GV-N105TD5-4GD]</td>
-												<td>3499</td>
-												<td>
-													<a href="#" class="btn btn-success">Перейти</a>
-												</td>
-											</tr>
-											<tr class="table-light">
-												<td>GIGABYTE H310M S2H </td>
-												<td>5900</td>
-												<td >
-													<a href="#" class="btn btn-success">Перейти</a>
-												</td>
-											</tr>
-											<tr class="table-light">
-												<td>512 ГБ SSD M.2 накопитель A-Data XPG GAMMIX S11 Pro [AGAMMIXS11P-512GT-C]</td>
-												<td>3000</td>
-												<td >
-													<a href="#" class="btn btn-success">Перейти</a>
-												</td>
-											</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="item__result">
-										<p>Общая сумма: <span class="sum"></span> руб.</p>
-									</div>
-								</div>
-								<div class="newCompilation-item mb-4">
-									<div class="item__delete mb-2">
-										<div class="text-right">
-											<form>
-												<input type="hidden" name="number">
-												<a href="#" class="linkd" onclick="$(this).closest('form').submit();">
-													<i class="fa-solid fa-square-xmark"></i>
-												</a>
-											</form>
-										</div>
-									</div>
-									<div class="item__imgAndTime mb-2">
-										<div class="imgAndTime__elem1">
-											<div class="elem1-ava">
-												<img src="avatars/ty.jpg" alt="avatar">
-											</div>
-											<div class="elem1-name">
-												<p>Имя фамилия</p>
+											<div class="imgAndTime__elem2">
+												<div class="elem2-time">
+													<p th:text="${compilation.getCurrentTime().format(dateTimeFormatter)}"></p>
+												</div>
 											</div>
 										</div>
-										<div class="imgAndTime__elem2">
-											<div class="elem2-time">
-												<p>16.07.2022 15:40</p>
+										<div class="item__brand mb-2">
+											<div class="brand__title">
+												<h4><span th:text="${compilation.getDestiny()}"></span></h4>
 											</div>
 										</div>
-									</div>
-									<div class="item__brand mb-2">
-										<div class="brand__title">
-											<h4><span>Игровой ПК</span></h4>
+										<div class="item__table table-responsive">
+											<table class="table table-bordered statsTable">
+												<thead>
+												<tr class="table-success">
+													<th scope="col">Комплектующее</th>
+													<th scope="col">Цена</th>
+												</tr>
+												</thead>
+												<tbody>
+												<th:block th:each="product : ${compilation.getProducts()}">
+													<tr class="table-light">
+														<td th:text="${product.getDeviceName()}"></td>
+														<td th:text="${product.getPrice()}"></td>
+													</tr>
+												</th:block>
+												</tbody>
+											</table>
+										</div>
+										<div class="item__result">
+											<p>Общая сумма: <span class="sum"></span> руб.</p>
 										</div>
 									</div>
-									<div class="item__table table-responsive">
-										<table class="table table-bordered statsTable">
-											<thead>
-											<tr class="table-success">
-												<th scope="col">Комплектующее</th>
-												<th scope="col">Цена</th>
-												<th scope="col">Посмотреть</th>
-											</tr>
-											</thead>
-											<tbody>
-											<tr class="table-light">
-												<td>GIGABYTE GeForce GTX 1050 Ti [GV-N105TD5-4GD]</td>
-												<td>3799</td>
-												<td>
-													<a href="#" class="btn btn-primary">Перейти</a>
-												</td>
-											</tr>
-											<tr class="table-light">
-												<td>GIGABYTE H310M S2H </td>
-												<td>5000</td>
-												<td >
-													<a href="#" class="btn btn-primary">Перейти</a>
-												</td>
-											</tr>
-											<tr class="table-light">
-												<td>512 ГБ SSD M.2 накопитель A-Data XPG GAMMIX S11 Pro [AGAMMIXS11P-512GT-C]</td>
-												<td>7000</td>
-												<td >
-													<a href="#" class="btn btn-primary">Перейти</a>
-												</td>
-											</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="item__result">
-										<p>Общая сумма: <span class="sum"></span> руб.</p>
-									</div>
-								</div>
+								</th:block>
 							</div>
 						</div>
 					</div>

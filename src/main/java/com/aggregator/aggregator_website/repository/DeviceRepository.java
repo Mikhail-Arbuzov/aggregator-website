@@ -8,13 +8,16 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface DeviceRepository extends JpaRepository<Device,Long> {
     List<Device> findAllBySection(String section);
-    List<Device> findAllByDestination(String destination);
+//    List<Device> findAllByDestination(String destination);
 
     @Query(value="SELECT * FROM devices AS d" +
             " WHERE d.section = :section AND d.destination = :destination",nativeQuery=true)
     List<Device> getDevicesBySectionAndDestination(@Param("section") String section,@Param("destination")String destination);
+
+    Optional<Device> findByName(String name);
 }

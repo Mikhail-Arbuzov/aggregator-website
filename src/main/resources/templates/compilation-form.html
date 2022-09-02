@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<title>Самостоятельная подборка</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/compilation-form.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu::menu}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="forms-compilation">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="compilation__title mb-5">
+								<a name="up"></a>
+								<h1>Создайте свою подборку комплектующих для ПК</h1>
+							</div>
+							<div class="compilation__text mb-3">
+								<p>В настоящее время без компьютера трудно обойтись, так как ПК является главным источником информации, используется для развлечений, а для некоторых служит основным источником доходов. Собрать стационарный компьютер самому, бывает порой выгодней, чем переплачивать за это чужим людям. Но сборка персонального компьютера – это не простой этап, к которому нужно отнестись с терпением и внимательностью. Одной из важных деталей, при сборке ПК является совместимость выбираемых комплектующих. На представленном ресурсе «Всё для ПК», Вы можете выбрать предложенные комплектующие, подходящие под тот аппарат, который наиболее соответствует вашим интересам или необходим для выполнения конкретных задач. Либо, Вас, может интересовать определенные виды комплектующих, отсутствующих на этом источнике. В таком случае, данные модели нужно будет указать самостоятельно.  В первом и во втором вариантах, при выборе комплектующего для ПК необходимо убедиться в совместимости подобранных устройств.</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="compilation__tab">
+								<ul class="nav nav-fill nav-tabs color-link">
+									<li class="nav-item">
+										<a class="nav-link active bkg-link" id="nav1-1" data-toggle="tab" aria-controls="tab1-1" href="#tab1-1">Выбрать из списка</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link bkg-link" id="nav1-2" data-toggle="tab" aria-controls="tab1-2" href="#tab1-2">Свой вариант</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="tab-content">
+								<div class="tab-pane fade show active" id="tab1-1" aria-labelledby = "nav1-1">
+									<div class="component1-form">
+										<form th:action="@{/allForPC/compilation/id}" method="post" th:object="${compilationRequest}">
+											<div class="component1__title mb-5">
+												<h2><span>Системный блок</span></h2>
+											</div>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Процессор</h3>
+											</div>
+											<th:block th:each="processor : ${processors}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${processor.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${processor.getName()}"></p>
+																<p th:text="${'Cтоимостью: ' + processor.getAveragePrice() + ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-3 el1">
+														<input class="form-check-input" type="radio" name="processorName"  th:value="${processor.getName()}" th:field="*{processorName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Материнская плата</h3>
+											</div>
+											<th:block th:each="motherboard : ${motherBs}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${motherboard.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${motherboard.getName()}"></p>
+																<p th:text="${'Cтоимостью: ' + motherboard.getAveragePrice()} + ' руб.'"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-3 el2">
+														<input class="form-check-input" type="radio" name="motherboardName"  th:value="${motherboard.getName()}" th:field="*{motherboardName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Кулер для процессора</h3>
+											</div>
+											<th:block th:each="cpuCooler : ${cpuCoolers}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${cpuCooler.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${cpuCooler.getName()}"></p>
+																<p th:text="${'Cтоимостью: ' + cpuCooler.getAveragePrice() + ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-3 el3">
+														<input class="form-check-input" type="radio" name="cpuCoolerName"  th:value="${cpuCooler.getName()}" th:field="*{cpuCoolerName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Оперативная память</h3>
+											</div>
+											<th:block th:each="ram : ${rams}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${ram.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${ram.getName()}"></p>
+																<p th:text="${ 'Cтоимостью: ' + ram.getAveragePrice() +  ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-3 el4">
+														<input class="form-check-input" type="radio" name="ramName"  th:value="${ram.getName()}" th:field="*{ramName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Твердотельный накопитель</h3>
+											</div>
+											<th:block th:each="ssd : ${ssdDevices}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${ssd.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${ssd.getName()}"></p>
+																<p th:text="${'Cтоимостью: ' + ssd.getAveragePrice() + ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-3 el5">
+														<input class="form-check-input" type="radio" name="sddName" th:value="${ssd.getName()}" th:field="*{sddName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Жёсткий диск</h3>
+											</div>
+											<th:block th:each="hdd : ${hddDevices}">
+												<div class="device-items  mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${hdd.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${hdd.getName()}"></p>
+																<p th:text="${'Cтоимостью: ' + hdd.getAveragePrice() + ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-3 el6">
+														<input class="form-check-input" type="radio" name="hddName"  th:value="${hdd.getName()}" th:field="*{hddName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Видеокарта</h3>
+											</div>
+											<th:block th:each="videoC : ${videoCards}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${videoC.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${videoC.getName()}"></p>
+																<p th:text="${'Cтоимостью: ' + videoC.getAveragePrice() + ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-3 el7">
+														<input class="form-check-input" type="radio" name="videoCardName"  th:value="${videoC.getName()}" th:field="*{videoCardName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Блок питания</h3>
+											</div>
+											<th:block th:each="powerS : ${powerSDevices}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${powerS.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${powerS.getName()}"></p>
+																<p th:text="${'Cтоимостью: ' + powerS.getAveragePrice() + ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-3 el8">
+														<input class="form-check-input" type="radio" name="powerSupplyName"  th:value="${powerS.getName()}" th:field="*{powerSupplyName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Кулер для корпуса</h3>
+											</div>
+											<th:block th:each="cooler : ${coolers}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${cooler.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${cooler.getName()}"></p>
+																<p th:text="${'Cтоимостью: ' + cooler.getAveragePrice() + ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-3 el9">
+														<input class="form-check-input" type="radio" name="coolerName"  th:value="${cooler.getName()}" th:field="*{coolerName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Корпус</h3>
+											</div>
+											<th:block th:each="corpus : ${corpusDevices}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${corpus.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${corpus.getName()}"></p>
+																<p th:text="${'Cтоимостью: ' + corpus.getAveragePrice() + ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-3 el10">
+														<input class="form-check-input" type="radio" name="corpusName"  th:value="${corpus.getName()}" th:field="*{corpusName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__title mb-5">
+												<h2><span>Периферийные устройства</span></h2>
+											</div>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Монитор</h3>
+											</div>
+											<th:block th:each="monitor : ${monitors}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${monitor.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${monitor.getName()}"></p>
+																<p th:text="${'Cтоимостью: ' + monitor.getAveragePrice() + ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-3 el11">
+														<input class="form-check-input" type="radio" name="monitorName"  th:value="${monitor.getName()}" th:field="*{monitorName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Клавиатура</h3>
+											</div>
+											<th:block th:each="keyboard : ${keyBDevices}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${keyboard.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${keyboard.getName()}"></p>
+																<p th:text="${'Cтоимостью:' + keyboard.getAveragePrice() + ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-3 el12">
+														<input class="form-check-input" type="radio" name="keyboardName"  th:value="${keyboard.getName()}" th:field="*{keyboardName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__subtitle mb-3">
+												<h3>Мышка</h3>
+											</div>
+											<th:block th:each="mouse : ${mouses}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${mouse.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${mouse.getName()}"></p>
+																<p th:text="${'Cтоимостью:' + mouse.getAveragePrice() + ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-4 el13">
+														<input class="form-check-input" type="radio" name="mouseName"  th:value="${mouse.getName()}" th:field="*{mouseName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="component1__subtitle mb-3">
+												<h3>МФУ</h3>
+											</div>
+											<th:block th:each="mfd : ${mfdDevices}">
+												<div class="device-items mb-4">
+													<div class="device__content">
+														<div class="device__img">
+															<img th:src="@{(${mfd.getImage()})}" alt="device">
+														</div>
+														<div class="device__body">
+															<div class="device__text">
+																<p th:text="${mfd.getName()}"></p>
+																<p th:text="${'Cтоимостью: ' + mfd.getAveragePrice() + ' руб.'}"></p>
+															</div>
+														</div>
+													</div>
+													<div class="form-check form-check-inline ml-4 el14">
+														<input class="form-check-input" type="radio" name="mfdName"  th:value="${mfd.getName()}" th:field="*{mfdName}">
+													</div>
+												</div>
+											</th:block>
+
+											<div class="form-group mt-5 mb-5">
+												<label for="purpose2">Выбирите предназначение</label>
+												<select id="purpose2" class="form-control" name="destiny" th:field="*{destiny}">
+													<option value="Домашний ПК">Домашний компьютер</option>
+													<option value="Офисный ПК">Офисный компьютер</option>
+													<option value="Игровой ПК">Игровой компьютер</option>
+												</select>
+											</div>
+
+											<div class="form-group mt-3">
+												<th:block th:if="${actualUser != null}">
+													<input type="hidden" name="id" th:value="${actualUser.getId()}">
+												</th:block>
+											</div>
+
+											<div class="d-flex justify-content-center mb-3">
+												<div class="w-50">
+													<button type="submit" class="btn btn-block btn-primary mt-3">СБОРКА</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="tab1-2" aria-labelledby = "nav1-2">
+									<div class="component2-form">
+										<div class="component2__title mb-5">
+											<h2>Укажите данные о выбранном товаре из любого онлайн магазина</h2>
+										</div>
+										<form th:action="@{/allForPC/compilation/number}" method="post" th:object="${productCreateDto}">
+											<div class="form-group mt-3">
+												<label for="purpose1">Выбирите предназначение</label>
+												<select id="purpose1" class="form-control" name="destiny" th:field="*{destiny}">
+													<option value="Домашний ПК">Домашний компьютер</option>
+													<option value="Офисный ПК">Офисный компьютер</option>
+													<option value="Игровой ПК">Игровой компьютер</option>
+												</select>
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Процессор</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="processor">Название модели процессора</label>
+												<input type="text" class="form-control" id="processor" name="processorBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели процессора" th:field="*{processorBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="processorPrice">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены процессора должен быть от 0 до 1000000" id="processorPrice" name="processorPrice" placeholder="Введите цену" th:field="*{processorPrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Кулер для процессора</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="coolerCPU">Название модели кулера для процессора</label>
+												<input type="text" class="form-control" id="coolerCPU" name="cpuCoolerBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели кулера для процессора" th:field="*{cpuCoolerBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="coolerCPUPrice">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены кулера для процессора должен быть от 0 до 1000000" id="coolerCPUPrice" name="cpuCoolerPrice" placeholder="Введите цену" th:field="*{cpuCoolerPrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Материнская плата</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="motherboard">Название модели материнской платы</label>
+												<input type="text" class="form-control" id="motherboard" name="motherboardBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели материнской платы" th:field="*{motherboardBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="motherboardPrice">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены материнской платы должен быть от 0 до 1000000" id="motherboardPrice" name="motherboardPrice" placeholder="Введите цену" th:field="*{motherboardPrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Оперативная память</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="ram">Название модели оперативной памяти</label>
+												<input type="text" class="form-control" id="ram" name="ramBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели оперативной памяти" th:field="*{ramBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="ramPrice">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены операивной памяти должен быть от 0 до 1000000"  id="ramPrice" name="ramPrice" placeholder="Введите цену" th:field="*{ramPrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Твердотельный накопитель</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="ssd">Название модели твердотельного накопителя</label>
+												<input type="text" class="form-control" id="ssd" name="sddBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели SSD" th:field="*{sddBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="ssdPrice">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены твердотельного накопителя должен быть от 0 до 1000000"  id="ssdPrice" name="sddPrice" placeholder="Введите цену" th:field="*{sddPrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Жёсткий диск</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="hdd">Название модели жёсткого диска</label>
+												<input type="text" class="form-control" id="hdd" name="hddBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели HDD" th:field="*{hddBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="hddPrice1">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены жёсткого диска должен быть от 0 до 1000000"  id="hddPrice1" name="hddPrice" placeholder="Введите цену" th:field="*{hddPrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Видеокарта</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="videocard">Название модели видеокарты</label>
+												<input type="text" class="form-control" id="videocard" name="videoCardBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели видеокарты" th:field="*{videoCardBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="videocardPrice">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены видеокарты должен быть от 0 до 1000000" id="videocardPrice" name="videoCardPrice" placeholder="Введите цену" th:field="*{videoCardPrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Блок питания</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="bp">Название модели блока питания</label>
+												<input type="text" class="form-control" id="bp" name="powerSupplyBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели блока питания" th:field="*{powerSupplyBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="bpPrice">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены блока питания должен быть от 0 до 1000000" id="bpPrice" name="powerSupplyPrice" placeholder="Введите цену" th:field="*{powerSupplyPrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Кулер для корпуса</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="cooler">Название модели кулера для корпуса</label>
+												<input type="text" class="form-control" id="cooler" name="coolerBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели кулера для корпуса" th:field="*{coolerBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="coolerPrice">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены кулера для корпуса должен быть от 0 до 1000000" id="coolerPrice" name="coolerPrice" placeholder="Введите цену" th:field="*{coolerPrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Корпус</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="corpus">Название модели корпуса</label>
+												<input type="text" class="form-control" id="corpus" name="corpusBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели корпуса" th:field="*{corpusBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="corpusPrice1">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены корпуса должен быть от 0 до 1000000" id="corpusPrice1" name="corpusPrice" placeholder="Введите цену" th:field="*{corpusPrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Монитор</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="monitor">Название модели монитора</label>
+												<input type="text" class="form-control" id="monitor" name="monitorBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели монитора" th:field="*{monitorBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="monitorPrice1">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены монитора должен быть от 0 до 1000000" id="monitorPrice1" name="monitorPrice" placeholder="Введите цену" th:field="*{monitorPrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Клавиатура</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="keyboard">Название модели клавиатуры</label>
+												<input type="text" class="form-control" id="keyboard" name="keyboardBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели клавиатуры" th:field="*{keyboardBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="keyboardPrice1">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены клавиатуры должен быть от 0 до 1000000" id="keyboardPrice1" name="keyboardPrice" placeholder="Введите цену" th:field="*{keyboardPrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>Компьютерная мышка</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="mouse">Название модели компьютерной мышки</label>
+												<input type="text" class="form-control" id="mouse" name="mouseBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели компьютерной мышки" th:field="*{mouseBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="mousePrice1">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены компьютерной мыши должен быть от 0 до 1000000" id="mousePrice1" name="mousePrice" placeholder="Введите цену" th:field="*{mousePrice}">
+											</div>
+
+											<div class="component2__subtitle mt-5">
+												<h3><span>МФУ</span></h3>
+											</div>
+											<div class="form-group mt-5">
+												<label for="mfd">Название модели МФУ</label>
+												<input type="text" class="form-control" id="mfd" name="mfdBrand" pattern="[^\s][a-zA-Zа-яА-ЯёЁ0-9\s.,-:]{0,70}[^\s]" maxlength="70" title="Длина текста не более 70 символов. В названии модели недопустимы: символы (<> {} [] () / | \ ! ? ; & $ # № @ ^ ~ * % + =), кавычки, пробелы в начале и в конце текста." placeholder="Введите название модели МФУ" th:field="*{mfdBrand}">
+											</div>
+											<div class="form-group mt-3">
+												<label for="mfdPrice1">Цена</label>
+												<input type="number" class="form-control" min="0" max="1000000" title="Диапазон вводимой цены МФУ должен быть от 0 до 1000000" id="mfdPrice1" name="mfdPrice" placeholder="Введите цену" th:field="*{mfdPrice}">
+											</div>
+
+											<div class="form-group mt-3">
+												<th:block th:if="${actualUser != null}">
+													<input type="hidden" name="number" th:value="${actualUser.getId()}">
+												</th:block>
+											</div>
+
+											<div class="d-flex justify-content-center mb-3">
+												<div class="w-50">
+													<button type="submit" class="btn btn-block btn-secondary mt-5">СБОРКА</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="btnUp">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="linkUp">
+								<a href="#up" class="sizeUp">
+									<i class="fa-solid fa-circle-arrow-up"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/compilation.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu.js}" type="text/javascript"></script>
+</body>
+</html>

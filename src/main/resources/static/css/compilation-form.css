@@ -1,0 +1,234 @@
+.forms-compilation{
+    margin: 120px 0px 40px 0px;
+}
+
+.compilation__title h1{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: #b3cdfa;
+}
+
+.compilation__text p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    color: #cfd3de;
+}
+
+.compilation__tab{
+    margin: 60px 0px 40px 0px;
+}
+
+.nav-tabs .nav-item.show .nav-link .bkg-link, .nav-tabs .nav-link.active.bkg-link {
+    color: #fff;
+    background-color: #4f6b9c;
+}
+
+.color-link a{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.component1-form{
+    background: #112130;
+    padding: 10px;
+}
+
+.component1__title h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: center;
+    color: #6ac1f2;
+    text-transform: uppercase;
+}
+
+.component1__title h2 >span {
+    position: relative;
+}
+
+.component1__title h2 >span::after{
+    content: "";
+    height: 2px;
+    background: #6ac1f2;
+    width: 40%;
+    margin-left: -20%;
+    left: 50%;
+    top:120%;
+    position: absolute;
+}
+
+.component1__subtitle h3{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color:#ccf3fd;
+    text-align: center;
+}
+
+.device-items{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-bottom: 1px solid #fff;
+    padding: 5px;
+}
+
+.device__content{
+    display: flex;
+    width: 60%;
+    /*background: #313f4d;*/
+    padding: 5px;
+    margin:0px 0px 8px 0px;
+}
+
+.device__img{
+    flex: 0 0 33.333%;
+    position: relative;
+    min-height: 200px;
+}
+
+.device__img img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.device__body{
+    flex: 1 1 auto;
+    align-self: center;
+    padding: 8px;
+}
+
+.device__text p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    text-align: center;
+    color: #f9fdbc;
+}
+
+/*.hidSel{*/
+/*    visibility: hidden;*/
+/*}*/
+
+.component2-form{
+    background: #31506d;
+    padding: 20px;
+}
+
+.component2__title h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #e5f9f5;
+}
+
+.component2__subtitle h3{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 40px;
+    color:#d4d4d4;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.component2__subtitle h3 > span{
+    position: relative;
+}
+
+.component2__subtitle h3 > span::after{
+    content: "";
+    height: 2px;
+    background: #d4d4d4;
+    width: 40%;
+    margin-left: -20%;
+    left: 50%;
+    top:120%;
+    position: absolute;
+}
+
+label{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 18px;
+    line-height: 1.3em;
+    color:#fff;
+}
+
+.form-check-input{
+    transform: scale(2);
+}
+
+.form-group input:focus{
+    box-shadow: rgba(183, 237, 234, 1) 0px 3px 8px;
+    border-color: #b7edea;
+}
+
+.form-group select:focus{
+    box-shadow: rgba(183, 237, 234, 1) 0px 3px 8px;
+    border-color: #b7edea;
+}
+
+/*.linkUp{
+	position: relative;
+}*/
+.sizeUp{
+    color: #fff;
+    font-size: 3rem;
+    position: fixed;
+    top:400px;
+    right:16px;
+    z-index: 100;
+    opacity: .3;
+}
+
+@media(max-width: 790px){
+    .forms-compilation{
+        margin-top: 100px;
+    }
+
+    .device__content{
+        flex-direction: column;
+    }
+
+}
+
+@media(max-width: 500px){
+    .compilation__title h1{
+        font-size: 34px;
+    }
+}
+
+@media(max-width: 440px){
+
+    .device__content{
+        width: 100%;
+    }
+
+    .component1__title h2{
+        font-size: 28px;
+    }
+
+    .component1__subtitle h3{
+        font-size: 24px;
+    }
+
+    .component2__title h2{
+        font-size: 28px;
+    }
+
+    .component2__subtitle h3{
+        font-size: 24px;
+    }
+
+}

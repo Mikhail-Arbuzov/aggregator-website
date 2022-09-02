@@ -249,6 +249,18 @@ public class DeviceService {
        }
     }
 
+    public List<DeviceDto> getAllDevicesBySection(String section, DeviceDto deviceDto){
+        List<Device> devices2 = deviceRepository.findAllBySection(section);
+        if(devices2.size() > 0){
+            return MapperConfig.convertList(devices2,this::mapToDto);
+        }
+        else{
+            List<DeviceDto> deviceDtoList2 = new ArrayList<>();
+            deviceDtoList2.add(deviceDto);
+            return deviceDtoList2;
+        }
+    }
+
     public DeviceDto addDefaultDevice(){
         DeviceDto dto = new DeviceDto();
         dto.setId(Long.valueOf(1));
