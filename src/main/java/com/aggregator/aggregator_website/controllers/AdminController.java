@@ -3,18 +3,13 @@ package com.aggregator.aggregator_website.controllers;
 import com.aggregator.aggregator_website.dto.*;
 import com.aggregator.aggregator_website.dto.siteanalysis.SiteAnalysisDto;
 import com.aggregator.aggregator_website.exceptionhandlers.notifications.ErrorMessage;
-import com.aggregator.aggregator_website.services.ConfiguratorService;
-import com.aggregator.aggregator_website.services.DeviceService;
-import com.aggregator.aggregator_website.services.SiteAnalysisClient;
-import com.aggregator.aggregator_website.services.WebsiteService;
+import com.aggregator.aggregator_website.services.*;
 import com.aggregator.aggregator_website.services.globalerrors.ClientError;
 import com.aggregator.aggregator_website.services.globalerrors.ErrorIO;
 import com.aggregator.aggregator_website.services.globalerrors.ErrorMalformedURL;
 import com.aggregator.aggregator_website.services.globalerrors.ErrorUnknownHost;
 import com.aggregator.aggregator_website.services.validation.CheckURLValidator;
 import lombok.AllArgsConstructor;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,9 +18,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -44,6 +37,7 @@ public class AdminController {
     private final WebsiteService websiteService;
     private final DeviceService deviceService;
     private final ConfiguratorService configuratorService;
+    private final AntivirusSoftService antivirusSoftService;
 
     @GetMapping("/admin")
     public String getAdminPage(){
@@ -93,6 +87,13 @@ public class AdminController {
         SourceRequest sourceConfigurator = new SourceRequest();
         model.addAttribute("sourceConfigurator",sourceConfigurator);
         return "sitesections/configurator-add";
+    }
+
+    @GetMapping("/admin/section-antivirus")
+    public String getAntivirusSection(Model model){
+        UrlRequest urlAntivirusRequest = new UrlRequest();
+        model.addAttribute("urlAntivirusRequest", urlAntivirusRequest);
+        return "sitesections/section-antivirus";
     }
 
 
@@ -289,6 +290,19 @@ public class AdminController {
             }
         }
         return "redirect:/allForPC/configurator";
+    }
+
+    @PostMapping("/admin/addAntivirus")
+    public String addAntivirusSoft(@Valid @ModelAttribute("urlAntivirusRequest") UrlRequest urlAntivirusRequest,
+                                   BindingResult bindingResult) throws IOException,NullPointerException {
+        addGlobalErrorsValidURL(bindingResult,"urlAntivirusRequest");
+        if (bindingResult.hasErrors()){
+            return "sitesections/section-antivirus";
+        }
+        else{
+            antivirusSoftService.addAntivirusSoft(urlAntivirusRequest.getUrlSite());
+            return "redirect:/allForPC/antivirus-soft";
+        }
     }
 
     private  void addGlobalErrorsValidURL(BindingResult bindingResult,String objName){

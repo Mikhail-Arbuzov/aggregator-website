@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Раздел антивирусы</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/section-antivirus.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu2.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu2::menu2}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="addAntivirus">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col d-flex justify-content-center">
+							<div class="addAntivirus-corobka">
+								<div class="addAntivirus__carusel">
+									<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+										<div class="carousel-inner">
+											<div class="carousel-item active">
+												<img src="img/banner/antiv1.jpg" class="d-block w-100" alt="antivirus">
+											</div>
+											<div class="carousel-item">
+												<img src="img/banner/antiv2.jpg" class="d-block w-100" alt="antivirus">
+											</div>
+											<div class="carousel-item">
+												<img src="img/banner/antiv3.jpg" class="d-block w-100" alt="antivirus">
+											</div>
+										</div>
+										<button class="carousel-control-prev" type="button" data-target="#carouselExampleFade" data-slide="prev">
+											<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+											<span class="sr-only">Previous</span>
+										</button>
+										<button class="carousel-control-next" type="button" data-target="#carouselExampleFade" data-slide="next">
+											<span class="carousel-control-next-icon" aria-hidden="true"></span>
+											<span class="sr-only">Next</span>
+										</button>
+									</div>
+								</div>
+								<div class="addAntivirus-form">
+									<div class="addAntivirus-form__title">
+										<h2>Добавить источник об антивирусных программах</h2>
+									</div>
+									<form th:action="@{/admin/addAntivirus}" method="post" th:object="${urlAntivirusRequest}">
+										<div class="form-group mt-3">
+											<input type="url" class="form-control" name="urlSite"  placeholder="Введите URL-адрес" th:field="*{urlSite}">
+										</div>
+										<th:block th:if="${#fields.hasErrors('urlSite')}">
+											<th:block th:if="${#fields.errors('urlSite').size() == 3}">
+												<div class="err-class2" th:each="err:${#fields.errors('urlSite')}">
+													<th:block th:if="${err.startsWith('URL не')}">
+														<p th:text="${err}"></p>
+													</th:block>
+													<th:block th:unless="${err.startsWith('URL не')}">
+													</th:block>
+												</div>
+											</th:block>
+											<th:block th:unless="${#fields.errors('urlSite').size() == 3}">
+												<div class="err-class2" th:each="err:${#fields.errors('urlSite')}">
+													<p th:text="${err}"></p>
+												</div>
+											</th:block>
+										</th:block>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-50">
+												<button type="submit" class="btn btn-block btn-secondary mt-3 btn-radius">ДОБАВИТЬ</button>
+											</div>
+										</div>
+									</form>
+									<div th:errors="${urlAntivirusRequest}" class="alert alert-danger mt-3" role="alert"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu2.js}" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+.antivirus-description{
+    margin: 120px 0px 40px 0px;
+}
+
+.antivirus-description__header h1{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color:#fafffa;
+}
+
+.antivirus-description__text p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    color: #cfd3de;
+}
+
+.list-antivirus li{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    font-style:italic;
+    color: #cfd3de;
+    margin-left: 10px;
+}
+
+.list-antivirus li:before{
+    content:'\2639 ';
+    color: #cfd3de;
+}
+
+.list-antivirus li:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.antivirus-video{
+    margin: 0px 0px 60px 0px;
+}
+
+.antiv-title h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #b3cdfa;
+}
+
+.antivirus-section{
+    margin: 0px 0px 40px 0px;
+}
+
+.antivirus-section__text p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    color: #cfd3de;
+}
+
+.linkS{
+    font-family: Roboto,Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5em;
+    color: #cfd3de;
+}
+
+.linkS:hover{
+    text-decoration: underline;
+}
+
+.antivirus-section__video{
+    margin: 0px 0px 60px 0px;
+}
+
+.antivirus-source{
+    margin: 0px 0px 40px 0px;
+}
+
+.antivirus-source__container{
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    padding: 5px;
+}
+
+.antivirus-source__item{
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+}
+
+.item__deleteSource{
+    padding: 10px;
+}
+
+.linkdSize{
+    font-size: 2rem;
+    color: #b4b3a5;
+}
+
+.linkdSize:hover{
+    color: #f77474;
+}
+
+.item__linkOnAntivSource{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.linkOnAntivSource__el{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 30px;
+    background:#1c2026;
+}
+
+.linkOnAntivSource__el:hover{
+    background:#b3cdfa;
+}
+
+.el__image1{
+    flex: 0 0 33.333%;
+    position: relative;
+    min-height: 260px;
+}
+
+
+.el__image1 img{
+    width: 100%;
+    height:100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.el__body1{
+    padding: 8px;
+    word-break: break-word;
+    margin: 0px 0px 0px 0px;
+}
+
+.el__body1 h3{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size:20px;
+    font-weight: bold;
+    color:#e0e0e0;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+@media(max-width: 1000px){
+    .antivirus-source__container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .antivirus-source__item{
+        width: 60%;
+    }
+}
+
+@media(max-width: 790px){
+    .antivirus-description{
+        margin: 90px 0px 40px 0px;
+    }
+
+}
+
+@media(max-width: 770px){
+    .antivirus-source__item{
+        width: 80%;
+    }
+}
+
+@media(max-width: 500px){
+    .antivirus-source__item{
+        width: 100%;
+    }
+
+    .antivirus-description__header h1{
+        font-size: 34px;
+    }
+
+}
+
+@media(max-width: 440px){
+    .antiv-title h2{
+        font-size: 28px;
+    }
+}
+
+@media(max-width: 420px){
+    .linkOnAntivSource__el{
+        padding: 10px;
+    }
+}
+
+@media(max-width: 340px){
+    .el__image1{
+        min-height: 160px;
+    }
+}

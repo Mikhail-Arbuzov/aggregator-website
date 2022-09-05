@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="UTF-8">
-	<title>Антивирусные ПО</title>
+	<title>Антивирусная программа</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
-<!--	<link rel="stylesheet" th:href="@{/css/device.css}" type="text/css">-->
+	<link rel="stylesheet" th:href="@{/css/antivirus-soft.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
@@ -18,8 +18,133 @@
 	<div th:replace="~{fragments/menu::menu}"></div>
 	<!--Content-->
 	<div class="content">
-		<section style="margin-top: 120px">
-			<h1>Антивирусные программы</h1>
+		<section class="antivirus-description">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="antivirus-description__header mb-5">
+								<h1>Антивирусная программа</h1>
+							</div>
+							<div class="antivirus-description__text">
+								<p>Сейчас трудно представить повседневную жизнь человека без интернета, компьютера или гаджетов, которые существенно облегчили жизнь и сделали оплату - быстрой, хранение информации - компактным, а общение - виртуальным. Но с развитием полезных программ появляются и вредоносные компьютерные вирусы. Они возникли в 80-х годах прошлого столетия, активно развиваясь и обходя все современные пути защиты.</p>
+								<p>Итак, антивирус - это средство спасения оборудования с программным обеспечением от вредоносных кодов (вирусов). Он разоблачает и преобразовывает файлы, а также выявляет нарушения штатной работы операционной системы и приложений. Чаще всего данная система выручает, но бывает так, что эта зараза пробивает брешь в обороне и компьютер перестаёт нормально функционировать. В дальнейшем заметно снижается производительность системы даже при выполнении простейших задач, приложения работают не корректно, на экране периодически появляются спамы, установленные пароли к почте не подходят, в мессенджерах возникают сомнительные сообщения со ссылками на сторонние источники и на сайте антивирусных программ заблокированы защитные обновления ПО. При выявлении данных признаков необходимо срочно начать лечение компьютера, так как пренебрежение мерами безопасности может привести к печальным последствиям.</p>
+								<p>Компьютерные вирусы подразделяются на:</p>
+								<ul class="list-antivirus">
+									<li><strong> Файловые</strong> – это классика жанра, стал источником для всех остальных. Его код внедряется в какой-либо файл, инфицируя и мешая дальнейшей работе с ним. Вред от программы разнообразен – от простого повреждения файла до сбоя работы системы. Как правило, не проявляет себя, пока пользователь не запустит поражённый документ. «Поймать» данный вирус можно при скачивании файлов с непроверенных сайтов.</li>
+									<li><strong> Сетевые «черви»</strong> представляют собой программу, способную к репликации, приводя к множеству информационного мусора для замедления работы системы. Действия происходят через различные мессенджеры и почту. Они попадают на компьютер через брешь в операционной системе и браузере, распространяясь по локальной сети.</li>
+									<li><strong> «Троян» (троянский конь)</strong> – программа, через которую злоумышленник получает доступ к компьютеру. Имеет в своём составе клиентскую и серверную часть. Посредством первой отправитель может удаленно управлять вирусом в чужом компьютере, крадя личные данные и пароли владельца ПК. Вторая используется непосредственно для самого заражения, внедряясь в какую-либо полезную программу.</li>
+									<li><strong> Программа-шпион</strong> отслеживает адреса, пароли и сайты, которыми пользуется владелец компьютера. В дальнейшем пользователь видит в рекламе ссылки на ту информацию, которой недавно интересовался.</li>
+									<li><strong> Руткиты</strong> получают доступ к компьютеру на самом глубоком уровне и собирают любые данные о системе. Обнаружить их довольно сложно, так как умеют обходить антивирусные программы и оставаться в тени.</li>
+									<li><strong> Keylogger</strong> - это «перехватчик» информации, которая вводится с клавиатуры. Он запоминает данные и делает скриншот. Обнаружить также сложно, так как часто скрывается под маской нужного драйвера.</li>
+									<li><strong> «Зомби» (Botnet)</strong> заражают целую сеть компьютеров, которая используется для различных кибер-атак и рассылки спама. Обнаружить их порой не могут даже самые мощные антивирусы.</li>
+									<li><strong> Блокировщики</strong> ставят серьезную преграду на пути к доступу в операционную систему. Пользователь не сможет ничего сделать на своем ПК из-за неисчезающего окна с обвинением в использовании пиратского ПО. При этом злоумышленник просит энную сумму денег за разблокировку, которую он производить не планирует.</li>
+									<li><strong> Загрузочные вирусы</strong> поражают жесткий диск, существенно замедляют работу компьютера и снижают производительность. Такие вирусы важно своевременно обнаружить, так как при длительном их воздействии система может «полететь».</li>
+									<li><strong> Фишинг</strong> – это своего рода ловушка, но для продвинутых владельцев он не так страшен. Если пользователь нигде не регистрировался, а ему на электронную почту пришло сообщение со ссылкой и просьбой что-либо подтвердить – лучше оставить письмо без внимания.</li>
+								</ul>
+								<p>Антивирусы бывают бесплатные, условно-бесплатные и платные (разовый платёж или по подписке). Основными антивирусными программами являются: Avast, Dr.Web, Kaspersky, ESET NOD 32, Norton Internet Security.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="antivirus-video">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="antiv-title mb-5">
+								<h2>Нужен ли антивирус?</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="embed-responsive embed-responsive-16by9">
+								<iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/WPtcHI8hmiI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="antivirus-section">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="antiv-title mb-5">
+								<h2>Какой антивирус выбрать?</h2>
+							</div>
+							<div class="antivirus-section__text">
+								<p>Одним из авторитетных сайтов с обзорами и сравнениями различных антивирусов для ПК является <a href="#" class="linkS"  data-toggle="tooltip" data-placement="top" data-trigger="click" data-html="true" data-title="Лучшее антивирусное ПО <br> <a href='https://www.av-test.org/en/antivirus/home-windows/' target='_blank'>Открыть в новой вкладке</a>">AV-TEST</a>. На нем можно выбрать операционную систему, для которой нужен антивирус. Далее перед нами появляется рейтинг, который обновляется каждые три месяца после тщательного экспертного тестирования по трём критериям: защита (Ptotection), производительность (Perfonance), удобство интерфейса (Usability). В списке есть как платные приложения, так и бесплатные. Стоит выбирать варианты с «тремя шестёрками».</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="antivirus-section__video">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="embed-responsive embed-responsive-16by9">
+								<iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/luT-j4x1Q0A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="antivirus-source">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="antiv-title mb-4">
+								<h2>Полезные источники об выборе антивирусной программы для ПК</h2>
+							</div>
+							<div class="antivirus-source__container">
+								<th:block th:each="antivirus : ${antivirusSoftList}">
+									<div class="antivirus-source__item mb-4">
+										<div sec:authorize="hasAuthority('ADMIN')" class="item__deleteSource mb-2">
+											<div class="text-right">
+												<form th:action="@{/allForPC/antivirus-soft/id}" th:method="DELETE">
+													<input type="hidden" name="id" th:value="${antivirus.getId()}">
+													<a href="#" class="linkdSize" onclick="$(this).closest('form').submit();">
+														<i class="fa-solid fa-square-xmark"></i>
+													</a>
+												</form>
+											</div>
+										</div>
+										<div class="item__linkOnAntivSource">
+											<a th:href="@{(${antivirus.getLink()})}" class="linkOnAntivSource__el" target="_blank">
+												<div class="el__image1">
+													<th:block th:if="${antivirus.getImgURL() != null}">
+														<img th:src="@{(${antivirus.getImgURL()})}" alt="sourse image">
+													</th:block>
+													<th:block th:unless="${antivirus.getImgURL() != null}">
+														<img src="img/comp.jpeg" alt="sourse image">
+													</th:block>
+												</div>
+												<div class="el__body1">
+													<h3 th:text="${antivirus.getTitle()}"></h3>
+												</div>
+											</a>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
 	</div>
 	<!--Footer-->
@@ -28,6 +153,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/antivirus-soft.js}" type="text/javascript"></script>
 <script th:src="@{/js/menu.js}" type="text/javascript"></script>
 </body>
 </html>
