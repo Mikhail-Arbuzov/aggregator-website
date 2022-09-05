@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="UTF-8">
-	<title>Операционные системы</title>
+	<title>Операционная система</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
-	<!--	<link rel="stylesheet" th:href="@{/css/device.css}" type="text/css">-->
+	<link rel="stylesheet" th:href="@{/css/operative.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
@@ -18,8 +18,115 @@
 	<div th:replace="~{fragments/menu::menu}"></div>
 	<!--Content-->
 	<div class="content">
-		<section style="margin-top: 120px">
-			<h1>Операционные системы</h1>
+		<section class="operation-content">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="operation__header mb-5">
+								<h1>Операционная система</h1>
+							</div>
+							<div class="operation__text">
+								<p>Операционная система (ОС) представляет собой совокупность взаимосвязанных программ, предназначенных для управления ресурсами компьютера, ноутбука или смартфона. Таким образом, главной задачей ОС является управление всеми элементами девайса. С помощью нее человек может взаимодействовать со своим оборудованием. Кроме того, она позволяет правильно распределять вычислительные ресурсы между процессами. Кстати, именно поэтому разработчики ПО могут пользоваться удобным интерфейсом и создавать различные программы. Но стоит понимать, что программы разрабатываются строго под конкретную ОС.</p>
+								<p>В большей части устройств операционная система выступает в качестве самого важного элемента программного обеспечения. При этом они имеют разный набор функций и ограничений, но некоторые из них дают возможность увеличить функционал своего устройства при помощи установки всевозможных программ.</p>
+								<p>Одним из важнейших элементов является ядро, которое осуществляет контроль над правильным выполнением процессов и регулирует ресурсы. Например, при взаимодействии пользователя с компьютером запускается работа, для которой требуется определенные резервы, а доступ к ним невозможен без налаженной работы ОС.</p>
+								<p>Основные задачи, определяющие ее предназначение:</p>
+								<ul class="operation-list">
+									<li> Управляет всеми ресурсами системы, обеспечивает нормальное функционирование и координацию процессов устройства;</li>
+									<li> Упрощает для пользователя работу с девайсом.</li>
+								</ul>
+								<p>Функции определяются разработчиками и зависят от комплектующих, но есть общие, которые присущи всем ОС:</p>
+								<ul class="operation-list2">
+									<li> выполнение запросов ПО;</li>
+									<li> работа с программами и загрузка в оперативную память;</li>
+									<li> обеспечение многозадачности и надежности вычислительных процессов;</li>
+									<li> стандартизированный доступ к устройствам ввода-вывода;</li>
+									<li> контроль над процессором, видеоадаптером, оперативной памятью и другими элементами девайса;</li>
+									<li> отладка и логирование ошибок;</li>
+									<li> предоставление удобного интерфейса;</li>
+									<li> правильная координация ресурсов устройства и их распределение между запущенными процессами.</li>
+								</ul>
+								<p>Наиболее популярные операционки для пк на сегодня: Windows, Linux и MacOS и другие, которые подбираются под определённые цели взаимодействия с ПК. Вот некоторые из них:</p>
+								<ul class="operation-list">
+									<li><strong> Игры.</strong> Лучше всего подойдет Windows, которая может запускать большинство современных игр и приложений. Отличный вариант для проведения времени в шутерах, стратегиях, квестах и т.д. В данной операционной системе наиболее актуальными магазинами игр будут: Steam, Оrigin, Battle. Net. Также при желании можно подключиться к игровой приставке.</li>
+									<li><strong> Программирование.</strong> В этой сфере самым оптимальным решением для вас станет Linux: комфорт в работе с интернетом, дизайном и утилитами. Здесь существует огромное количество конфигураций, что позволит настроить OС под свои задачи, а также установить бесплатный интерфейс, внешне схожий с Mac, Windows и др.</li>
+									<li><strong> Работа с медиаконтентом. </strong> Для работы с видео/аудио редакторами лучше всего подходит MacOS для высококачественной обработки звука, высокой скорости рендеринга видео и плавности выполнения задач (iMAC и MacPRO). Кроме того, выпускается с установленными программами для работы с медиаконтентом.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="operation">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="operation-subtitle mb-4">
+								<h2>Источники по выбору лучшей операционной системы</h2>
+							</div>
+							<div class="operation-container">
+								<th:block th:each="systemSource : ${systemSourcesDto}">
+									<div class="operation-item mb-4">
+										<th:block sec:authorize="hasAuthority('ADMIN')">
+											<div class="item__deleteOperation mb-2">
+												<div class="text-right">
+													<form th:action="@{/allForPC/operative/id}" th:method="DELETE">
+														<input type="hidden" name="id" th:value="${systemSource.getId()}">
+														<a href="#" class="linkd-size" onclick="$(this).closest('form').submit();">
+															<i class="fa-solid fa-square-xmark"></i>
+														</a>
+													</form>
+												</div>
+											</div>
+										</th:block>
+										<div class="operation-item__elImage mb-2">
+											<div class="elImage-site">
+												<div class="elImage-site__img">
+													<th:block th:if="${systemSource.getLogotype() != null}">
+														<img th:src="@{(${systemSource.getLogotype()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+													</th:block>
+													<th:block th:unless="${systemSource.getLogotype() != null}">
+														<img src="img/iconSite.jpg" alt="iconka">
+													</th:block>
+												</div>
+												<div class="elImage-site__text">
+													<p th:text="${systemSource.getDomain()}"></p>
+												</div>
+											</div>
+										</div>
+										<div class="operation-item__imgSite mb-3">
+											<div class="imgSite">
+												<th:block th:if="${systemSource.getImage() != null}">
+													<img th:src="@{(${systemSource.getImage()})}" alt="iconka">
+												</th:block>
+												<th:block th:unless="${systemSource.getImage() != null}">
+													<img src="img/comp.jpeg" alt="iconka">
+												</th:block>
+											</div>
+										</div>
+										<div class="operation-item__title mb-2">
+											<h3 th:text="${systemSource.getTitle()}"></h3>
+										</div>
+										<div class="operation-item__text mb-2">
+											<div class="paragraph">
+												<p th:text="${systemSource.getText()}"></p>
+											</div>
+										</div>
+										<div class="operation-item__link mb-2">
+											<div>
+												<a th:href="@{(${systemSource.getLink()})}" class="btn btn-secondary bradius" target="_blank">Подробнее</a>
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
 	</div>
 	<!--Footer-->

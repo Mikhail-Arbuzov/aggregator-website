@@ -1,0 +1,252 @@
+.operation-content{
+    margin: 120px 0px 40px 0px;
+}
+
+.operation__header h1{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color:#fafffa;
+}
+
+.operation__text p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    color: #cfd3de;
+}
+
+/*с тире*/
+.operation-list li{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    font-style:italic;
+    color: #cfd3de;
+    margin-left: 10px;
+}
+
+.operation-list li:before{
+    content:'\2013 ';
+    color: #cfd3de;
+}
+
+.operation-list li:not(:last-child){
+    margin-bottom: 10px;
+}
+
+/*с маркером*/
+.operation-list2 li{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    font-style:italic;
+    color: #cfd3de;
+    margin-left: 10px;
+}
+
+.operation-list2 li:before{
+    content:'\2022 ';
+    color: #cfd3de;
+}
+
+.operation-list2 li:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.operation{
+    margin: 0px 0px 40px 0px;
+}
+
+.operation-subtitle h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #b3cdfa;
+}
+
+.operation-container{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    padding: 8px;
+}
+
+.operation-item{
+    background:#1f3852;
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.operation-item:hover{
+    box-shadow: 0px 1px 2px 0px rgba(146,206,249,1),
+    1px 2px 4px 0px rgba(146,206,249,1),
+    2px 4px 8px 0px rgba(146,206,249,1),
+    2px 4px 16px 0px rgba(146,206,249,1);
+
+}
+
+.item__deleteOperation{
+    padding: 10px;
+}
+
+.linkd-size{
+    font-size: 2rem;
+    color: #b4b3a5;
+}
+
+.linkd-size:hover{
+    color: #7f90d5;
+}
+
+.operation-item__elImage{
+    display: flex;
+    padding: 5px;
+}
+
+.elImage-site{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    height: 50px;
+    background:#142e49;
+    padding: 5px;
+}
+
+.elImage-site__img{
+    flex: 0 0 33.333%;
+    position: relative;
+    min-height: 40px;
+}
+
+.elImage-site__img img{
+    width: 100%;
+    height:100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.elImage-site__text{
+    flex: 1 1 auto;
+    align-self: center;
+    padding: 0px 0px 0px 8px;
+}
+
+.elImage-site__text p{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size:14px;
+    color:#61ece5;
+}
+
+.operation-item__imgSite{
+    flex: 0 0 33.333%;
+    position: relative;
+    min-height:280px;
+}
+
+.operation-item__imgSite img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.operation-item__title h3{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size:24px;
+    font-weight: bold;
+    color:#e1f2fc;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.operation-item__text{
+    padding: 8px;
+}
+
+.paragraph p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 16px;
+    line-height: 1.3em;
+    color: #e5e0f3;
+}
+
+.paragraph p:after{
+    content: '\2026';
+    font-size: 14px;
+    color: #e5e0f3;
+}
+
+.operation-item__link{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bradius{
+    border-radius: 10px;
+}
+
+@media(max-width: 990px){
+    .operation-item{
+        width: 70%;
+    }
+
+    .elImage-site{
+        width: 60%;
+    }
+
+    .operation-container{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media(max-width: 790px){
+    .operation-content{
+        margin: 90px 0px 40px 0px;
+    }
+}
+
+@media(max-width: 770px){
+    .operation-item{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media(max-width: 500px){
+    .operation__header h1{
+        font-size: 34px;
+    }
+}
+
+@media(max-width: 440px){
+    .operation-subtitle h2{
+        font-size: 28px;
+    }
+}
+
+@media(max-width: 390px){
+    .operation-item{
+        padding: 8px;
+    }
+
+    .operation-container{
+        padding: 0px;
+    }
+
+    .operation-item__text{
+        padding: 0px;
+    }
+    .elImage-site{
+        width: 100%;
+    }
+}

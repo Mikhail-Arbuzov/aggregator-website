@@ -1,0 +1,47 @@
+.operation-add{
+    margin: 120px 0px 40px 0px;
+}
+
+.operation-add__content{
+    padding: 30px;
+    background: #334a70;
+}
+
+.operation-add__header h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #cee3f9;
+}
+
+.operation-add__form{}
+
+label{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 16px;
+    line-height: 1.3em;
+    color:#fff;
+}
+
+.form-group input:focus{
+    box-shadow: rgba(183, 237, 234, 1) 0px 3px 8px;
+    border-color: #b7edea;
+}
+
+.err-class3{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 1.3em;
+    color: #ffeeba;
+}
+
+@media(max-width: 790px){
+    .operation-add{
+        margin: 90px 0px 40px 0px;
+    }
+
+    .operation-add__header h2{
+        font-size: 28px;
+    }
+}

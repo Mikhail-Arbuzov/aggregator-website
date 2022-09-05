@@ -16,7 +16,7 @@ import javax.validation.constraints.Pattern;
 public class SourceRequest {
     @NotBlank(message = "Домен сайта не был указан!")
     @Pattern(regexp = "^(?!\\-)(?:[a-zA-Z\\d\\-]{0,62}[a-zA-Z\\d]\\.){1,126}(?!\\d+)[a-zA-Z\\d]{1,63}$",
-            message = "Неверно указан домен сайта!Возможно был поставлен лишний пробел в начале или в конце строки.")
+            message = "Неверно указан домен сайта! Возможно был поставлен лишний пробел в начале или в конце строки.")
     private String domain;
 
     @NotBlank(message = "URL не был указан!!!")

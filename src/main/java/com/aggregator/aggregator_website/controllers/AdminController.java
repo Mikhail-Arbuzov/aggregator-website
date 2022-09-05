@@ -38,6 +38,7 @@ public class AdminController {
     private final DeviceService deviceService;
     private final ConfiguratorService configuratorService;
     private final AntivirusSoftService antivirusSoftService;
+    private final SystemSourceService systemSourceService;
 
     @GetMapping("/admin")
     public String getAdminPage(){
@@ -94,6 +95,13 @@ public class AdminController {
         UrlRequest urlAntivirusRequest = new UrlRequest();
         model.addAttribute("urlAntivirusRequest", urlAntivirusRequest);
         return "sitesections/section-antivirus";
+    }
+
+    @GetMapping("/admin/section-operative")
+    public String getOperativeSection(Model model){
+        SourceRequest sourceOperative = new SourceRequest();
+        model.addAttribute("sourceOperative",sourceOperative);
+        return "sitesections/section-operative";
     }
 
 
@@ -302,6 +310,18 @@ public class AdminController {
         else{
             antivirusSoftService.addAntivirusSoft(urlAntivirusRequest.getUrlSite());
             return "redirect:/allForPC/antivirus-soft";
+        }
+    }
+    @PostMapping("/admin/addSystemSource")
+    public String addSystemSource(@Valid @ModelAttribute("sourceOperative") SourceRequest sourceOperative,
+                                  BindingResult bindingResult) throws IOException,NullPointerException {
+        addGlobalErrorsValidURL(bindingResult,"sourceOperative");
+        if(bindingResult.hasErrors()){
+            return "sitesections/section-operative";
+        }
+        else{
+            systemSourceService.addSystemSource(sourceOperative.getDomain(),sourceOperative.getUrlSite());
+            return "redirect:/allForPC/operative";
         }
     }
 
