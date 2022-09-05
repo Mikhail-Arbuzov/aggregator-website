@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="UTF-8">
-	<title>Офисные ПО</title>
+	<title>Офисные программы</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
-	<!--	<link rel="stylesheet" th:href="@{/css/device.css}" type="text/css">-->
+	<link rel="stylesheet" th:href="@{/css/office-program.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
@@ -18,8 +18,74 @@
 	<div th:replace="~{fragments/menu::menu}"></div>
 	<!--Content-->
 	<div class="content">
-		<section style="margin-top: 120px">
-			<h1>Офисные программы</h1>
+		<section class="officePo-content">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="officePo-content__title mb-3">
+								<h1>Офисные программы</h1>
+							</div>
+							<div class="officePo-content__text">
+								<p>Офисные программы – это пакет приложений, позволяющий работать, с текстовыми документами, электронными таблицами, графиками и презентациями. Самыми известными из них являются Microsoft Office и OpenOffice.org, но для различных операционных систем можно встретить и другие виды офисных программ. Более подробно можно ознакомиться с ними <a href="#" class="linkS2"  data-toggle="tooltip" data-placement="top" data-trigger="click" data-html="true" data-title="RedSoft.club <br> <a href='https://redsoft.club/ofis' target='_blank'>Открыть в новой вкладке</a>">здесь</a>.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="officePo">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="officePo__subtitle mb-4">
+								<h2>Как выбрать нужную офисную программу для пк</h2>
+							</div>
+							<div class="officePo-container">
+								<th:block th:each="officeProgram : ${officePrograms}">
+									<div class="officePo-item mb-5">
+										<figure class="item-imgsettings">
+											<th:block th:if="${officeProgram.getImageUrl() != null}">
+												<img th:src="@{(${officeProgram.getImageUrl()})}"  alt="image">
+											</th:block>
+											<th:block th:unless="${officeProgram.getImageUrl() != null}">
+												<img src="img/comp.jpeg"  alt="image">
+											</th:block>
+											<th:block sec:authorize="hasAuthority('ADMIN')">
+												<figcaption>
+													<form class="link-forma1" th:action="@{/allForPC/officeProgram/id}" th:method="DELETE">
+														<input type="hidden" name="id" th:value="${officeProgram.getId()}">
+														<a href="#" onclick="$(this).closest('form').submit();">
+															<i class="fa-solid fa-square-xmark"></i>
+														</a>
+													</form>
+												</figcaption>
+											</th:block>
+										</figure>
+										<div class="item-officePoBody__element">
+											<div class="element-tit">
+												<h3 th:text="${officeProgram.getHeader()}"></h3>
+											</div>
+											<div class="element-txt">
+												<div class="txt-paragraph">
+													<p th:text="${officeProgram.getText()}"></p>
+												</div>
+											</div>
+											<div class="d-flex justify-content-center mt-3">
+												<div class="w-50">
+													<a th:href="@{(${officeProgram.getLink()})}" class="btn btn-block btn-secondary mt-3 btn-radius2" target="_blank">Подробнее</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
 	</div>
 	<!--Footer-->
@@ -28,6 +94,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/office.js}" type="text/javascript"></script>
 <script th:src="@{/js/menu.js}" type="text/javascript"></script>
 </body>
 </html>

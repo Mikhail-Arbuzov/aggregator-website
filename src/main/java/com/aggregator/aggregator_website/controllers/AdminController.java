@@ -39,6 +39,7 @@ public class AdminController {
     private final ConfiguratorService configuratorService;
     private final AntivirusSoftService antivirusSoftService;
     private final SystemSourceService systemSourceService;
+    private final OfficeProgramService officeProgramService;
 
     @GetMapping("/admin")
     public String getAdminPage(){
@@ -102,6 +103,13 @@ public class AdminController {
         SourceRequest sourceOperative = new SourceRequest();
         model.addAttribute("sourceOperative",sourceOperative);
         return "sitesections/section-operative";
+    }
+
+    @GetMapping("/admin/section-office")
+    public String getOfficeSection(Model model){
+        UrlRequest urlOfficeProgram = new UrlRequest();
+        model.addAttribute("urlOfficeProgram",urlOfficeProgram);
+        return "sitesections/section-office";
     }
 
 
@@ -322,6 +330,19 @@ public class AdminController {
         else{
             systemSourceService.addSystemSource(sourceOperative.getDomain(),sourceOperative.getUrlSite());
             return "redirect:/allForPC/operative";
+        }
+    }
+
+    @PostMapping("/admin/addOfficeProgram")
+    public String addOfficeProgram(@Valid @ModelAttribute("urlOfficeProgram") UrlRequest urlOfficeProgram,
+                                   BindingResult bindingResult) throws IOException,NullPointerException {
+        addGlobalErrorsValidURL(bindingResult,"urlOfficeProgram");
+        if(bindingResult.hasErrors()){
+            return "sitesections/section-office";
+        }
+        else{
+            officeProgramService.addOfficeProgram(urlOfficeProgram.getUrlSite());
+            return "redirect:/allForPC/officeProgram";
         }
     }
 

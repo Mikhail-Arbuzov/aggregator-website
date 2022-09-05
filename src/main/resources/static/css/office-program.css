@@ -1,0 +1,214 @@
+.officePo-content{
+    margin: 120px 0px 40px 0px;
+}
+
+.officePo-content__title h1{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color:#fafffa;
+}
+
+.officePo-content__text p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    color: #cfd3de;
+}
+
+.officePo{
+    margin: 0px 0px 40px 0px;
+}
+
+.officePo__subtitle h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #b890a4;
+}
+
+.linkS2{
+    font-family: Roboto,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5em;
+    color: #cfd3de;
+}
+
+.linkS2:hover{
+    text-decoration: underline;
+}
+
+.officePo-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.officePo-item{
+    display: flex;
+    padding: 14px;
+    background: #133949;
+}
+
+.officePo-item:hover{
+    box-shadow: 4px 4px 18px 0px #cfd3de;
+    border-color: #cfd3de;
+}
+
+.officePo-item > figure{
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+}
+
+.item-imgsettings{
+    flex: 0 0 33.333%;
+    position: relative;
+    min-height:260px;
+}
+
+.item-imgsettings img{
+    width: 100%;
+    height:100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.officePo-item > figure > figcaption{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(22, 28, 53, 0);
+    display: flex;
+    justify-content: center;
+    transition-duration: 0.1s;
+}
+
+.link-forma1{
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #FFFFFF;
+    margin: 10px;
+    margin-top: auto;
+    margin-bottom: 20px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+
+.link-forma1 a{
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.link-forma1 a:hover{
+    color:#47484a;
+}
+
+.link-forma1:hover{
+    background: white;
+}
+
+.officePo-item > figure > figcaption > .link-forma1{
+    transform: translateY(55px);
+}
+
+.officePo-item > figure > img {
+    transition-duration: 1s;
+}
+
+.officePo-item > figure:hover > img {
+    transform: scale3d(1.1, 1.1, 1);
+}
+
+.officePo-item > figure:hover > figcaption{
+    background: rgba(22, 28, 53, 0.7);
+}
+
+.officePo-item > figure:hover >figcaption > .link-forma1{
+    transform: translateY(0px);
+}
+
+.item-officePoBody__element{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 0px 40px;
+}
+
+.element-tit h3{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size:24px;
+    font-weight: bold;
+    color:#e1f2fc;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.element-txt{
+    flex: 1 1 auto;
+    padding: 10px;
+}
+
+.txt-paragraph p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 18px;
+    line-height: 1.3em;
+    color: #e5e0f3;
+}
+
+.txt-paragraph p:after{
+    content: '\2026';
+    font-size: 14px;
+    color: #e5e0f3;
+}
+
+.btn-radius2{
+    border-radius: 10px;
+}
+
+
+@media(max-width: 990px){
+    .officePo-item{
+        flex-direction: column;
+    }
+
+    .item-officePoBody__element{
+        margin: 0px;
+    }
+}
+
+@media(max-width: 790px){
+    .officePo-content{
+        margin: 90px 0px 40px 0px;
+    }
+}
+
+@media(max-width: 500px){
+    .officePo-content__title h1{
+        font-size: 34px;
+    }
+
+    .element-txt{
+        padding:6px;
+    }
+}
+
+@media(max-width: 440px){
+    .officePo__subtitle h2{
+        font-size: 28px;
+    }
+}
+
+@media(max-width: 390px){
+    .element-tit h3{
+        font-size: 20px;
+    }
+}
