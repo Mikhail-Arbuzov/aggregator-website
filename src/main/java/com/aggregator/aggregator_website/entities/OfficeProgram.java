@@ -29,6 +29,6 @@ public class OfficeProgram {
     @Column(name = "text",columnDefinition = "text")
     private String text;
 
-    @Column(name = "link")
+    @Column(name = "link",columnDefinition = "text")
     private String link;
 }
