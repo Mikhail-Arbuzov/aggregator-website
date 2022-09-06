@@ -1,0 +1,94 @@
+.soft-add{
+    margin:120px 0px 40px 0px;
+}
+
+.soft-add__content{}
+
+.soft-add__header h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #cee3f9;
+}
+
+.soft-add__container{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    background: #334a70;
+}
+
+.soft-add__form{
+    padding: 20px;
+    width: 50%;
+}
+
+label{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 16px;
+    line-height: 1.3em;
+    color:#fff;
+}
+
+.form-group input:focus{
+    box-shadow: rgba(183, 237, 234, 1) 0px 3px 8px;
+    border-color: #b7edea;
+}
+
+.btn-bordr{
+    border-radius: 10px;
+}
+
+.soft-add__imgsoft{
+    flex: 0 0 40%;
+    position: relative;
+}
+
+.soft-add__imgsoft img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.errSoft{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 1.3em;
+    color: #ffeeba;
+}
+
+@media(max-width: 990px){
+    .soft-add__container{
+        flex-direction: column;
+    }
+
+    .soft-add__imgsoft{
+        /*flex: 0 0 33.33%;*/
+        min-height: 280px;
+    }
+
+    .soft-add__form{
+        width: 100%;
+    }
+}
+
+@media(max-width: 790px){
+    .soft-add{
+        margin: 90px 0px 40px 0px;
+    }
+}
+
+@media(max-width: 420px){
+    .soft-add__container{
+        padding: 16px;
+    }
+
+    .soft-add__form{
+        padding: 0px;
+    }
+
+}

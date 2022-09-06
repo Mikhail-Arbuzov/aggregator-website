@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
-	<!--	<link rel="stylesheet" th:href="@{/css/device.css}" type="text/css">-->
+	<link rel="stylesheet" th:href="@{/css/soft.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
@@ -18,8 +18,88 @@
 	<div th:replace="~{fragments/menu::menu}"></div>
 	<!--Content-->
 	<div class="content">
-		<section style="margin-top: 120px">
-			<h1>Различный софт</h1>
+		<section class="soft-text">
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="soft-text__title mb-5">
+								<h1>Различный софт</h1>
+							</div>
+							<div class="soft-text__txt">
+								<p>После сборки всех комплектующих ПК и выполнения необходимых действий при установке операционной системы, заключительным этапом остается отладить дополнительный программный софт для полноценной работы. Порой, у начинающих пользователей возникают проблемы в выборе обязательных программ для профессионального компьютера, поэтому ниже представлены статьи для разрешения данной проблемы.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="soft">
+			<div class="corobka">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="soft-container">
+								<th:block th:each="soft : ${softwareDtoList}">
+									<div class="soft-item mb-4">
+										<th:block sec:authorize="hasAuthority('ADMIN')">
+											<div class="item__deletesoft mb-2">
+												<div class="text-right">
+													<form th:action="@{/allForPC/soft/id}" th:method="DELETE">
+														<input type="hidden" name="id" th:value="${soft.getId()}">
+														<a href="#" class="linkd-size2" onclick="$(this).closest('form').submit();">
+															<i class="fa-solid fa-square-xmark"></i>
+														</a>
+													</form>
+												</div>
+											</div>
+										</th:block>
+										<div class="soft-item__elImage mb-2">
+											<div class="elImage-soft">
+												<div class="elImage-soft__img">
+													<th:block th:if="${soft.getIcon() != null}">
+														<img th:src="@{(${soft.getIcon()})}" onerror="this.src ='img/iconSite.jpg'" alt="iconka">
+													</th:block>
+													<th:block th:unless="${soft.getIcon() != null}">
+														<img src="img/iconSite.jpg" alt="iconka">
+													</th:block>
+												</div>
+												<div class="elImage-soft__text">
+													<p th:text="${soft.getSite()}"></p>
+												</div>
+											</div>
+										</div>
+										<div class="soft-item__imgSite mb-3">
+											<div class="imgSite">
+												<th:block th:if="${soft.getImg() != null}">
+													<img th:src="@{(${soft.getImg()})}" alt="image">
+												</th:block>
+												<th:block th:unless="${soft.getImg() != null}">
+													<img src="img/comp.jpeg" alt="image">
+												</th:block>
+											</div>
+										</div>
+										<div class="soft-item__title mb-2">
+											<h3 th:text="${soft.getTitle()}"></h3>
+										</div>
+										<div class="soft-item__text mb-2">
+											<div class="paragraph-soft">
+												<p th:text="${soft.getText()}"></p>
+											</div>
+										</div>
+										<div class="soft-item__link mb-2">
+											<div class="w-50">
+												<a th:href="@{(${soft.getLink()})}" class="btn btn-block btn-outline-warning bradius2" target="_blank">Подробнее</a>
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
 	</div>
 	<!--Footer-->

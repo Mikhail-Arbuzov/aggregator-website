@@ -40,6 +40,7 @@ public class AdminController {
     private final AntivirusSoftService antivirusSoftService;
     private final SystemSourceService systemSourceService;
     private final OfficeProgramService officeProgramService;
+    private final SoftwareService softwareService;
 
     @GetMapping("/admin")
     public String getAdminPage(){
@@ -112,6 +113,12 @@ public class AdminController {
         return "sitesections/section-office";
     }
 
+    @GetMapping("/admin/section-soft")
+    public String getSoftSection(Model model){
+        SourceRequest sourceSoft = new SourceRequest();
+        model.addAttribute("sourceSoft",sourceSoft);
+        return "sitesections/section-soft";
+    }
 
     @PostMapping("/admin/result-bounceRate")
     public String getBounceRate(@Valid @ModelAttribute("domainRequest")DomainRequest domainRequest,
@@ -343,6 +350,19 @@ public class AdminController {
         else{
             officeProgramService.addOfficeProgram(urlOfficeProgram.getUrlSite());
             return "redirect:/allForPC/officeProgram";
+        }
+    }
+
+    @PostMapping("/admin/addSoftware")
+    public String addSoftware( @Valid @ModelAttribute("sourceSoft") SourceRequest sourceSoft,
+                              BindingResult bindingResult) throws IOException,NullPointerException {
+        addGlobalErrorsValidURL(bindingResult,"sourceSoft");
+        if(bindingResult.hasErrors()){
+            return "sitesections/section-soft";
+        }
+        else{
+            softwareService.addSoftware(sourceSoft.getDomain(),sourceSoft.getUrlSite());
+            return "redirect:/allForPC/soft";
         }
     }
 
