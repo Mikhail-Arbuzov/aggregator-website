@@ -1,0 +1,65 @@
+.addArticle{
+    margin: 110px 0px 40px 0px;
+}
+
+.addArticle__carusel{}
+
+.addArticle-corobka{
+    width: 66%;
+}
+
+.carousel-item img {
+    height: 380px;
+}
+
+.article-form{
+    padding: 30px 30px 20px 30px;
+    background: #334a70;
+    margin: 16px 0px 0px 0px;
+}
+
+
+.article-form__title h2{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #fffbfb;
+}
+
+.form-group input:focus{
+    box-shadow: rgba(183, 237, 234, 1) 0px 3px 8px;
+    border-color: #b7edea;
+}
+
+.btn-radius3{
+    border-radius: 10px;
+}
+
+.errArticle{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 1.3em;
+    color: #ffeeba;
+}
+
+
+@media(max-width: 790px){
+    .addArticle{
+        margin: 80px 0px 40px 0px;
+    }
+
+    .addArticle-corobka{
+        width: 100%;
+    }
+
+    .carousel-item img {
+        height: auto;
+    }
+}
+
+@media(max-width: 300px){
+    .article-form{
+        padding:10px;
+    }
+}

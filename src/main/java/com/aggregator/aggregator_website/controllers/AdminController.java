@@ -41,6 +41,7 @@ public class AdminController {
     private final SystemSourceService systemSourceService;
     private final OfficeProgramService officeProgramService;
     private final SoftwareService softwareService;
+    private final ArticleService articleService;
 
     @GetMapping("/admin")
     public String getAdminPage(){
@@ -118,6 +119,13 @@ public class AdminController {
         SourceRequest sourceSoft = new SourceRequest();
         model.addAttribute("sourceSoft",sourceSoft);
         return "sitesections/section-soft";
+    }
+
+    @GetMapping("/admin/section-article")
+    public String getArticleSection(Model model){
+        UrlRequest urlArticle = new UrlRequest();
+        model.addAttribute("urlArticle",urlArticle);
+        return "sitesections/section-article";
     }
 
     @PostMapping("/admin/result-bounceRate")
@@ -363,6 +371,19 @@ public class AdminController {
         else{
             softwareService.addSoftware(sourceSoft.getDomain(),sourceSoft.getUrlSite());
             return "redirect:/allForPC/soft";
+        }
+    }
+
+    @PostMapping("/admin/addArticle")
+    public String addArticle(@Valid @ModelAttribute("urlArticle") UrlRequest urlArticle,
+                             BindingResult bindingResult) throws IOException,NullPointerException {
+        addGlobalErrorsValidURL(bindingResult,"urlArticle");
+        if(bindingResult.hasErrors()){
+            return "sitesections/section-article";
+        }
+        else{
+            articleService.addArticle(urlArticle.getUrlSite());
+            return "redirect:/allForPC/articles";
         }
     }
 

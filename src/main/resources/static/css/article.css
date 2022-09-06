@@ -1,0 +1,153 @@
+.article{
+    margin: 120px 0px 40px 0px;
+}
+
+.article__title h1{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color:#cec3f9;
+}
+
+.article__container{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    padding: 5px;
+}
+
+.article__item{
+    display: flex;
+    width: 45%;
+    flex-direction: column;
+}
+
+.item__deleteArticle{
+    padding: 10px;
+}
+
+.linkdSize3{
+    font-size: 2rem;
+    color: #e2e2da;
+}
+
+.linkdSize3:hover{
+    color: #c9cca7;
+}
+
+.item__linkOnArticleSource{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.linkOnArticleSource__el{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 30px 30px 10px 30px;
+    background:#262845;
+}
+
+.linkOnArticleSource__el:hover{
+    box-shadow: rgba(207, 211, 223, 1) 0px 14px 28px, rgba(207, 211, 223, 1) 0px 10px 10px;
+}
+
+.el-image{
+    flex: 0 0 33.333%;
+    position: relative;
+    min-height: 260px;
+}
+
+.el-image img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.el-txt{
+    padding: 8px;
+    word-break: break-word;
+    margin: 8px 0px 0px 0px;
+}
+
+.el-txt h3{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size:20px;
+    font-weight: bold;
+    color:#c9cca7;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.el-txt h3:hover{
+    color:#e0e0e0;
+}
+
+.el-time{
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.timeP{
+    background: #22243e;
+    padding: 8px 6px 4px 6px;
+}
+
+.timeP p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size:16px;
+    color:#e0e0e0;
+    text-align: center;
+}
+
+@media(max-width: 1000px){
+    .article__container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .article__item{
+        width: 60%;
+    }
+}
+
+@media(max-width: 790px){
+    .article{
+        margin: 90px 0px 40px 0px;
+    }
+}
+
+@media(max-width: 770px){
+    .article__item{
+        width: 80%;
+    }
+}
+
+@media(max-width: 500px){
+    .article__item{
+        width: 100%;
+    }
+
+    .article__title h1{
+        font-size: 34px;
+    }
+}
+
+
+@media(max-width: 420px){
+    .linkOnArticleSource__el{
+        padding: 10px;
+    }
+}
+
+@media(max-width: 340px){
+    .el-image{
+        min-height: 160px;
+    }
+}
