@@ -66,42 +66,291 @@
 						<div class="col">
 							<form>
 								<div class="input-group">
-									<input type="text" name="search" class="form-control" placeholder="Поиск" aria-describedby="basic-addition">
+									<input type="text" id="elastic" name="search" class="form-control" placeholder="Поиск" aria-describedby="basic-addition">
 									<div class="input-group-append">
-										<button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+										<button type="button" class="btn btn-outline-secondary btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
-					<!--					<div class="row mt-3">-->
-					<!--						<div class="col">-->
-					<!--							<div class="items">-->
-					<!--								<div class="items__img">-->
-					<!--									<a href="#"><img src="img/mtp.jpeg" alt="kartinka"></a>-->
-					<!--								</div>-->
-					<!--								<div class="items__body">-->
-					<!--									<div class="items__link">-->
-					<!--										<a href="#">Материнская плата</a>-->
-					<!--									</div>-->
-					<!--								</div>-->
-					<!--							</div>-->
-					<!--						</div>-->
-					<!--					</div>-->
-					<!--					<div class="row mt-3">-->
-					<!--						<div class="col">-->
-					<!--							<div class="items">-->
-					<!--								<div class="items__img">-->
-					<!--									<img src="img/mtp.jpeg" alt="kartinka">-->
-					<!--								</div>-->
-					<!--								<div class="items__body">-->
-					<!--									<div class="items__link">-->
-					<!--										<a href="#">Материнская плата</a>-->
-					<!--									</div>-->
-					<!--								</div>-->
-					<!--							</div>-->
-					<!--						</div>-->
-					<!--					</div>-->
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/processor}"><img src="img/sistemblock/proces.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/processor}">Процессор</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/motherboard}"><img src="img/mtp.jpeg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/motherboard}">Материнская плата</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/cooler-cpu}"><img src="img/sistemblock/kullerpr.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/cooler-cpu}">Кулер для процессора</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/powerSupply}"><img src="img/sistemblock/blockpit.jpeg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/powerSupply}">Блок питания</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/videoCard}"><img src="img/sistemblock/videokard.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/videoCard}">Видеокарта</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/hdd}"><img src="img/sistemblock/hdd.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/hdd}">Жёсткий диск</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/ssd}"><img src="img/sistemblock/ssd.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/ssd}">Твердотельный накопитель</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/ram}"><img src="img/sistemblock/operativ.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/ram}">Оперативная память</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/cooler-corpus}"><img src="img/sistemblock/kullerkorp.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/cooler-corpus}">Кулер для корпуса</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/corpus}"><img src="img/sistemblock/korpus.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/corpus}">Корпус</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/monitor}"><img src="img/periferia/monit.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/monitor}">Монитор</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/keyboard}"><img src="img/periferia/keyb.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/keyboard}">Клавиатура</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/mouse}"><img src="img/periferia/mouse2.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/mouse}">Компьютерная мышь</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/mfd}"><img src="img/periferia/mfu2.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/mfd}">МФУ</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/antivirus-soft}"><img src="img/po/antivirus.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/antivirus-soft}">Антивирусная программа</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/officeProgram}"><img src="img/po/ofic.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/officeProgram}">Офисная программа</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/operative}"><img src="img/po/operac.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/operative}">Операционная система</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 hide">
+						<div class="col">
+							<div class="items">
+								<div class="items__img">
+									<a th:href="@{/allForPC/soft}"><img src="img/po/soft.jpg" alt="kartinka"></a>
+								</div>
+								<div class="items__body">
+									<div class="items__link">
+										<a th:href="@{/allForPC/soft}">Программное обеспечение</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-3 notfound">
+						<div class="col">
+							<div class="items-txt">
+								<p>По запросу <span class="notf"></span> нечего не найдено</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="block2"></div>
