@@ -14,14 +14,14 @@
 				</div>
 				<nav class="header__menu">
 					<ul class="header__list">
-						<li><a href="#" class="header__link">Cовместимость</a></li>
+						<li><a th:href="@{/allForPC/match-page}" class="header__link">Cовместимость</a></li>
 						<li><a th:href="@{/allForPC/configurator}" class="header__link">Конфигурация</a></li>
 						<div sec:authorize="isAuthenticated()">
 							<li class="dropdown">
 								<a href="#" class="header__link dropdown-toggle" id="dropdownMenulink" data-toggle ="dropdown">Сборка</a>
 								<div class="dropdown-menu"  aria-labelledby ="dropdownMenulink">
 									<div class="background__item">
-										<a href="#" class="dropdown-item  link">Всё о сборке ПК</a>
+										<a th:href="@{/allForPC/collecting}" class="dropdown-item  link">Всё о сборке ПК</a>
 									</div>
 									<div class="background__item">
 										<a th:href="@{/allForPC/compilation}" class="dropdown-item link">Самостоятельная подборка</a>
@@ -30,7 +30,7 @@
 							</li>
 						</div>
 						<div sec:authorize="isAnonymous()">
-							<li><a href="#" class="header__link">Сборка</a></li>
+							<li><a th:href="@{/allForPC/collecting}" class="header__link">Сборка</a></li>
 						</div>
 						<li><a th:href="@{/allForPC/articles}" class="header__link">Статьи</a></li>
 					</ul>

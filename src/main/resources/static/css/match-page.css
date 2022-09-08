@@ -1,0 +1,203 @@
+.match-text{
+    margin: 120px 0px 20px 0px;
+}
+
+.match-text__header h1{
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: #c9cbd5;
+}
+
+.match{
+    margin: 0px 0px 40px 0px;
+}
+
+.accordion{
+    margin: 40px 0;
+}
+.accordion .item {
+    border: none;
+    margin-bottom: 50px;
+    background: none;
+}
+.t-p{
+    background: #242f44;
+    padding: 20px 20px 20px 20px;
+}
+
+.t-p .sovmest{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #91a1e3;
+}
+
+.t-p h3{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 24px;
+    text-align: center;
+    color: #afbfe3;
+}
+.t-p p{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+    color: #cfd3de;
+}
+
+/*с тире*/
+.tpList li{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 18px;
+    line-height: 1.5em;
+    font-style: italic;
+    color: #cfd3de;
+}
+
+.tpList li:before{
+    content:'\2013 ';
+    color: #cfd3de;
+}
+
+.tpList li:not(:last-child){
+    margin-bottom: 20px;
+}
+
+
+/*с маркером*/
+
+.tpList2 li{
+    font-family: 'Philosopher',"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 18px;
+    line-height: 1.5em;
+    font-style: italic;
+    color: #cfd3de;
+}
+
+.tpList2 li:before{
+    content:'\2022 ';
+    color: #cfd3de;
+}
+
+.tpList2 li:not(:last-child){
+    margin-bottom: 20px;
+}
+
+
+.infoSize{
+    color:#cfd3de;
+    font-size: 1.8rem;
+}
+
+.infoSize:hover{
+    color:#6c757d;
+}
+
+.tpLink{
+    color: #fff;
+    font-size: 1.8rem;
+}
+/*фон кнопок блоков text*/
+.accordion .item .item-header h2 button.btn.btn-link {
+    background: -webkit-linear-gradient(0deg, #55658b,#394865,#364159);
+    background: linear-gradient(0deg, #55658b,#394865,#364159);
+    color: white;
+    border-radius: 0px;
+    font-family: 'Philosopher',Arial,"Helvetica Neue",Helvetica,sans-serif; /*'Poppins';*/
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 2.5;
+    text-decoration: none;
+}
+.accordion .item .item-header {
+    border-bottom: none;
+    background: transparent;
+    padding: 0px;
+    margin: 2px;
+}
+
+.accordion .item .item-header h2 button {
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+/*Убрал синию границу у кнопок после нажатия*/
+
+.btn:active, .btn:focus{
+    box-shadow: 0px 1px 2px 0px #d5e2fb,
+    1px 2px 4px 0px #d5e2fb,
+    2px 4px 8px 0px #d5e2fb,
+    2px 4px 16px 0px #d5e2fb;
+}
+
+/*оформление стрелок и их фона*/
+.accordion .item .item-header h2 i {
+    float: right;
+    font-size: 30px;
+    color: rgba(146,206,249,1);
+    background-color: #222b3e;
+    width: 60px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+button.btn.btn-link.collapsed i {
+    transform: rotate(0deg);
+}
+
+button.btn.btn-link i {
+    transform: rotate(180deg);
+    transition: 0.5s;
+}
+
+.sizeUp2{
+    color: #fff;
+    font-size: 3rem;
+    position: fixed;
+    top:400px;
+    right:16px;
+    z-index: 100;
+    opacity: .3;
+}
+
+@media(max-width: 790px){
+    .match-text{
+        margin: 90px 0px 10px 0px;
+    }
+}
+
+@media(max-width: 500px){
+    .match-text__header h1{
+        font-size: 34px;
+    }
+}
+
+@media(max-width: 420px){
+    .tpLink{
+        font-size: 1.3rem;
+    }
+    .t-p{
+        padding: 10px 10px 20px 10px;
+    }
+}
+
+@media(max-width: 300px){
+    .accordion .item .item-header h2 button.btn.btn-link {
+        font-size: 16px;
+    }
+    .accordion .item .item-header h2 i{
+        font-size: 20px;
+        width: 40px;
+        height:40px;
+    }
+}

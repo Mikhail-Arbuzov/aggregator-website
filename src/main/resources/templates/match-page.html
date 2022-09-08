@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Совместимость</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/iconfonts.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/match-page.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/footer.css}" type="text/css">
+	<link rel="shortcut icon" th:href="@{/icons/favicon.ico}">
+</head>
+<body>
+<div class="wrapper">
+	<!--Menu-->
+	<div th:replace="~{fragments/menu::menu}"></div>
+	<!--Content-->
+	<div class="content">
+		<section class="match-text">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="match-text__header">
+							<h1 id="up2">Совместимость комплектующих</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="match">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="accordion" id="accordionExample">
+							<div class="item">
+								<div class="item-header" id="headingOne">
+									<h2 class="mb-0">
+										<button id="proc" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+											Процессор
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest mb-3">Совместимость процессора с:</h3>
+										<h3 class="mb-3">Материнской платой</h3>
+										<p>Процессор и материнская плата должны быть оснащены одним и тем же сокетом. <a href="https://remontcompa.ru/zhelezo-i-periferiya/1772-kak-uznat-soket-processora.html" class="infoSize" data-toggle="popover" data-placement="top" title="" data-content="Как узнать сокет процессора ?" target="_blank"><i class="fa-solid fa-square-up-right"></i></a></p>
+										<p>Одна и таже версия сокета на процессоре и материнке, еще не говорит о том, что материнская плата может поддерживать вашу модель ЦП. Поэтому нужно смотреть взависимости от  производителя процессора (Intel или AMD), серию чипсета у материнской платы , работающую с определёнными поколениями процессоров. Может быть несколько серий чипсетов под одну версию сокета процессора. Более старые серии чипсетов могут не уметь работать с новой моделью процессора. Так как для них не были предусмотрены обновления программного обеспечения. Нужно обращать внимание на дату выхода процессора и материнской платы. Если они вышли в один и тот же год, лучше взять материнскую плату которая вышла позднее процессора.</p>
+										<p>Чипсет модернизирован под сокет процессора, определяет поколения, семейства, архитектуру поддерживаемых процессоров, сужая совместимость по сокету.</p>
+										<ul class="tpList2">
+											<li> Общая информация об чипсетах  <a href="https://remontcompa.ru/zhelezo-i-periferiya/2638-kakoj-chipset-vybrat-dlja-materinskoj-platy.html?#hmenu-item-3" class="infoSize" data-toggle="popover" title="" data-content="Какие бывают чипсеты ?" target="_blank"><i class="fa-solid fa-square-up-right"></i></a></li>
+											<li> Совместимость чипсетов с процессорами AMD  <a href="https://www.amd.com/ru/chipsets/b550?roistat_visit=25108279" class="infoSize" data-toggle="popover" title="" data-content="Таблица совместимости чипсетов и процессоров AMD Ryzen" target="_blank"><i class="fa-solid fa-square-up-right"></i></a></li>
+											<li> Совместимость чипсетов с процессорами Intel  <a href="https://amd.news/obzor/sovmestimost-socket-core/?" class="infoSize" data-toggle="popover" title="" data-content="Таблица совместимости чипсетов и процессоров Intel Core " target="_blank"><i class="fa-solid fa-square-up-right"></i></a></li>
+										</ul>
+										<p class="mb-3">Проверять совместимость процессора через сайт производителя материнкой платы.</p>
+										<h3 class="mb-3">Кулером для процессора</h3>
+										<p>Для процессоров в ВОХ-поставке не нужно приобретать кулер отдельно,так как в них уже в комплектации идет встроенный кулер. Но бывает и исключение, некоторые модели процессоров комплектации BOX тоже не имеют кулера в комплекте (Intel i9,Intel с индексом К с 10й серии кулерами не комплектуются.). А для процессоров в OEM-поставке необходимо приобретать кулер отдельно.</p>
+										<p>В описании кулера нужно убедиться, что он поддерживает сокет процессора.  <a href="https://club.dns-shop.ru/blog/t-100-protsessoryi/59697-sovmestimost-kulerov-s-soketami-protsessora/?utm_referrer=https%3A%2F%2Fyandex.ru%2F" class="infoSize" data-toggle="popover" data-placement="top" title="" data-content="Совместимость кулеров с сокетами процессора" target="_blank"><i class="fa-solid fa-square-up-right"></i></a></p>
+										<p>Чтобы система охлаждения оказалась максимально эффективной для процессора в случае больших нагрузок, необходимо чтобы кулер для процессора имел требования по теплоотводу (TDP) аналогичные или выше, чем у самого процессора.</p>
+										<h3>Оперативная память</h3>
+										<p>Оптимальный вариант тактовой частоты работы с интервалом частот от 1600 до 2400 МГц.</p>
+										<p>Для работы с видео/аудио, рендерингом или программированием необходимы частоты в 2133-2400 Мгц.</p>
+										<p>Не нужно брать ОЗУ с завышенными частотами, если контроллер ЦП работает на более низких частотах.</p>
+										<p>Рекомендуемый объём памяти на сегодня для полноценного ПК не менее 8 гб. При работаете с графикой, тяжёлыми средами программирования необходим объем 16 гб.</p>
+										<p class="mb-3">Тип памяти желательно выбирать DDR4.</p>
+										<h3 class="mb-3">Видеокартой</h3>
+										<p>Видеокарта бывает двух видов:</p>
+										<ul class="tpList">
+											<li> Дискретная видеокарта — устанавливается на материнскую плату, в слот PCI-E, является отдельным устройством, обозначается GPU.</li>
+											<li> Встроенная — это видеочип, интегрированный в процессор, позволяет отображать картинку на экране, идеально подходит для просмотра видео, редактированию офисных документов, простейших игр. Однако работать в графических ресурсоемких приложениях, например фотошоп, а также играть в современные игры — не получится, мало производительности видеочипа. Обозначается как iGPU.</li>
+										</ul>
+										<p>Соответствие по уровню производительности <a href="https://www.dxdigitals.info/2017/04/podbor-videokarti-pod-processor.html" class="infoSize" data-toggle="popover" data-placement="top" title="" data-content="Таблица совместимости процессор/видеокарты" target="_blank"><i class="fa-solid fa-square-up-right"></i></a></p>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#blockP" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Блоком питания</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="item-header" id="headingTwo">
+									<h2 class="mb-0">
+										<button id="mat" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+											Материнская плата
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest mb-3">Совместимость материнской платы с:</h3>
+										<h3 class="mb-3">Оперативной памятью</h3>
+										<p>Типы памяти ОЗУ и материнской платы должны совпадать (DDR, DDR2, DDR3 и DDR4, а в ближайшие несколько лет появится еще и DDR5 ).</p>
+										<p>Узнать совместимость материнской платы с оперативной памятью на сайте производителя. Для этого необходимо знать марку и модель вашей материнской платы, как правило эти данные указаны на самой материнской плате.</p>
+										<p>В бумажной инструкции или на сайте магазина в описании материнской платы должна быть информация о количестве разъемов под оперативную память (DIMM). Форм-фактор DIMM (Dual Inline Memory Module, означает, что контакты располагаются по обе стороны) – для настольных ПК, а SO-DIMM – для ноутбуков.</p>
+										<p>Необходимо узнать максимальный объем оперативной памяти, который поддерживается материнской платой.</p>
+										<p class="mb-3">При проверке совместимости необходимо убедиться, что модули оперативной памяти и материнская плата поддерживают одни и те же частоты, иначе возможны проблемы. Если приобрести модули с более высокими частотами, чем поддерживаемые платой, то в большинстве случаев все будет работать нормально. Оперативная память просто запустится на более низкой частоте, но при покупке более медленных модулей система может не заработать. Поэтому при выборе также нужно обращать внимание и на тактовые частоты.</p>
+										<h3 class="mb-3">SSD накопителем</h3>
+										<p>SSD-диски, в зависимости от физического формата, можно подключать к следующим интерфейсным разъёмам: SATA, mSATA, PCI-Express, M.2.</p>
+										<p>SSD-накопители используют одну из двух основных шин передачи данных: SATA III — средняя скорость чтения/записи 550 Мбайт/с, PCI-Express — средняя скорость чтения/записи на канал (x1) в версиях: 2.0 — до 500 Мбайт/с, 3.0 — до 985 Мбайт/с. SSD-накопители, устанавливаемые в слоты PCI-Express, производительней SSD-дисков, использующих разъёмы SATA, mSATA.</p>
+										<p>Нужно узнать какой интерфейсный разьём для дисковой системы поддерживает материнская плата.</p>
+										<p>К разъёму SATA на материнской плате подходит большинство SSD-накопителей. SATA может быть разным:</p>
+										<p>К разъёму SATA на материнской плате подходит большинство SSD-накопителей. SATA может быть разным:</p>
+										<ul class="tpList">
+											<li>SATA 6Gb/s или SATA III — максимальная скорость 600 мб/с, это самая быстрая ревизия SATA.</li>
+											<li>SATA 3Gb/s или SATA II — максимальная скорость 300 мб/с.</li>
+											<li>SATA 1.5Gb/s или SATA I (или просто SATA) — максимальная скорость 150 мб/с.</li>
+										</ul>
+										<p>Если разъем M.2 то он может поддерживать установку SSD-накопителей SATA и PCI-Express. Он имеет три вариации ключа: <strong>B</strong>— режим SATA/PCI-Express x2, <strong>M</strong> — режим SATA/PCI-Express x4, <strong>B & M</strong> — режим SATA/PCI-Express x2. Поддержка того или иного режима зависит от чипсета материнской платы.</p>
+										<p>Если приобрести SSD M.2 SATA (B & M), а материнская плата поддерживает M.2 PCI-Express (B & M), то SSD накопитель не будет работать!</p>
+										<p>В зависимости от интерфейса подключения, твердотельные накопители имеют следующие форм-факторы:</p>
+										<ul class="tpList2">
+											<li><strong> 2.5</strong> — размер SSD SATA сопоставим c жёстким диском для ноутбуков;</li>
+											<li><strong> 3.5</strong> — размер SSD SATA сопоставим c жёстким диском для стационарного ПК;</li>
+											<li><strong> 2230</strong> — SSD для M.2 (ширина — 22 мм, длина — 30 мм);</li>
+											<li><strong> 2242</strong> — SSD для M.2 (ширина — 22 мм, длина — 42 мм);</li>
+											<li><strong> 2260</strong> — SSD для M.2 (ширина — 22 мм, длина — 60 мм);</li>
+											<li><strong> 2280</strong> — SSD для M.2 (ширина — 22 мм, длина — 80 мм);</li>
+											<li><strong> HHHL</strong> — SSD для PCI-Express.</li>
+										</ul>
+										<p>Для домашнего ПК оптимальный объём памяти  SSD 256 гб. Чтобы использовать для ускорения загрузки операционной системы, программ или простых игр.</p>
+										<p class="mb-3">Для офисного компьютера лучше взять SSD объёмом не меньше 240−500 Гб, для игрового компьютера — на 500−2000 Гб.</p>
+										<h3 class="mb-3">Жёстким диском</h3>
+										<p>Перед выбором жёсткого диска необходимо ознакомиться с версией разъема, располагаемого на материнской плате.</p>
+										<p>Жёсткие диски используют разъем SATA в современных экземплярах, а также разъём IDE в предшествующих моделях.</p>
+										<p>Разъем SATA бывает трех видов (SATA3, SATA2, SATA) и для каждой материнской платы он свой.</p>
+										<p>Для внешних жёстких дисков необходимо наличие на материнской плате USB коннекторов (USB 2.0, USB 3.0).</p>
+										<p class="mb-3">Для выбора стандартного объема памяти лучше брать жёсткий диск с объемом не меньше 1 тб.</p>
+										<h3 class="mb-3">Корпусом</h3>
+										<p>Форм-Фактор – стандарт, задающий габаритные размеры устройства. У материнской платы они бывают:</p>
+										<ul class="tpList">
+											<li><strong> Mini-DTX, Mini-ITX и mATX</strong> — компактные материнские платы;</li>
+											<li><strong> E-ATX и XL-ATX </strong> — большие материнские платы.</li>
+										</ul>
+										<p>Размеры материнской платы и корпуса должны быть сопоставимы.</p>
+										<p>Колодки на материнской плате для подключения кабелей передней панели корпуса должны совпадать.</p>
+										<p>Подробнее об этом смотрите в разделе «пошаговая сборка комплектующих пк»...</p>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#cpuP" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Кулером для процессора</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#video" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Видеокартой</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#cool" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Кулером для корпуса</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#kb" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Клавиатурой</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#mouse" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Мышкой</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#monit" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Монитором</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="item-header" id="headingThree">
+									<h2 class="mb-0">
+										<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+											ОЗУ
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest">Совместимость оперативной памяти с:</h3>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#cpuP" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Кулером для процессора</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#proc" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Процессором</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#mat" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Материнской платой</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="item-header" id="headingFour">
+									<h2 class="mb-0">
+										<button id="cpuP" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+											Кулер для процессора
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest mb-3">Совместимость кулера для процессора с:</h3>
+										<h3 class="mb-3">ОЗУ</h3>
+										<p class="mb-3">Необходимо знать высоту радиатора кулера, если перекрывается слот памяти. Планки оперативной памяти с высокими радиаторами могут не поместиться по высоте под габаритную процессорную систему охлаждения, поэтому по возможности уточняйте заранее, будет ли кулер перекрывать разъемы DIMM, а если будет, то сколько именно миллиметров по высоте у вас останется.</p>
+										<h3 class="mb-3">Материнской платой</h3>
+										<p>Должны быть совместимы по сокету.</p>
+										<p>Нужно проверять совместимость крепления кулера и модели материнской платы.</p>
+										<p>Виды крепления на материнской плате:</p>
+										<ul class="tpList2">
+											<li><strong> CPU_FAN </strong> — коннектор для подключения процессорного кулера.</li>
+											<li><strong> CPU_OPT (CPU_OPTIONAL)</strong> — универсальный коннектор для подключения второго процессорного кулера или помпы системы жидкостного охлаждения.</li>
+											<li><strong> EXT_FAN (EXTENDABLE_FAN)</strong> — коннектор, поддерживающий подключение одновременно до 3-х кулеров посредством специального разветвителя.</li>
+										</ul>
+										<p class="mb-3">Источник для проверки совместимости кулера для процессора c материнской платой.  <a href="https://www.bequiet.com/ru/motherboardcheck" class="infoSize" data-toggle="popover" title="" data-content="Проверка совместимости кулера с материнской платой" target="_blank"><i class="fa-solid fa-square-up-right"></i></a></p>
+										<h3 class="mb-3">Корпусом</h3>
+										<p>Среди кулеров для процессора выделяют:</p>
+										<p>Классические простые кулеры с цельнометаллическим радиатором — это бюджетный вариант. В сравнении с боксовым охлаждением, они лишь предлагают немного увеличенную эффективность работы, но принципиально не отличаются. Их стоит использовать только в недорогих офисных и игровых ПК, если родного кулера нет в комплекте или он слишком шумный.</p>
+										<p>Системы охлаждения башенного типа имеют существенно большую эффективность за счет большой площади рассеивания у радиатора. Они оптимальны для мощных игровых ПК, а также при желании собрать почти бесшумный компьютер. Существуют башни как с вентиляторами, так и чисто пассивные.</p>
+										<p>Жидкостные системы охлаждения — удел энтузиастов. Бюджетные варианты (стоимостью до 100 долларов) — это решения, призванные снизить уровень шума от компьютера. В сравнении с равноценными башнями — они не обеспечивают лучшего охлаждения, а нередко и уступают им. Более дорогие СВО позволяют охлаждать процессор с высоким тепловыделением не создавая лишнего шума. Такие системы стоит покупать лишь для топового игрового компьютера.</p>
+										<p>Если выбрать жидкостные системы охлаждения, то нужно обратить внимание на высоту кулера и на диаметр радиатора, чтобы хватило места для установки радиатора для жидкостного кулера.</p>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#blockP" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Блоком питания</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="item-header" id="headingFive">
+									<h2 class="mb-0">
+										<button id="sd"  class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+											SSD накопитель
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest">Совместимость твердотельного накопителя с:</h3>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#mat" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Материнской платой</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3 mb-3">
+											<div class="w-20">
+												<a href="#blockP" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Блоком питания</a>
+											</div>
+										</div>
+										<h3 class="mb-3">Корпусом</h3>
+										<p>Необходимо наличие свободных отсеков на 2,5 дюйма для установки твердотельных накопителей форм-фактора 2,5 дюйма, если таких нет, то нужно будет воспользоваться специальным переходником(салазками).</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="item-header" id="headingSix">
+									<h2 class="mb-0">
+										<button id="hd" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+											Жёсткий диск
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest mb-3">Совместимость жёсткого диска с:</h3>
+										<h3 class="mb-3">Корпусом</h3>
+										<p>По форм-фактору выделяют жесткие диски: 3.5-дюймовые жесткие диски для настольных компьютеров. 2.5-дюймовые HDD для ноутбуков. С настольными компьютерами совместимы, но, как правило, приобретать такие для системника нет смысла – они уступают 3.5-дюймовым по объему и скорости чтения/записи.</p>
+										<p>Необходимо чтобы под форм-факторы диска походили отсеки в корпусе. Если необходимо поместить 2.5 -дюймовый жёсткий диск в 3,5-дюймовый отсек корпуса. Для этого существуют специальные адаптеры (салазки для жестких дисков), позволяющие превратить 2,5-дюймовые диски в 3,5-дюймовые.</p>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#mat" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Материнской платой</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#blockP" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Блоком питания</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="item-header" id="headingSeven">
+									<h2 class="mb-0">
+										<button id="video" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+											Видеокарта
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest mb-3">Совместимость видеокарты с:</h3>
+										<h3 class="mb-3">Материнской платой</h3>
+										<p>Необходимо обратить внимание на интерфейс подключения.</p>
+										<p>Во всех современных материнских платах для подключения видеокарты используется интерфейс PCI-E, однако в устаревших моделях, которые выходили до 2002-2005 года, может применяться интерфейс AGP. Разъём PCI можно подразделить на несколько версий – 2.0, 2.1 и 3.0. Чем выше версия, тем лучше пропускная способность шины и работа видеокарты в связке с другими компонентами ПК. Вне зависимости от версии разъёма в него без проблем получится установить любой адаптер, если он подходит к данному разъёму. Так же на очень старых системных платах можно встретить вместо стандартных на сегодня PCI-разъёмов, гнездо по типу AGP. Это устаревший разъем и под него уже практически не выпускается никаких компонентов, поэтому, если у вас материнка очень старая, то новую видеокарту под такой разъём будет очень сложно найти.</p>
+										<p>Подключать видеокарту следует к PCI-E x16 разъему.</p>
+										<p>Видеочип – это мини-процессор, который интегрирован в конструкцию видеокарты. От него зависит мощность графического адаптера и совместимость с чипсетом материнской платы. <a href="http://www.thg.ru/graphic/gpu_chipset_optimization/print.html" class="infoSize" data-toggle="popover" title="" data-content="Чипсет и видеокарта от одного производителя: оценка оптимизаций" target="_blank"><i class="fa-solid fa-square-up-right"></i></a></p>
+										<p class="mb-3">Нужно обратить внимание на техпроцесс изготовления чипа. Он указывается в нанометрах (нм) и должен варьироваться в пределах от 14 до 65 нм в современных видеокартах. От того, насколько данное значение маленькое, сильно зависит энергопотребление карты и её теплопроводность. Рекомендуется покупать модели с наименьшим значением техпроцесса, т.к. они более компактные, меньше потребляют энергии и главное – слабее перегреваются.</p>
+										<h3 class="mb-3">Корпусом</h3>
+										<p class="mb-3">Необходимо узнать длину видеокарты. Длина, ширина и высота адаптера почти всегда указываются как на сайте производителя, так и в карточке товара на сайте магазина. Чаще всего ограничителем выступает параметр длины, поэтому производители корпусов обычно указывают максимальную длину видеокарты для конкретной модели. Если найти значение этого параметра не удалось – можно самостоятельно измерить расстояние от задней стенки корпуса (где расположены отверстия слотов расширения), до корзины с жесткими дисками. Не стоит забывать и о количестве занимаемых слотов расширения – карточки с массивной системой охлаждения могут занимать 2-3 слота.</p>
+										<h3 class="mb-3">Монитором</h3>
+										<p>Необходимо проверить наличие на видеокарте как минимум одного подходящего видеоразъема (например, HDMI, DisplayPort. DVI-D) или использовать переходник. К примеру, старые мониторы были оборудованы гнездом VGA — трапециевидным штекером, маркированным синим цветом. На современных видеоадаптерах, даже в бюджетном сегменте, такой слот сегодня большая редкость. Но и эта проблема имеет решение. Существуют переходники и конверторы сигнала, чтобы связать любые порты разного вида, в том числе аналоговые с цифровыми. При удачном подборе адаптера все будет корректно работать, даже если порты разные.</p>
+										<p>Выбор видеокарты в зависимости от разрешения экрана:</p>
+										<ul class="tpList">
+											<li> Нагрузка на видеокарту зависит от количества пикселей, которые способен отображать монитор. Для игр на дисплеях с HD-разрешением (например, 1280×1024, 1366×768 и 1600×900 пикселей) хватит видеокарт класса GeForce GTX 960, GTX 1050 Ti, либо Radeon R9 285, R9 380.</li>
+											<li> Для мониторов с более четкой картинкой при 1920×1080 пикселях придется покупать графический ускоритель более высокого класса, который сможет «переварить» нагрузку на среднем или высоком уровнях детализации графики.</li>
+											<li> А если хочется максимально качественной картинки в играх на Full HD-мониторе, вариант-минимум — это видеокарты уровня GeForce GTX 1060 или Radeon RX 580 различных производителей.</li>
+											<li> Самое дорогое удовольствие — игры в разрешении Ultra HD (4K) при 3840×2160 пикселях. Чтобы игры запускались со сверхчеткой картинкой и работали без рывков, придется раскошелиться на карту уровня NVIDIA GeForce GTX 1080 Ti. И даже этого будет недостаточно, если видеокарте не будет ассистировать процессор с 6 ядрами (Intel) или 8 ядрами (AMD Ryzen).</li>
+										</ul>
+										<h3 class="mb-3">Блоком питания</h3>
+										<p>Важно знать рекомендуемую мощность блока питания для видеокарты. Данную характеристику должны указывать как на сайте производителя видеокарты, так и на сайте самого магазина. С 2018 году для большинства систем с одним процессором и одной видеокартой, даже с учетом разгона, достаточно качественного блока питания мощностью в 650 Вт. Меньше 500 Вт покупать не стоит.</p>
+										<p>Интерфейс подключения питание видеокарты PCI-Express (6+2-pin).</p>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="item">
+								<div class="item-header" id="headingEight">
+									<h2 class="mb-0">
+										<button id="blockP" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+											Блок питания
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="mb-3">Мощность на комплектующие</h3>
+										<p>Мощность – это основная характеристика блока питания. Мощность блока питания рассчитывается как сумма мощности всех компонентов компьютера + 30% (на пиковые нагрузки).</p>
+										<p>Для офисного компьютера вполне достаточно минимальной мощности блока питания 400 Ватт. Для мультимедийного компьютера (фильмы, простые игры) лучше взять блок питания на 500-550 Ватт, вдруг вы потом захотите поставить видеокарту. Для игрового компьютера с одной видеокартой желательно установить блок питания мощностью 600-650 Ватт. Для мощного игрового компьютера с несколькими видеокартами может потребоваться блок питания мощностью 750 Ватт и более.</p>
+										<p>Примерный подсчет мощности на комплектующие:</p>
+										<ul class="tpList2">
+											<li> Процессор 25-220 Ватт (уточняйте на сайте продавца или производителя).</li>
+											<li> Видеокарта 50-300 Ватт (уточняйте на сайте продавца или производителя).</li>
+											<li> Материнская плата начального класса 50 Ватт, среднего класса 75 Ватт, высокого класса 100 Ватт.</li>
+											<li> Жесткий диск 12 Ватт.</li>
+											<li> SSD-диск 5 Ватт.</li>
+											<li> DVD-привод 35 Ватт.</li>
+											<li> Оперативной памяти 3 Ватт.</li>
+											<li> Вентилятор 6 Ватт.</li>
+										</ul>
+										<p class="mb-3">Не забудьте добавить к сумме мощностей всех компонентов 30%, это обезопасит вас от неприятных ситуаций.</p>
+										<h3 class="mb-3">Интерфейс подключения для комплектующих</h3>
+										<p>От количества и типа разъемов блока питания зависит, какие именно комплектующие и в каком количестве можно к нему подключить.</p>
+										<p>Для питания материнской платы – Основной 24 pin или 20+4 pin ATX разъем. Разницы между ними нет, для современных материнских плат подходят оба варианта, а 20+4 pin обеспечивает совместимость со старыми, где колодка рассчитана на 20 pin.</p>
+										<p>Для питания процессора – 4 pin, 4+4 pin или 8 pin, 8+8 pin,8+4 pin.</p>
+										<p>Для питания видеокарты – 6 pin, 8 pin или 6+2 pin. Один из важных моментов при выборе блока питания, поскольку мощные видеокарты часто требуют использования двух разъемов – как 8 pin, так и 6 pin. Вариант 6+2 универсален и заменяет собой любой из них. Для двух мощных видеокарт нужны 4 разъема.</p>
+										<p>Для питания жесткого диска- старой версии IDE HDD 4-pin Molex, современной SATA HDD 15-pin SATA.</p>
+										<p>Для питания SSD накопителя – 15-pin SATA.</p>
+										<p>Для питания кулеров процессора и корпуса – 4-pin Molex.</p>
+										<h3 class="mb-3">Совместимость с корпусом</h3>
+										<p>Необходимо обратить внимание на форм-фактор блока питания. Он определяется в зависимости от размеров корпуса, в котором вы предполагаете разместить комплектующие. Основной форм-фактор для персональных компьютеров – АТХ. 95% корпусов ПК рассчитаны под него. Для небольших корпусов предназначены более компактные SFX, TFX и другие. Необходимый размер блока питания можно посмотреть в описании корпуса.</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="item-header" id="headingNine">
+									<h2 class="mb-0">
+										<button id="cool" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+											Кулер для корпуса
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest mb-3">Совместимость кулера для корпуса с:</h3>
+										<h3 class="mb-3">Материнской платой</h3>
+										<p>Должна быть совместимость по коннектору (SYS_FAN или CHA_FAN — коннектор для подключения корпусных кулеров).</p>
+										<p class="mb-3">Подробнее об этом смотрите в разделе «пошаговая сборка комплектующих пк»...</p>
+										<h3 class="mb-3">Корпусом</h3>
+										<p>Нужно обратить внимание на форм-фактор кулера. В названии обычно указываются размеры либо смотреть в спецификации.</p>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#blockP" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Блоком питания</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="item-header" id="headingTen">
+									<h2 class="mb-0">
+										<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+											Корпус
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest mb-3">Совместимость корпуса с:</h3>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#cool" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Кулером для корпуса</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#cpuP" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Кулером для процессора</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#blockP" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Блоком питания</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#video" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Видеокартой</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#hd" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Жестким диском</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#sd" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> SSD накопителем</a>
+											</div>
+										</div>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#mat" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Материнской платой</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="item-header" id="headingEleven">
+									<h2 class="mb-0">
+										<button id="monit" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+											Монитор
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest mb-3">Совместимость монитора с:</h3>
+										<h3 class="mb-3">Материнской платой</h3>
+										<p>Необходима совместимость видеовыходов (обычно это DVI или VGA) на материнской плате с коннекторами кабеля подключения монитора.</p>
+										<div class="d-flex justify-content-center mt-3">
+											<div class="w-20">
+												<a href="#video" class="btn btn-block btn-secondary mt-3 tpLink"><i class="fa-solid fa-arrow-right"></i> Видеокартой</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="item-header" id="headingTwelve">
+									<h2 class="mb-0">
+										<button id="kb" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+											Клавиатура
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest mb-3">Совместимость клавиатуры с:</h3>
+										<h3 class="mb-3">Материнской платой</h3>
+										<p>Проводные клавиатуры могут иметь различный интерфейс подключения. Современные модели оснащаются USB-подключением. Более старые модели имеют PS/2 – подключение. Необходимо учесть совместимость с разъемами на материнской плате. Лучше выбрать клавиатуру USB, так как сегодня не у всех материнских плат есть устаревающий разъем PS/2.</p>
+										<p class="mb-3">Беспроводные клавиатуры, подключаются либо по радиоканалу, либо по Bluetooth. Радиочастотная модель идет в комплекте с USB адаптером, для него на материнской плате также должен присутствовать соответствующий разъем. Bluetooth-клавиатуры обычно идут без специального bluetooth адаптера. Но встречаются модели, где он присутствует в комплекте. Для использования беспроводной Bluetooth-клавиатуры обязательно на стационарном компьютере должен присутствовать — либо внешний, либо уже встроенный в корпус и подключенный к материнской плате bluetooth адаптер.</p>
+										<h3 class="mb-3">Операционной системой</h3>
+										<p>При подключении обычно драйвера   установятся автоматически, и пользователь сможет работать с клавиатурой, либо придется устанавливать дополнительное ПО от производителя, чтобы клавиатура наиболее корректно работала.</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="item-header" id="headingThirteen">
+									<h2 class="mb-0">
+										<button id="mouse" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+											Мышка
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest mb-3">Совместимость мышки с:</h3>
+										<h3 class="mb-3">Материнской платой</h3>
+										<p>Необходимо совмещение с интерфейсом подключения.</p>
+										<p>Беспроводные мыши по технологии подключения бывают:</p>
+										<ul class="tpList mb-3">
+											<li> Радиочастотные подключаются через специальный USB-адаптер (приемник). Он идет в комплекте с мышкой. Для него в материнской плате также должен присутствовать соответствующий USB разъем.</li>
+											<li> Bluetooth модели могут идти в комплекте с Bluetooth-адаптером либо без него, для таких мышек желательно наличие внешнего либо  подключенного к материнской плате bluetooth адаптера на самом компьютере.</li>
+											<li> Для Wi-Fi мыши также необходимо наличие Wi-Fi адаптера на самом компьютере.</li>
+											<li> Индукционная мышь работает за счет индукционной энергии. Такие мышки используют специальный коврик, нужный для их работы, который работает по принципу графического планшета или входит в его комплект. Его подключают к порту USB. На материнской плате должен быть соответствующий USB коннектор.</li>
+											<li> Проводные мышки имеют USB – подключение или более старые модели PS/2 -подключение. На материнской плате должны присутствовать соответствующие разъемы.</li>
+										</ul>
+										<h3 class="mb-3">Операционной системой</h3>
+										<p>Обычно после подключения драйвера устанавливаются автоматически. Либо придется устанавливать дополнительное ПО. Известные производители подкрепляют свое устройство программным обеспечением, с помощью которого можно детально настроить кнопки и некоторые технические параметры мыши.</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="item-header" id="headingFourteen">
+									<h2 class="mb-0">
+										<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+											МФУ
+											<i class="fa fa-angle-down"></i>
+										</button>
+									</h2>
+								</div>
+								<div id="collapseFourteen" class="collapse" aria-labelledby="headingFourteen" data-parent="#accordionExample">
+									<div class="t-p">
+										<h3 class="sovmest mb-3">Совместимость МФУ с:</h3>
+										<h3 class="mb-3">Материнской платой</h3>
+										<p>Подключения к компьютеру осуществляется разными методами.</p>
+										<p>Проводное подключение. Этот способ осуществляется путём соединения двух устройств при помощи USB-провода, который идет в комплекте с МФУ. Один конец провода присоединяется к разъему USB на передней панели корпуса, а другой − в соответствующее гнездо принтера. Если вам необходимо подключить принтер к старенькому компьютеру, убедитесь, что присутствует LPT-соединение. Это старая архитектура разъёма, которая почти не используется в современных системных блоках.</p>
+										<p>Беспроводное подключение. Здесь могут быть задействованы модули Bluetooth и Wi-Fi. Данный метод доступен для устройств, оснащённых подобным функционалом.</p>
+										<h3 class="mb-3">Операционной системой</h3>
+										<p>Большинство домашних и офисных МФУ совместимы с операционными системами семейства Windows. Однако далеко не все печатные устройства поддерживают Linux или даже Мас OS. Это очень важный нюанс. Если в описании к принтеру поддержка операционной системы не указана, уточняйте эту информацию у продавца. Если модель, которая вам приглянулась, работает только с программным обеспечением Microsoft, то вам предложат технику со схожими параметрами, которая будет совместима с вашим программным обеспечением.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<div class="corobka">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div>
+								<a href="#up2" class="sizeUp2">
+									<i class="fa-solid fa-circle-arrow-up"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!--Footer-->
+	<div th:replace="~{fragments/footer::footer}"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/match-page.js}" type="text/javascript"></script>
+<script th:src="@{/js/menu.js}" type="text/javascript"></script>
+</body>
+</html>

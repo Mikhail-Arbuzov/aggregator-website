@@ -20,6 +20,16 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/allForPC/match-page")
+    public String getMatchPage(){
+        return "match-page";
+    }
+
+    @GetMapping("/allForPC/collecting")
+    public String getCollectingPage(){
+        return "collecting";
+    }
+
     @GetMapping("/allForPC/error")
     public  String getErrorPage(@ModelAttribute("errormessage") ErrorMessage errorMessage){
         return "error/allerror";
