@@ -57,7 +57,7 @@ public class DeviceService {
         Device device = modelMapper.map(deviceDto,Device.class);
 
 
-        if (!citilinkURL.isEmpty()){
+        if (!citilinkURL.isEmpty() && citilinkURL != null){
             MonitoringPriceDto priceCitilinkDto = new MonitoringPriceDto();
             String logoSiteCitilink = "http://favicon.yandex.net/favicon/www.citilink.ru";
             priceCitilinkDto.setLogoSite(logoSiteCitilink);
@@ -76,7 +76,7 @@ public class DeviceService {
         }
 
 
-        if (!regardURL.isEmpty()){
+        if (!regardURL.isEmpty() && regardURL != null){
             MonitoringPriceDto priceRegardDto =  new MonitoringPriceDto();
             String priceRegard = parsingPrice.getParsePriceRegard(regardURL);
             if (!priceRegard.isEmpty() && priceRegard != null){
@@ -95,7 +95,7 @@ public class DeviceService {
             monitoringRegard.setDevice(device);
         }
 
-        if (!compmasterURL.isEmpty()){
+        if (!compmasterURL.isEmpty() && compmasterURL != null){
             MonitoringPriceDto compmasterDto = new MonitoringPriceDto();
             String priceCompMaster = parsingPrice.getСomputerMarket(compmasterURL);
             if(!priceCompMaster.isEmpty() && priceCompMaster != null){
@@ -113,7 +113,7 @@ public class DeviceService {
             monitoringCompMaster.setDevice(device);
         }
 
-        if (!qukeURL.isEmpty()){
+        if (!qukeURL.isEmpty() && compmasterURL != null){
             MonitoringPriceDto qukeDto = new MonitoringPriceDto();
             String logoSiteQuke = "http://favicon.yandex.net/favicon/quke.ru";
             qukeDto.setLogoSite(logoSiteQuke);
@@ -131,7 +131,7 @@ public class DeviceService {
             monitoringQuke.setDevice(device);
         }
 
-        if(!knsURL.isEmpty()){
+        if(!knsURL.isEmpty() && knsURL != null){
             MonitoringPriceDto knsDto = new MonitoringPriceDto();
             String priceKNS = parsingPrice.getKNS(knsURL);
             if (!priceKNS.isEmpty() && priceKNS != null){

@@ -51,8 +51,8 @@ public class CreateDeviceDto {
             message = "Ссылка на 'Компьютер маркет' указана не верно!!!")
     private String computerMarketURL;
 
-    @Pattern(regexp = "^(https?:\\/\\/)?(www\\.)?quke\\.ru\\/[-a-zA-Zа-яА-ЯёЁ0-9+&@#\\/%?=~_|!:,.;]*[-a-zA-Zа-яА-ЯёЁ0-9+&@#\\/%?=~_|]+$",
-            message = "Ссылка на 'Quke.ru' указана не верно!!!")
+//    @Pattern(regexp = "^(https?:\\/\\/)?(www\\.)?quke\\.ru\\/[-a-zA-Zа-яА-ЯёЁ0-9+&@#\\/%?=~_|!:,.;]*[-a-zA-Zа-яА-ЯёЁ0-9+&@#\\/%?=~_|]+$",
+//            message = "Ссылка на 'Quke.ru' указана не верно!!!")
     private String qukeURL;
 
     @Pattern(regexp = "^(https?:\\/\\/)?(www\\.)?kns\\.ru\\/[-a-zA-Zа-яА-ЯёЁ0-9+&@#\\/%?=~_|!:,.;]*[-a-zA-Zа-яА-ЯёЁ0-9+&@#\\/%?=~_|]+$",
