@@ -111,11 +111,13 @@
 }
 
 .linkOnAntivSource__el{
+    width: 100%;
+    height:100%;
     display: flex;
     flex-direction: column;
     position: relative;
     padding: 30px;
-    background:#1c2026;
+    background:#264e89;
 }
 
 .linkOnAntivSource__el:hover{

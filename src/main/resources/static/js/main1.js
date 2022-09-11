@@ -279,23 +279,20 @@ $(document).ready(function(){
 
 //style link
 
-    function replacingColor(colorForH3,colorForP){
-        const divs = document.querySelectorAll('.element__body');
-        for(let div of divs){
-            const subtitle = div.firstElementChild;
-            const paragraph = div.lastElementChild;
-
-            subtitle.style.color=colorForH3;
-            paragraph.style.color=colorForP;
-        }
+    function replacingColor(preference,colorForH3,colorForP){
+        let elementbody = preference.lastElementChild;
+        const subtitle = elementbody.firstElementChild;
+        const paragraph = elementbody.lastElementChild;
+        subtitle.style.color=colorForH3;
+        paragraph.style.color=colorForP;
     }
 
     $('.preferens__element').on('mouseover',function(){
-        replacingColor('#fff','#1c2478');
+        replacingColor(this,'#fff','#1c2478');
     });
 
     $('.preferens__element').on('mouseout',function(){
-        replacingColor('rgba(146,206,249,1)','#d6dae1');
+        replacingColor(this,'rgba(146,206,249,1)','#d6dae1');
     });
 
 });

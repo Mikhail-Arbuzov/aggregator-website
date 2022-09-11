@@ -169,6 +169,7 @@
 }
 
 .operation-item__text{
+    flex: 1 1 auto;
     padding: 8px;
 }
 

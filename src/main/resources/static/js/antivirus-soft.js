@@ -7,20 +7,18 @@ $(document).ready(function(){
     });
 
     //для оформления стиля елементов ссылок источников при на видении мыши
-    function replacingColor1(colorForH3){
-        const divs = document.querySelectorAll('.el__body1');
-        for(let div of divs){
-            const subtitle = div.firstElementChild;
-            subtitle.style.color=colorForH3;
-        }
+    function replacingColor1(div,colorForH3){
+        let elbody1 = div.lastElementChild;
+        const subtitle1 = elbody1.firstElementChild;
+        subtitle1.style.color=colorForH3;
     }
 
     $('.linkOnAntivSource__el').on('mouseover',function(){
-        replacingColor1('#5a6163');
+        replacingColor1(this,'#5a6163');
     });
 
     $('.linkOnAntivSource__el').on('mouseout',function(){
-        replacingColor1('#e0e0e0');
+        replacingColor1(this,'#e0e0e0');
     });
 
 });
